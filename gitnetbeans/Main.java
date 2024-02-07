@@ -14,7 +14,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Hola Mundo");
+         double horasTrabajadas = 40.0; // Ejemplo: 40 horas trabajadas en la semana
+        double sueldoNeto = CalculadoraSueldoEspañol.calcularSueldoNeto(horasTrabajadas);
+        System.out.println("El sueldo neto es: " + sueldoNeto + " euros");
     }
     
 }
