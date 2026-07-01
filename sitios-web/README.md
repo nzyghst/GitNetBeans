@@ -1,19 +1,36 @@
 # Muestras de páginas web — Negocios locales de Tenerife
 
-Colección de **cuatro páginas web de demostración** para negocios locales, pensadas
-como muestra comercial. Todos los nombres, teléfonos, direcciones y datos son
-**ficticios** y no corresponden a ningún establecimiento real.
+Colección de **ocho páginas web de demostración** para negocios locales, pensadas
+como muestra comercial y organizadas por sector. Todos los nombres, teléfonos,
+direcciones y datos son **ficticios** y no corresponden a ningún establecimiento real.
 
 ## Demos incluidas
 
-| Demo | Sector | Carpeta | Estilo |
-|------|--------|---------|--------|
-| **Estudio 27 Barber Club** | Barbería (La Laguna) | [`/barberia`](./barberia/) | Oscuro, elegante, reservas por WhatsApp |
-| **Marea Café & Brunch** | Cafetería (Los Cristianos) | [`/cafe-brunch`](./cafe-brunch/) | Cálido, luminoso, carta y galería |
-| **Taller Atlántico Motor** | Taller mecánico (Santa Cruz) | [`/taller`](./taller/) | Profesional, tarifas y formulario de presupuesto |
-| **Guachinche El Lagar** | Restaurante canario (Norte) | [`/guachinche`](./guachinche/) | Menú rústico estilo carta impresa |
+### 🍽️ Hostelería y restauración
+| Demo | Carpeta | Estilo |
+|------|---------|--------|
+| **Brisa del Mar** (multipágina: inicio + carta + contacto) | [`/restaurante-brisa`](./restaurante-brisa/) | Mediterráneo azul, formulario de reserva, FAQ |
+| **Guachinche El Lagar** | [`/guachinche`](./guachinche/) | Menú rústico estilo carta impresa |
+| **Marea Café & Brunch** | [`/cafe-brunch`](./cafe-brunch/) | Cálido, luminoso, carta y galería |
+| **Kaiyo Sushi Bar** | [`/sushi-bar`](./sushi-bar/) | Japonés minimalista, pedidos por WhatsApp |
 
-La página `index.html` es un portfolio que enlaza las cuatro demos.
+### 💈 Barbería y belleza
+| Demo | Carpeta | Estilo |
+|------|---------|--------|
+| **Estudio 27 Barber Club** | [`/barberia`](./barberia/) | Oscuro, elegante, reservas por WhatsApp |
+| **Alma Studio** (peluquería y estética) | [`/salon-belleza`](./salon-belleza/) | Rosa empolvado, elegante, precios |
+
+### 🔧 Automoción
+| Demo | Carpeta | Estilo |
+|------|---------|--------|
+| **Taller Atlántico Motor** | [`/taller`](./taller/) | Profesional, tarifas y formulario de presupuesto |
+
+### 🩺 Salud y bienestar
+| Demo | Carpeta | Estilo |
+|------|---------|--------|
+| **Fisio Atlante** (fisioterapia) | [`/fisioterapia`](./fisioterapia/) | Sanitario limpio, bonos y citas |
+
+La página `index.html` es un portfolio que enlaza todas las demos, agrupadas por sector.
 
 ## Características comunes
 
@@ -21,7 +38,8 @@ La página `index.html` es un portfolio que enlaza las cuatro demos.
 - **100% responsive** (móvil, tablet y escritorio).
 - **Botón flotante de WhatsApp** con mensaje pre-rellenado en cada web.
 - Iconos e ilustraciones en **SVG en línea** (sin imágenes externas que se rompan).
-- Ligeras y rápidas: cada página es un único archivo autónomo.
+- Ligeras y rápidas: cada página de una sola página es un archivo autónomo;
+  la multipágina (`restaurante-brisa`) comparte un `styles.css`.
 
 ## Cómo verlas en local
 
@@ -36,6 +54,7 @@ python3 -m http.server 8000
 ## Despliegue
 
 Sitio estático; el `publish` de Netlify apunta a esta carpeta (ver `netlify.toml`).
+En vivo: https://muestras-web-tenerife.netlify.app
 
 ---
 

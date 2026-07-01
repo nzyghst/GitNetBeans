@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reservas y contacto · Brisa del Mar · Los Cristianos</title>
+<meta name="description" content="Reserva tu mesa en Brisa del Mar, Los Cristianos. Horario, cómo llegar y reservas por WhatsApp o teléfono.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* estilos solo de contacto */
+  .contact-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:start}
+  .form-card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:36px 38px;box-shadow:0 26px 50px -30px rgba(23,58,92,.25)}
+  .form-card h2{font-size:1.7rem;color:var(--navy);margin-bottom:6px}
+  .form-card .sub{color:var(--muted);font-size:.92rem;margin-bottom:22px}
+  .frow{display:grid;gap:14px}
+  .frow .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .frow label{font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+  .frow input,.frow select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:4px;font-family:inherit;font-size:.95rem;color:var(--ink);background:#fff}
+  .frow input:focus,.frow select:focus{outline:none;border-color:var(--blue)}
+  .form-card .btn{width:100%;justify-content:center;margin-top:20px}
+  .form-note{font-size:.78rem;color:var(--muted);text-align:center;margin-top:12px}
+
+  .info-col{display:grid;gap:20px}
+  .icard{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:28px 32px}
+  .icard h3{font-size:1.3rem;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .hrow{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dotted var(--line);font-size:.95rem}
+  .hrow:last-child{border:0}
+  .hrow .op{color:var(--blue);font-weight:700}
+  .hrow .cl{color:var(--muted)}
+  .icard p{color:var(--muted);font-size:.93rem}
+  .icard p b{color:var(--ink)}
+  .map-ph{aspect-ratio:16/7;border-radius:4px;background:
+    repeating-linear-gradient(45deg,#dce9f2 0 14px,#e8f0f6 14px 28px);
+    display:grid;place-items:center;color:var(--navy);font-weight:700;margin-top:14px;border:1px solid var(--line)}
+
+  .faq{max-width:720px;margin:0 auto}
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:18px 24px;margin-bottom:12px}
+  .faq summary{font-weight:700;cursor:pointer;color:var(--navy)}
+  .faq details p{color:var(--muted);font-size:.93rem;margin-top:10px}
+
+  @media(max-width:880px){
+    .contact-grid{grid-template-columns:1fr}
+    .frow .two{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="index.html" class="logo"><span class="mark">⚓</span> Brisa del Mar</a>
+      <div class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="carta.html">La carta</a>
+        <a href="contacto.html" class="active">Reservas y contacto</a>
+      </div>
+      <a href="https://wa.me/34634000055?text=Hola%2C%20quiero%20reservar%20mesa%20en%20Brisa%20del%20Mar" class="btn" target="_blank" rel="noopener">Reservar</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Te esperamos</span>
+    <h1>Reservas y contacto</h1>
+    <p>Rellena el formulario y te confirmamos por WhatsApp, o llámanos directamente. Para grupos de más de 8, mejor con un día de antelación.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap contact-grid">
+
+    <div class="form-card">
+      <h2>Reserva tu mesa</h2>
+      <p class="sub">El formulario abre WhatsApp con tu reserva lista para enviar — un toque y hecho.</p>
+      <form class="frow" onsubmit="return reservaWA(event)">
+        <div>
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" placeholder="Tu nombre" required>
+        </div>
+        <div class="two">
+          <div>
+            <label for="personas">Personas</label>
+            <select id="personas">
+              <option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>+8 (grupo)</option>
+            </select>
+          </div>
+          <div>
+            <label for="zona">Zona</label>
+            <select id="zona">
+              <option>Terraza</option>
+              <option>Interior</option>
+              <option>Indiferente</option>
+            </select>
+          </div>
+        </div>
+        <div class="two">
+          <div>
+            <label for="dia">Día</label>
+            <input type="date" id="dia" required>
+          </div>
+          <div>
+            <label for="hora">Hora</label>
+            <input type="time" id="hora" min="12:30" max="22:30" required>
+          </div>
+        </div>
+        <button type="submit" class="btn">Enviar por WhatsApp</button>
+      </form>
+      <p class="form-note">Sin registros ni apps: la reserva se confirma por WhatsApp en minutos.</p>
+    </div>
+
+    <div class="info-col">
+      <div class="icard">
+        <h3>🕒 Horario</h3>
+        <div class="hrow"><span>Lunes</span><span class="cl">Cerrado (descanso)</span></div>
+        <div class="hrow"><span>Martes – Sábado</span><span class="op">12:30 – 23:00</span></div>
+        <div class="hrow"><span>Domingo</span><span class="op">12:30 – 17:00</span></div>
+        <div class="hrow"><span>Cocina</span><span class="op">ininterrumpida</span></div>
+      </div>
+      <div class="icard">
+        <h3>📍 Dónde estamos</h3>
+        <p><b>Paseo Marítimo 34, Los Cristianos</b> · Arona, Tenerife<br>
+        A 2 minutos de la playa de Las Vistas. Parking público a 150 m (Av. Juan Carlos I).</p>
+        <div class="map-ph">🗺️ Mapa — aquí iría Google Maps</div>
+      </div>
+      <div class="icard">
+        <h3>📞 Contacto directo</h3>
+        <p><b>Teléfono y WhatsApp:</b> 634 00 00 55<br>
+        <b>Email:</b> hola@brisadelmar-demo.es<br>
+        Para eventos y grupos grandes, escríbenos y te preparamos menú cerrado.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Dudas rápidas</span>
+      <h2>Preguntas frecuentes</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>¿Hace falta reservar?</summary>
+        <p>Entre semana solemos tener hueco, pero viernes, sábado y domingo al mediodía se llena — mejor reserva. Los arroces siempre por encargo al reservar.</p>
+      </details>
+      <details>
+        <summary>¿Tenéis opciones vegetarianas o sin gluten?</summary>
+        <p>Sí: ensaladas, arroz de verduras, parrillada de verduras y varios entrantes. Avísanos de alergias al reservar y adaptamos lo que haga falta.</p>
+      </details>
+      <details>
+        <summary>¿Se puede ir con niños o con perro?</summary>
+        <p>Niños siempre bienvenidos (tenemos tronas y medio menú). Los perros pueden acompañarte en la terraza.</p>
+      </details>
+      <details>
+        <summary>¿Cómo pago?</summary>
+        <p>Efectivo, tarjeta y Bizum. Para grupos grandes podemos preparar cuenta separada si nos avisas antes.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" class="logo"><span class="mark">⚓</span> Brisa del Mar</a>
+        <p>Cocina atlántica y pescado fresco en el paseo de Los Cristianos desde 1998.</p>
+      </div>
+      <div>
+        <h4>Navegar</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="carta.html">La carta</a></li>
+          <li><a href="contacto.html">Reservas y contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>Paseo Marítimo 34, Los Cristianos</li>
+          <li>634 00 00 55</li>
+          <li>Martes a domingo · 12:30 – 23:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© 2026 Brisa del Mar · Demo de muestra</span>
+      <span>Sitio de ejemplo — negocio ficticio</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/34634000055?text=Hola%2C%20quiero%20reservar%20mesa%20en%20Brisa%20del%20Mar" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2 .2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5-.3.3c-.1.2-.3.3-.1.6.1.3.7 1.1 1.4 1.7.9.8 1.6 1 1.9 1.2.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.9-.1 1.6Z"/></svg>
+</a>
+
+<script>
+function reservaWA(e){
+  e.preventDefault();
+  var n=document.getElementById('nombre').value;
+  var p=document.getElementById('personas').value;
+  var z=document.getElementById('zona').value;
+  var d=document.getElementById('dia').value;
+  var h=document.getElementById('hora').value;
+  var msg='Hola, soy '+n+'. Quiero reservar mesa para '+p+' personas el '+d+' a las '+h+' (zona: '+z+').';
+  window.open('https://wa.me/34634000055?text='+encodeURIComponent(msg),'_blank');
+  return false;
+}
+</script>
+
+</body>
+</html>

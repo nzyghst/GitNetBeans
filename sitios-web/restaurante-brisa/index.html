@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brisa del Mar · Restaurante frente al mar en Los Cristianos</title>
+<meta name="description" content="Restaurante de pescado fresco, arroces y cocina atlántica en el paseo de Los Cristianos, Tenerife. Reserva tu mesa con vistas al mar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* estilos solo de la portada */
+  .hero{background:linear-gradient(160deg,var(--navy) 20%,#255182 75%,#2e6ca4);color:#fff;position:relative;overflow:hidden;text-align:center;padding:110px 0 120px}
+  .hero::before{content:"〰";position:absolute;font-size:20rem;opacity:.05;top:-40px;left:-40px}
+  .hero::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:44px;
+    background:radial-gradient(70px 26px at 35px 100%, var(--bg) 98%, transparent) repeat-x;background-size:70px 44px}
+  .hero .eyebrow{color:var(--gold)}
+  .hero h1{font-size:clamp(3rem,8vw,5.4rem);color:#fff;margin:16px 0 12px}
+  .hero .sub{font-style:italic;color:rgba(255,255,255,.8);font-size:1.2rem;max-width:44ch;margin:0 auto 34px}
+  .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .hero .chips{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:38px}
+  .hero .chip{border:1px solid rgba(255,255,255,.3);border-radius:30px;padding:7px 16px;font-size:.84rem;color:rgba(255,255,255,.85)}
+
+  .about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:52px;align-items:center}
+  .about-visual{aspect-ratio:1;border-radius:6px;background:
+    radial-gradient(300px 200px at 30% 25%,rgba(201,161,92,.35),transparent),
+    linear-gradient(160deg,#255182,#173a5c);position:relative;display:grid;place-items:center;color:#fff;overflow:hidden}
+  .about-visual .fish{font-size:5rem;filter:drop-shadow(0 10px 24px rgba(0,0,0,.35))}
+  .about-visual .since{position:absolute;bottom:22px;left:24px;font-family:'Prata';font-size:1.05rem;color:var(--sand);letter-spacing:.08em}
+  .about h2{font-size:clamp(2rem,5vw,2.9rem);color:var(--navy);margin:12px 0 16px}
+  .about p{color:var(--muted);margin-bottom:14px}
+
+  .destacados{background:var(--sand)}
+  .dest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .dish-card{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;transition:.22s}
+  .dish-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -22px rgba(23,58,92,.35)}
+  .dish-card .ph{aspect-ratio:4/3;display:grid;place-items:center;font-size:3.2rem}
+  .ph1{background:linear-gradient(150deg,#f0e3c8,#d8b988)}
+  .ph2{background:linear-gradient(150deg,#dce9f2,#9dbdd8)}
+  .ph3{background:linear-gradient(150deg,#f2e0d8,#d8a48f)}
+  .dish-card .body{padding:22px 24px}
+  .dish-card h3{font-size:1.25rem;color:var(--navy);margin-bottom:6px}
+  .dish-card p{color:var(--muted);font-size:.9rem;margin-bottom:12px}
+  .dish-card .pr{font-family:'Prata';color:var(--navy);font-size:1.15rem}
+
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .rev{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:26px}
+  .rev .stars{color:var(--gold);letter-spacing:3px;margin-bottom:12px}
+  .rev p{font-size:.93rem;color:var(--ink);margin-bottom:14px}
+  .rev small{color:var(--muted)}
+
+  .cta-band{background:linear-gradient(160deg,var(--navy),var(--navy2));color:#fff;text-align:center;padding:76px 0}
+  .cta-band h2{color:#fff;font-size:clamp(2rem,5vw,3rem);margin-bottom:14px}
+  .cta-band p{color:rgba(255,255,255,.75);max-width:46ch;margin:0 auto 28px}
+
+  @media(max-width:880px){
+    .about-grid{grid-template-columns:1fr}
+    .dest-grid,.rev-grid{grid-template-columns:1fr}
+    .about-visual{max-width:380px;margin:0 auto}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="index.html" class="logo"><span class="mark">⚓</span> Brisa del Mar</a>
+      <div class="nav-links">
+        <a href="index.html" class="active">Inicio</a>
+        <a href="carta.html">La carta</a>
+        <a href="contacto.html">Reservas y contacto</a>
+      </div>
+      <a href="https://wa.me/34634000055?text=Hola%2C%20quiero%20reservar%20mesa%20en%20Brisa%20del%20Mar" class="btn" target="_blank" rel="noopener">Reservar</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Restaurante · Paseo de Los Cristianos</span>
+    <h1>Brisa del Mar</h1>
+    <p class="sub">Pescado fresco de la lonja, arroces melosos y atardeceres con el mar de fondo. Cocina atlántica desde 1998.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/34634000055?text=Hola%2C%20quiero%20reservar%20mesa%20en%20Brisa%20del%20Mar" class="btn btn-white" target="_blank" rel="noopener">Reservar mesa</a>
+      <a href="carta.html" class="btn" style="border-color:rgba(255,255,255,.4);background:transparent">Ver la carta</a>
+    </div>
+    <div class="chips">
+      <span class="chip">🐟 Pescado del día</span>
+      <span class="chip">🍚 Arroces por encargo</span>
+      <span class="chip">🌅 Terraza frente al mar</span>
+      <span class="chip">★ 4,7 en Google</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section>
+  <div class="wrap about-grid">
+    <div class="about-visual">
+      <span class="fish">🐟</span>
+      <span class="since">— Desde 1998 —</span>
+    </div>
+    <div class="about">
+      <span class="eyebrow">La casa</span>
+      <h2>Una familia, un paseo<br>y el mejor pescado</h2>
+      <p>Brisa del Mar nació como un chiringuito de pescado frito y hoy, dos generaciones después, sigue siendo lo mismo en el fondo: producto fresco de la lonja, cocina honesta y mesas donde nadie te mete prisa.</p>
+      <p>Trabajamos con los barcos del puerto de Los Cristianos: lo que entra por la mañana, se sirve al mediodía. Y cuando no hay, no se ofrece — así de simple.</p>
+      <a href="contacto.html" class="btn btn-light" style="margin-top:10px">Cómo llegar</a>
+    </div>
+  </div>
+</section>
+
+<!-- DESTACADOS -->
+<section class="destacados">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Los favoritos</span>
+      <h2>Platos que vuelven solos</h2>
+      <div class="wave-sep">〜 〜 〜</div>
+    </div>
+    <div class="dest-grid">
+      <div class="dish-card">
+        <div class="ph ph1">🥘</div>
+        <div class="body">
+          <h3>Arroz meloso de marisco</h3>
+          <p>Con gamba, mejillón y alioli suave. Mínimo 2 personas, por encargo.</p>
+          <span class="pr">18,50€ / pers.</span>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="ph ph2">🐟</div>
+        <div class="body">
+          <h3>Pescado fresco a la espalda</h3>
+          <p>Cherne, sama o lo que traiga el barco, con papas y mojo verde.</p>
+          <span class="pr">s/m del día</span>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="ph ph3">🦑</div>
+        <div class="body">
+          <h3>Calamares de la bahía</h3>
+          <p>Fritos en tempura fina con lima y alioli de cilantro.</p>
+          <span class="pr">13,90€</span>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:34px"><a href="carta.html" class="btn">Ver la carta completa</a></p>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Reseñas</span>
+      <h2>Lo que se comenta</h2>
+      <div class="wave-sep">〜 〜 〜</div>
+    </div>
+    <div class="rev-grid">
+      <div class="rev"><div class="stars">★★★★★</div><p>"El arroz meloso de los mejores que he probado en el sur. Y la puesta de sol desde la terraza, un regalo."</p><small>Marta G. · Local Guide</small></div>
+      <div class="rev"><div class="stars">★★★★★</div><p>"Pescado fresco de verdad, no de carta plastificada. Volveremos cada vez que bajemos a Los Cristianos."</p><small>Andreas K. · hace 3 semanas</small></div>
+      <div class="rev"><div class="stars">★★★★☆</div><p>"Trato familiar y raciones generosas. Reserva antes si vas en fin de semana porque se llena."</p><small>José Luis P. · hace 1 mes</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Esta noche, mesa con brisa</h2>
+    <p>Reserva por WhatsApp en un minuto. Si quieres arroz, dínoslo al reservar y lo tendrás recién hecho al llegar.</p>
+    <a href="https://wa.me/34634000055?text=Hola%2C%20quiero%20reservar%20mesa%20en%20Brisa%20del%20Mar" class="btn btn-white" target="_blank" rel="noopener">Reservar mesa</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" class="logo"><span class="mark">⚓</span> Brisa del Mar</a>
+        <p>Cocina atlántica y pescado fresco en el paseo de Los Cristianos desde 1998.</p>
+      </div>
+      <div>
+        <h4>Navegar</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="carta.html">La carta</a></li>
+          <li><a href="contacto.html">Reservas y contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>Paseo Marítimo 34, Los Cristianos</li>
+          <li>634 00 00 55</li>
+          <li>Martes a domingo · 12:30 – 23:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© 2026 Brisa del Mar · Demo de muestra</span>
+      <span>Sitio de ejemplo — negocio ficticio</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/34634000055?text=Hola%2C%20quiero%20reservar%20mesa%20en%20Brisa%20del%20Mar" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2 .2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5-.3.3c-.1.2-.3.3-.1.6.1.3.7 1.1 1.4 1.7.9.8 1.6 1 1.9 1.2.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.9-.1 1.6Z"/></svg>
+</a>
+
+</body>
+</html>
