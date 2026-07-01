@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marea Café & Brunch · Los Cristianos</title>
+<meta name="description" content="Café de especialidad y brunch todo el día en Los Cristianos, Tenerife. Tortitas, huevos benedict, zumos naturales y buen café frente al mar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f7f1e7; --cream2:#efe6d6; --ink:#3a3128; --ink2:#6b5f50;
+    --terra:#c96f45; --terra2:#b85c33; --sage:#7d8b6a; --gold:#d8a24a;
+    --card:#fffdf9; --line:rgba(58,49,40,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:500;line-height:1.05}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .btn{display:inline-flex;align-items:center;gap:9px;background:var(--terra);color:#fff;padding:13px 26px;border-radius:40px;font-weight:600;font-size:.95rem;transition:.25s;border:1.5px solid var(--terra)}
+  .btn:hover{background:var(--terra2);border-color:var(--terra2)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--terra);color:var(--terra)}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--terra);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(247,241,231,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .logo{display:flex;align-items:center;gap:11px;font-family:'Fraunces';font-size:1.5rem;font-weight:600}
+  .logo .mark{width:40px;height:40px;border-radius:50%;background:var(--terra);color:var(--cream);display:grid;place-items:center}
+  .nav-links{display:flex;gap:32px;font-size:.92rem;color:var(--ink2);font-weight:500}
+  .nav-links a:hover{color:var(--terra)}
+
+  /* HERO */
+  .hero{padding:80px 0 90px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-120px;right:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(216,162,74,.25),transparent 70%)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;position:relative}
+  .hero h1{font-size:clamp(3rem,7vw,5.2rem);margin:20px 0}
+  .hero h1 em{font-style:italic;color:var(--terra)}
+  .hero p.lead{color:var(--ink2);font-size:1.14rem;max-width:40ch;margin-bottom:30px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .rating-chip{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:40px;font-size:.85rem;font-weight:600}
+  .rating-chip .s{color:var(--gold)}
+
+  .hero-visual{position:relative}
+  .plate{aspect-ratio:1;border-radius:50%;background:
+    radial-gradient(circle at 50% 45%, #fff 0 42%, #f3ead9 42% 44%, #fff 44% 63%, #ece2cf 63% 65%, #fdf8ef 65%);
+    box-shadow:0 40px 70px -30px rgba(58,49,40,.4), inset 0 0 40px rgba(58,49,40,.05);position:relative;display:grid;place-items:center}
+  .plate .food{width:56%;height:56%;border-radius:50%;background:
+    radial-gradient(circle at 40% 35%, #e9b976, transparent 55%),
+    radial-gradient(circle at 65% 60%, #c96f45, transparent 50%),
+    linear-gradient(135deg,#f0d9a8,#e0a86a);position:relative;box-shadow:inset 0 6px 20px rgba(120,70,30,.25)}
+  .plate .food::after{content:"🍓";position:absolute;top:14%;left:30%;font-size:1.6rem}
+  .plate .food::before{content:"🫐";position:absolute;bottom:20%;right:24%;font-size:1.3rem}
+  .badge-float{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 16px;box-shadow:0 16px 30px -14px rgba(58,49,40,.35);font-size:.82rem;font-weight:600}
+  .badge-float .lab{color:var(--ink2);font-weight:500;font-size:.72rem;display:block}
+  .bf1{top:8%;left:-14px}
+  .bf2{bottom:10%;right:-10px}
+  .bf2 .big{font-family:'Fraunces';font-size:1.5rem;color:var(--terra)}
+
+  /* marquee */
+  .marquee{background:var(--terra);color:var(--cream);padding:15px 0;overflow:hidden;white-space:nowrap}
+  .marquee div{display:inline-block;animation:scroll 22s linear infinite;font-family:'Fraunces';font-size:1.2rem;font-style:italic}
+  .marquee span{margin:0 26px;opacity:.9}
+  .marquee span::before{content:"✦";margin-right:26px;opacity:.6}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  section{padding:88px 0}
+  .sec-head{max-width:620px;margin:0 auto 54px;text-align:center}
+  .sec-head h2{font-size:clamp(2.3rem,5vw,3.4rem);margin-top:14px}
+  .sec-head p{color:var(--ink2);margin-top:12px}
+
+  /* MENU */
+  .menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px 56px}
+  .menu-block h3{font-size:1.7rem;color:var(--terra);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+  .menu-block{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 32px}
+  .item{display:flex;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px dashed var(--line)}
+  .item:last-child{border:0}
+  .item .n{font-weight:600}
+  .item .d{color:var(--ink2);font-size:.86rem;margin-top:2px;max-width:32ch}
+  .item .p{font-family:'Fraunces';font-weight:600;color:var(--ink);white-space:nowrap}
+  .tag{display:inline-block;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;background:rgba(125,139,106,.18);color:var(--sage);padding:2px 7px;border-radius:20px;margin-left:6px;vertical-align:middle;font-weight:700}
+
+  /* FEATURES */
+  .feat{background:var(--cream2)}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .fcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px 28px;text-align:center}
+  .fcard .ic{width:64px;height:64px;border-radius:18px;background:rgba(201,111,69,.12);color:var(--terra);display:grid;place-items:center;margin:0 auto 18px}
+  .fcard h3{font-size:1.35rem;margin-bottom:8px}
+  .fcard p{color:var(--ink2);font-size:.92rem}
+
+  /* GALLERY */
+  .gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:12px}
+  .gcell{border-radius:16px;position:relative;overflow:hidden;display:grid;place-items:center;font-size:2.4rem}
+  .gcell span{position:absolute;bottom:10px;left:12px;font-family:'Fraunces';font-size:.85rem;color:#fff;font-weight:600;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+  .g1{background:linear-gradient(135deg,#e9c48c,#c96f45);grid-column:span 2;grid-row:span 2}
+  .g2{background:linear-gradient(135deg,#a9b98c,#7d8b6a)}
+  .g3{background:linear-gradient(135deg,#e6b3a0,#c96f45)}
+  .g4{background:linear-gradient(135deg,#dcc7a0,#b89b6a);grid-column:span 2}
+  .g5{background:linear-gradient(135deg,#c99a6a,#8a6a45)}
+  .g6{background:linear-gradient(135deg,#e9b976,#d8a24a)}
+
+  /* VISIT */
+  .visit{background:var(--ink);color:var(--cream)}
+  .visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .visit h2{font-size:clamp(2.2rem,5vw,3.2rem);color:var(--cream);margin:14px 0 18px}
+  .visit p{color:rgba(247,241,231,.7);margin-bottom:24px;max-width:40ch}
+  .visit .eyebrow{color:var(--gold)}
+  .info-row{display:flex;gap:14px;align-items:flex-start;padding:15px 0;border-top:1px solid rgba(247,241,231,.14)}
+  .info-row svg{color:var(--gold);flex:none;margin-top:3px}
+  .info-row b{display:block}
+  .info-row span{color:rgba(247,241,231,.65);font-size:.9rem}
+  .hours-card{background:rgba(255,255,255,.04);border:1px solid rgba(247,241,231,.14);border-radius:20px;padding:32px}
+  .hours-card h3{color:var(--cream);font-size:1.6rem;margin-bottom:16px}
+  .hrow{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(247,241,231,.1);font-size:.93rem}
+  .hrow:last-child{border:0}
+  .hrow .op{color:var(--gold)}
+  .socials{display:flex;gap:12px;margin-top:22px}
+  .socials a{width:44px;height:44px;border-radius:12px;border:1px solid rgba(247,241,231,.2);display:grid;place-items:center;transition:.2s}
+  .socials a:hover{background:var(--terra);border-color:var(--terra)}
+
+  footer{background:var(--cream2);padding:40px 0;text-align:center;color:var(--ink2);font-size:.86rem}
+  footer .logo{justify-content:center;margin-bottom:14px;color:var(--ink)}
+
+  .wa{position:fixed;right:22px;bottom:22px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 28px -8px rgba(37,211,102,.6);transition:.25s}
+  .wa:hover{transform:scale(1.08)}
+
+  @media(max-width:900px){
+    .hero-grid,.menu-cols,.visit .wrap{grid-template-columns:1fr}
+    .feat-grid{grid-template-columns:1fr}
+    .hero-visual{max-width:380px;margin:0 auto}
+    .gal{grid-template-columns:repeat(2,1fr)}
+    .g1,.g4{grid-column:span 2}
+    .nav-links{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="#" class="logo"><span class="mark">M</span> Marea</a>
+      <div class="nav-links">
+        <a href="#carta">Carta</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#galeria">Galería</a>
+        <a href="#visitanos">Visítanos</a>
+      </div>
+      <a href="https://wa.me/34634000063?text=Hola%20Marea%2C%20quiero%20reservar%20mesa" class="btn" target="_blank" rel="noopener">Reservar mesa</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">☕ Café de especialidad · Los Cristianos</span>
+      <h1>Brunch,<br>café y <em>vitamina&nbsp;D</em></h1>
+      <p class="lead">Desayunos que merecen madrugar y brunch a cualquier hora. Producto fresco, café de tueste propio y el sol de Tenerife de fondo.</p>
+      <div class="hero-actions">
+        <a href="#carta" class="btn">Ver la carta</a>
+        <a href="https://wa.me/34634000063?text=Hola%20Marea%2C%20quiero%20reservar%20mesa" class="btn btn-ghost" target="_blank" rel="noopener">Reservar mesa</a>
+        <span class="rating-chip"><span class="s">★</span> 5,0 en Google</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="plate"><div class="food"></div></div>
+      <div class="badge-float bf1"><span class="lab">Café de especialidad</span>Tueste propio ☕</div>
+      <div class="badge-float bf2"><span class="lab">Abierto cada día</span><span class="big">8:30 – 16:00</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee"><div><span>Tortitas de la casa</span><span>Huevos benedict</span><span>Açaí bowl</span><span>Flat white</span><span>Zumos naturales</span><span>Tostas de aguacate</span><span>Tortitas de la casa</span><span>Huevos benedict</span><span>Açaí bowl</span><span>Flat white</span><span>Zumos naturales</span><span>Tostas de aguacate</span></div></div>
+
+<!-- MENU -->
+<section id="carta">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Nuestra carta</span>
+      <h2>Para empezar el día bien</h2>
+      <p>Todo recién hecho. Tenemos opciones veganas y sin gluten, solo pregúntanos.</p>
+    </div>
+    <div class="menu-cols">
+      <div class="menu-block">
+        <h3>🥞 Brunch</h3>
+        <div class="item"><div><div class="n">Tortitas Marea <span class="tag">top</span></div><div class="d">Stack de tres tortitas, fruta fresca, sirope de arce y crema.</div></div><div class="p">8,90€</div></div>
+        <div class="item"><div><div class="n">Huevos benedict</div><div class="d">Muffin, huevo poché, bacon crujiente y salsa holandesa.</div></div><div class="p">9,50€</div></div>
+        <div class="item"><div><div class="n">Tosta de aguacate</div><div class="d">Pan de masa madre, aguacate, tomate cherry y huevo.</div></div><div class="p">7,80€</div></div>
+        <div class="item"><div><div class="n">Açaí bowl <span class="tag">vegano</span></div><div class="d">Açaí, plátano, granola casera, coco y semillas.</div></div><div class="p">7,50€</div></div>
+        <div class="item"><div><div class="n">Full English canario</div><div class="d">Huevos, bacon, salchicha, judías, champiñón y tostada.</div></div><div class="p">10,90€</div></div>
+      </div>
+      <div class="menu-block">
+        <h3>☕ Cafetería</h3>
+        <div class="item"><div><div class="n">Espresso / Cortado</div></div><div class="p">1,40€</div></div>
+        <div class="item"><div><div class="n">Flat white</div><div class="d">Doble espresso y leche texturizada.</div></div><div class="p">2,60€</div></div>
+        <div class="item"><div><div class="n">Cappuccino / Latte</div></div><div class="p">2,40€</div></div>
+        <div class="item"><div><div class="n">Matcha latte <span class="tag">sin lactosa</span></div></div><div class="p">3,20€</div></div>
+        <div class="item"><div><div class="n">Zumo natural del día</div><div class="d">Naranja, o combinado de temporada.</div></div><div class="p">3,50€</div></div>
+        <div class="item"><div><div class="n">Chai / Cold brew</div></div><div class="p">3,00€</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="feat" id="nosotros">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Por qué Marea</span>
+      <h2>Pequeños detalles, gran diferencia</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="fcard">
+        <div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8Z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+        <h3>Café con mimo</h3>
+        <p>Grano de especialidad tostado por nosotros y baristas que se lo curran taza a taza.</p>
+      </div>
+      <div class="fcard">
+        <div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 20h10"/><path d="M12 4v16"/><path d="M5 8a7 7 0 0 1 14 0"/><path d="M5 8h14"/></svg></div>
+        <h3>Producto local</h3>
+        <p>Fruta, pan y huevos de proveedores de la isla. Fresco cada mañana, sin atajos.</p>
+      </div>
+      <div class="fcard">
+        <div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></div>
+        <h3>Terraza al sol</h3>
+        <p>A dos minutos de la playa. Mesa fuera, buen rollo y el mejor plan de la mañana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="galeria">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Un vistazo</span>
+      <h2>Se entra por los ojos</h2>
+    </div>
+    <div class="gal">
+      <div class="gcell g1">🥞<span>Tortitas Marea</span></div>
+      <div class="gcell g2">🥑<span>Tosta de aguacate</span></div>
+      <div class="gcell g3">☕<span>Flat white</span></div>
+      <div class="gcell g4">🍳<span>Huevos benedict</span></div>
+      <div class="gcell g5">🧋<span>Cold brew</span></div>
+      <div class="gcell g6">🍓<span>Açaí bowl</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visitanos">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Pásate a vernos</span>
+      <h2>Te guardamos<br>una mesa al sol</h2>
+      <p>Estamos en pleno Los Cristianos, a un paseo de la playa. Ven a desayunar sin prisa.</p>
+      <div class="info-row">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div><b>Av. Juan Carlos I, 12</b><span>Los Cristianos, Arona · Tenerife</span></div>
+      </div>
+      <div class="info-row">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+        <div><b>634 00 00 63</b><span>Reservas por WhatsApp</span></div>
+      </div>
+      <div class="socials">
+        <a href="https://wa.me/34634000063" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--cream)"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2 .2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5-.3.3c-.1.2-.3.3-.1.6.1.3.7 1.1 1.4 1.7.9.8 1.6 1 1.9 1.2.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.9-.1 1.6Z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="var(--cream)" stroke="none"/></svg></a>
+      </div>
+    </div>
+    <div class="hours-card">
+      <h3>Horario</h3>
+      <div class="hrow"><span>Lunes – Viernes</span><span class="op">8:30 – 16:00</span></div>
+      <div class="hrow"><span>Sábado</span><span class="op">9:00 – 16:30</span></div>
+      <div class="hrow"><span>Domingo</span><span class="op">9:00 – 15:00</span></div>
+      <div class="hrow"><span>Cocina de brunch</span><span class="op">Todo el día</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="#" class="logo"><span class="mark">M</span> Marea Café & Brunch</a>
+    <p>© 2026 Marea Café & Brunch · Los Cristianos, Tenerife</p>
+    <p style="margin-top:6px;opacity:.8">Sitio de ejemplo — negocio ficticio</p>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/34634000063?text=Hola%20Marea%2C%20quiero%20reservar%20mesa" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2 .2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5-.3.3c-.1.2-.3.3-.1.6.1.3.7 1.1 1.4 1.7.9.8 1.6 1 1.9 1.2.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.9-.1 1.6Z"/></svg>
+</a>
+
+</body>
+</html>
