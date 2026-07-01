@@ -1,5 +1,5 @@
 /* PitStop Express — Service Worker (PWA offline) */
-const VERSION = 'pitstop-v1';
+const VERSION = 'pitstop-v2';
 const CORE = [
   'index.html', 'servicios.html', 'reservas.html', 'tienda.html', 'carrito.html',
   'nosotros.html', 'blog.html', 'contacto.html', 'mis-reservas.html', 'ofertas.html', 'offline.html',

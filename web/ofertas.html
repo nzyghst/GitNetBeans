@@ -130,7 +130,7 @@
     // Productos en oferta
     const offers = window.PRODUCTS.filter(p => p.old).slice(0, 4);
     $('#offerProducts').innerHTML = offers.map(p => `
-      <article class="card card-hover product">
+      <article class="card card-hover product reveal">
         <span class="product-tag pill tag-off">-${Math.round((1 - p.price / p.old) * 100)}%</span>
         <div class="product-media" style="background:linear-gradient(160deg, ${p.color}20, ${p.color}06);color:${p.color}">${ICON[p.icon]}</div>
         <div class="product-body">

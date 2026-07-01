@@ -52,22 +52,41 @@
     const mm = document.createElement('div');
     mm.className = 'mobile-menu';
     mm.id = 'mobileMenu';
+    const MM_ICON = {
+      'index.html': 'car', 'servicios.html': 'wrench', 'reservas.html': 'calendar',
+      'tienda.html': 'cart', 'ofertas.html': 'euro', 'nosotros.html': 'medal',
+      'blog.html': 'info', 'contacto.html': 'mail', 'mis-reservas.html': 'user',
+    };
+    const mmLink = (href, label) => `<a href="${href}" class="mm-link ${href === current ? 'active' : ''}">
+        <span class="mm-ic">${window.ICON[MM_ICON[href]] || ''}</span>
+        <span class="mm-label">${label}</span>
+        <span class="mm-chev">${window.ICON.chevron}</span>
+      </a>`;
     mm.innerHTML = `
       <div class="mm-head">
-        <a href="index.html" class="brand">${brandLogo()}<span>PitStop</span></a>
+        <a href="index.html" class="brand">${brandLogo()}<span>PitStop <small>Servicio Rápido</small></span></a>
         <button class="icon-btn" id="mmClose" aria-label="Cerrar menú">${window.ICON.close}</button>
       </div>
-      ${PAGES.map(p => `<a href="${p.href}" class="mm-link ${p.href === current ? 'active' : ''}">${p.label} ${window.ICON.arrow}</a>`).join('')}
-      <a href="mis-reservas.html" class="mm-link ${current === 'mis-reservas.html' ? 'active' : ''}">Mi cuenta ${window.ICON.arrow}</a>
-      <a href="reservas.html" class="btn btn-primary btn-lg" style="margin-top:24px">Pedir cita ahora</a>`;
+      <nav class="mm-nav">
+        ${PAGES.map(p => mmLink(p.href, p.label)).join('')}
+        ${mmLink('mis-reservas.html', 'Mi cuenta')}
+      </nav>
+      <a href="reservas.html" class="btn btn-primary btn-block mm-cta">Pedir cita ahora</a>
+      <div class="mm-foot">
+        <a href="tel:+34910000000">${window.ICON.phone}<span>Llamar</span></a>
+        <a href="https://wa.me/34910000000" target="_blank" rel="noopener">${window.ICON.wa}<span>WhatsApp</span></a>
+        <button class="mm-theme" id="mmTheme" type="button">${window.ICON.moon}<span>Tema</span></button>
+      </div>`;
     document.body.appendChild(mm);
 
     // Eventos header
     $('#themeBtn').addEventListener('click', toggleTheme);
     $('#cartBtn').addEventListener('click', () => openCart(true));
-    $('#hamburger').addEventListener('click', () => mm.classList.add('open'));
-    $('#mmClose').addEventListener('click', () => mm.classList.remove('open'));
-    $$('.mm-link', mm).forEach(a => a.addEventListener('click', () => mm.classList.remove('open')));
+    const openMenu = (v) => { mm.classList.toggle('open', v); document.body.style.overflow = v ? 'hidden' : ''; };
+    $('#hamburger').addEventListener('click', () => openMenu(true));
+    $('#mmClose').addEventListener('click', () => openMenu(false));
+    $$('.mm-link', mm).forEach(a => a.addEventListener('click', () => openMenu(false)));
+    $('#mmTheme', mm)?.addEventListener('click', toggleTheme);
 
     const header = $('.site-header');
     const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
@@ -145,9 +164,9 @@
     syncThemeIcon();
   }
   function syncThemeIcon() {
-    const btn = $('#themeBtn'); if (!btn) return;
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-    btn.innerHTML = dark ? window.ICON.sun : window.ICON.moon;
+    const btn = $('#themeBtn'); if (btn) btn.innerHTML = dark ? window.ICON.sun : window.ICON.moon;
+    const mmt = $('#mmTheme'); if (mmt) mmt.innerHTML = (dark ? window.ICON.sun : window.ICON.moon) + '<span>Tema</span>';
   }
 
   /* ------------------------------ CARRITO -------------------------------- */
@@ -275,13 +294,43 @@
   window.PS.toast = toast;
 
   /* ------------------------------ REVEAL --------------------------------- */
+  let revealIO = null;
+  function scanReveal(root = document) {
+    const els = [...root.querySelectorAll('.reveal:not(.in)')];
+    if (!revealIO) { els.forEach(e => e.classList.add('in')); return; }
+    els.forEach(e => {
+      if (e.dataset.rvObserved) return;
+      e.dataset.rvObserved = '1';
+      // Si el elemento ya quedó por encima del viewport (insertado tras hacer scroll),
+      // revélalo directamente para que no se quede invisible. El resto anima al entrar.
+      const r = e.getBoundingClientRect();
+      if (r.bottom <= 0) { e.classList.add('in'); return; }
+      revealIO.observe(e);
+    });
+  }
+  window.PS.revealScan = scanReveal;
+
   function initReveal() {
-    const els = $$('.reveal');
-    if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('in')); return; }
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    els.forEach(e => io.observe(e));
+    if (!('IntersectionObserver' in window)) { $$('.reveal').forEach(e => e.classList.add('in')); return; }
+    // Se dispara en cuanto el elemento asoma; funciona con cajas altas y cerca del pie.
+    revealIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); revealIO.unobserve(e.target); }
+      });
+    }, { threshold: 0 });
+    scanReveal();
+    // Observa contenido añadido dinámicamente (rejillas, tarjetas, modales…)
+    if ('MutationObserver' in window) {
+      new MutationObserver((muts) => {
+        for (const m of muts) {
+          for (const node of m.addedNodes) {
+            if (node.nodeType !== 1) continue;
+            if (node.classList && node.classList.contains('reveal')) scanReveal(node.parentNode || document);
+            else if (node.querySelector && node.querySelector('.reveal')) scanReveal(node);
+          }
+        }
+      }).observe(document.body, { childList: true, subtree: true });
+    }
   }
 
   /* Contadores animados */
@@ -394,7 +443,7 @@
       if (e.key !== 'Escape') return;
       if ($('#cartDrawer')?.classList.contains('open')) openCart(false);
       const mm = $('#mobileMenu');
-      if (mm?.classList.contains('open')) mm.classList.remove('open');
+      if (mm?.classList.contains('open')) { mm.classList.remove('open'); document.body.style.overflow = ''; }
     });
   }
 
