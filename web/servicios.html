@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios y precios · PitStop Express</title>
+  <meta name="description" content="Catálogo de servicios del taller: aceite, neumáticos, frenos, diagnosis, aire acondicionado, pre-ITV y más, con precios cerrados." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://pitstop-express-taller.netlify.app/servicios.html" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#ff4d2e" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PitStop Express" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:title" content="Servicios y precios · PitStop Express" />
+  <meta property="og:description" content="Catálogo de servicios del taller: aceite, neumáticos, frenos, diagnosis, aire acondicionado, pre-ITV y más, con precios cerrados." />
+  <meta property="og:url" content="https://pitstop-express-taller.netlify.app/servicios.html" />
+  <meta property="og:image" content="https://pitstop-express-taller.netlify.app/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Servicios y precios · PitStop Express" />
+  <meta name="twitter:description" content="Catálogo de servicios del taller: aceite, neumáticos, frenos, diagnosis, aire acondicionado, pre-ITV y más, con precios cerrados." />
+  <meta name="twitter:image" content="https://pitstop-express-taller.netlify.app/assets/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>try{var t=localStorage.getItem('ps-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb"><a href="index.html">Inicio</a> / <span>Servicios</span></nav>
+        <span class="eyebrow">Catálogo</span>
+        <h1>Servicios y precios transparentes</h1>
+        <p>Todos nuestros trabajos llevan precio cerrado, recambios de calidad y 12 meses de garantía. Filtra por categoría y reserva en un clic.</p>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container">
+        <div class="chip-group" id="catFilter"></div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="grid svc-grid" id="svcGrid"></div>
+      </div>
+    </section>
+
+    <!-- TABLA DE PRECIOS -->
+    <section class="section" style="background:var(--surface)">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">Tarifas</span>
+          <h2 class="section-title">Lista de precios detallada</h2>
+          <p class="section-lead" style="margin-inline:auto">Orientativos e IVA incluido. El precio final se confirma tras revisar tu vehículo, siempre antes de empezar.</p>
+        </div>
+        <div class="card reveal" style="overflow:hidden">
+          <div style="overflow-x:auto">
+            <table class="price-table">
+              <thead><tr><th>Servicio</th><th>Categoría</th><th>Duración aprox.</th><th>Precio</th></tr></thead>
+              <tbody id="priceBody"></tbody>
+            </table>
+          </div>
+        </div>
+        <p class="text-muted center" style="margin-top:20px;font-size:.9rem">¿No ves lo que buscas? <a href="contacto.html" style="color:var(--brand-600);font-weight:600">Escríbenos</a> y te preparamos un presupuesto a medida.</p>
+      </div>
+    </section>
+
+    <!-- GARANTIAS -->
+    <section class="section">
+      <div class="container grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="card card-hover feature reveal"><span class="icon-badge">…</span><h3>Recambios con garantía</h3><p>Originales o equivalentes homologados. Nada de piezas de dudosa procedencia.</p></div>
+        <div class="card card-hover feature reveal"><span class="icon-badge">…</span><h3>Presupuesto sin compromiso</h3><p>Te lo damos por escrito y no tocamos nada sin tu visto bueno.</p></div>
+        <div class="card card-hover feature reveal"><span class="icon-badge">…</span><h3>Financiación disponible</h3><p>Fracciona reparaciones grandes hasta en 12 meses sin intereses.</p></div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="cta-band reveal">
+          <div><h2>Reserva tu servicio en 60 segundos</h2><p>Elige el trabajo, escoge hueco y listo. Recibirás confirmación al instante.</p></div>
+          <a href="reservas.html" class="btn btn-dark btn-lg">Reservar cita</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+  (function () {
+    const $ = (s) => document.querySelector(s);
+    const ICON = window.ICON, money = window.PS.money;
+    const cats = ['Todos', ...new Set(window.SERVICES.map(s => s.cat))];
+    let active = 'Todos';
+    const filter = $('#catFilter');
+    const grid = $('#svcGrid');
+
+    function renderChips() {
+      filter.innerHTML = cats.map(c => `<button class="chip ${c === active ? 'selected' : ''}" data-cat="${c}">${c}</button>`).join('');
+      filter.querySelectorAll('.chip').forEach(ch => ch.addEventListener('click', () => { active = ch.dataset.cat; renderChips(); renderGrid(); }));
+    }
+    function renderGrid() {
+      const list = active === 'Todos' ? window.SERVICES : window.SERVICES.filter(s => s.cat === active);
+      grid.innerHTML = list.map(s => `
+        <article class="card card-hover svc-card">
+          <div class="svc-media" style="background:linear-gradient(160deg, ${s.color}22, ${s.color}08);color:${s.color}">${ICON[s.icon]}</div>
+          <div class="svc-body">
+            <div style="display:flex;gap:8px;align-items:center">
+              <span class="pill pill-brand">${s.cat}</span>
+              <span class="pill">${ICON.clock} ${s.dur}</span>
+            </div>
+            <h3 style="margin-top:10px">${s.name}</h3>
+            <p>${s.short}</p>
+            <div class="svc-meta">
+              <div class="svc-price">${money(s.price)} <small>${s.unit}</small></div>
+              <a href="reservas.html?servicio=${s.id}" class="btn btn-dark btn-sm">Reservar</a>
+            </div>
+          </div>
+        </article>`).join('');
+    }
+    renderChips(); renderGrid();
+
+    // Iconos de garantías
+    document.querySelectorAll('.icon-badge').forEach((b, i) => { if (b.textContent.trim() === '…') b.innerHTML = [ICON.shield, ICON.euro, ICON.medal][i % 3]; });
+
+    // Tabla de precios
+    $('#priceBody').innerHTML = window.SERVICE_PRICES.map(p => `
+      <tr><td><strong>${p.name}</strong></td><td><span class="pill">${p.cat}</span></td><td class="text-muted">${p.dur}</td><td class="p">${money(p.price)}</td></tr>`).join('');
+  })();
+  </script>
+</body>
+</html>

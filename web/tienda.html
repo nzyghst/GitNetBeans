@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tienda de recambios y accesorios · PitStop Express</title>
+  <meta name="description" content="Compra online recambios, aceites, filtros, frenos y accesorios seleccionados por nuestros mecánicos. Envío 24-48h y recogida en taller." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://pitstop-express-taller.netlify.app/tienda.html" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#ff4d2e" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PitStop Express" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:title" content="Tienda de recambios y accesorios · PitStop Express" />
+  <meta property="og:description" content="Compra online recambios, aceites, filtros, frenos y accesorios seleccionados por nuestros mecánicos. Envío 24-48h y recogida en taller." />
+  <meta property="og:url" content="https://pitstop-express-taller.netlify.app/tienda.html" />
+  <meta property="og:image" content="https://pitstop-express-taller.netlify.app/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Tienda de recambios y accesorios · PitStop Express" />
+  <meta name="twitter:description" content="Compra online recambios, aceites, filtros, frenos y accesorios seleccionados por nuestros mecánicos. Envío 24-48h y recogida en taller." />
+  <meta name="twitter:image" content="https://pitstop-express-taller.netlify.app/assets/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>try{var t=localStorage.getItem('ps-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero" style="padding-bottom:24px">
+      <div class="container">
+        <nav class="breadcrumb"><a href="index.html">Inicio</a> / <span>Tienda</span></nav>
+        <span class="eyebrow">Tienda del taller</span>
+        <h1>Recambios y accesorios seleccionados</h1>
+        <p>Los mismos productos que montamos en el taller, en tu casa. Envío 24-48h, recogida gratis en tienda y montaje opcional.</p>
+        <div style="display:flex;gap:22px;flex-wrap:wrap;margin-top:20px;color:var(--muted);font-size:.9rem">
+          <span id="sh1"></span><span id="sh2"></span><span id="sh3"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:16px">
+      <div class="container shop-layout">
+        <!-- FILTROS -->
+        <aside class="shop-filters">
+          <div class="card card-body">
+            <div class="filter-group">
+              <h4>Buscar</h4>
+              <input class="input" id="searchBox" placeholder="Ej. aceite, Bosch…">
+            </div>
+            <div class="filter-group">
+              <h4>Categoría</h4>
+              <div id="catFilters"></div>
+            </div>
+            <div class="filter-group">
+              <h4>Precio máximo: <span id="priceLabel" style="color:var(--brand-600)"></span></h4>
+              <input type="range" id="priceRange" min="0" max="100" value="100" style="width:100%;accent-color:var(--brand)">
+            </div>
+            <div class="filter-group" style="border-bottom:0">
+              <label class="filter-opt"><input type="checkbox" id="onlyStock"><span>Solo disponibles</span></label>
+              <label class="filter-opt"><input type="checkbox" id="onlyOffers"><span>Solo en oferta</span></label>
+            </div>
+            <button class="btn btn-ghost btn-block btn-sm" id="clearFilters">Limpiar filtros</button>
+          </div>
+        </aside>
+
+        <!-- PRODUCTOS -->
+        <div>
+          <div class="shop-toolbar">
+            <span class="count-txt" id="countTxt"></span>
+            <div class="field" style="flex-direction:row;align-items:center;gap:10px">
+              <label for="sortBy" style="white-space:nowrap">Ordenar por</label>
+              <select class="select" id="sortBy" style="width:auto">
+                <option value="pop">Popularidad</option>
+                <option value="priceAsc">Precio: menor a mayor</option>
+                <option value="priceDesc">Precio: mayor a menor</option>
+                <option value="rating">Mejor valorados</option>
+              </select>
+            </div>
+          </div>
+          <div class="product-grid" id="productGrid"></div>
+          <div id="emptyState" class="hidden center" style="padding:60px 0">
+            <p class="text-muted">No hay productos que coincidan con tu búsqueda.</p>
+            <button class="btn btn-ghost" id="resetEmpty" style="margin-top:12px">Quitar filtros</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BANNER SERVICIO MONTAJE -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="cta-band reveal" style="background:linear-gradient(135deg,#0f172a,#1e293b)">
+          <div><h2>¿Prefieres que lo montemos nosotros?</h2><p>Compra la pieza y añádela a tu cita. Nuestros mecánicos la instalan con garantía incluida.</p></div>
+          <a href="reservas.html" class="btn btn-dark btn-lg">Reservar montaje</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/tienda.js"></script>
+</body>
+</html>

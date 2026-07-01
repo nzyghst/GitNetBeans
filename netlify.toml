@@ -1,0 +1,9 @@
+# Configuración de despliegue en Netlify — sitio estático (sin build)
+[build]
+  publish = "web"
+  command = ""
+
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200

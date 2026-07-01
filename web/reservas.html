@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservar cita online · PitStop Express</title>
+  <meta name="description" content="Reserva tu cita en el taller en 60 segundos: elige servicio, día y hora, y recibe confirmación al instante." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://pitstop-express-taller.netlify.app/reservas.html" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#ff4d2e" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PitStop Express" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:title" content="Reservar cita online · PitStop Express" />
+  <meta property="og:description" content="Reserva tu cita en el taller en 60 segundos: elige servicio, día y hora, y recibe confirmación al instante." />
+  <meta property="og:url" content="https://pitstop-express-taller.netlify.app/reservas.html" />
+  <meta property="og:image" content="https://pitstop-express-taller.netlify.app/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Reservar cita online · PitStop Express" />
+  <meta name="twitter:description" content="Reserva tu cita en el taller en 60 segundos: elige servicio, día y hora, y recibe confirmación al instante." />
+  <meta name="twitter:image" content="https://pitstop-express-taller.netlify.app/assets/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>try{var t=localStorage.getItem('ps-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero" style="padding-bottom:24px">
+      <div class="container">
+        <nav class="breadcrumb"><a href="index.html">Inicio</a> / <span>Reservar cita</span></nav>
+        <span class="eyebrow">Cita online</span>
+        <h1>Reserva en 4 pasos rápidos</h1>
+        <p>Sin llamadas ni esperas. Elige lo que necesitas y te confirmamos al momento.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:24px">
+      <div class="container">
+        <!-- Stepper -->
+        <div class="stepper" id="stepper">
+          <div class="st active"><span class="dot">1</span><span class="lbl">Servicio</span></div>
+          <div class="bar"></div>
+          <div class="st"><span class="dot">2</span><span class="lbl">Vehículo</span></div>
+          <div class="bar"></div>
+          <div class="st"><span class="dot">3</span><span class="lbl">Fecha y hora</span></div>
+          <div class="bar"></div>
+          <div class="st"><span class="dot">4</span><span class="lbl">Tus datos</span></div>
+        </div>
+
+        <div class="reservas-layout" style="display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:start">
+          <!-- FORM -->
+          <form id="bookingForm" novalidate>
+            <!-- PASO 1: Servicio -->
+            <div class="res-step active" data-step="1">
+              <div class="card card-body">
+                <h2 class="section-title" style="font-size:1.5rem;margin-bottom:6px">¿Qué necesita tu coche?</h2>
+                <p class="text-muted" style="margin-bottom:20px">Selecciona uno o varios servicios.</p>
+                <div class="stack" id="serviceOptions"></div>
+              </div>
+            </div>
+
+            <!-- PASO 2: Vehículo -->
+            <div class="res-step" data-step="2">
+              <div class="card card-body">
+                <h2 class="section-title" style="font-size:1.5rem;margin-bottom:20px">Datos de tu vehículo</h2>
+                <div class="form-grid">
+                  <div class="field"><label for="marca">Marca</label>
+                    <select class="select" id="marca" required>
+                      <option value="">Selecciona…</option>
+                      <option>SEAT</option><option>Volkswagen</option><option>Renault</option><option>Peugeot</option>
+                      <option>BMW</option><option>Mercedes-Benz</option><option>Audi</option><option>Toyota</option>
+                      <option>Ford</option><option>Citroën</option><option>Opel</option><option>Kia</option><option>Otra</option>
+                    </select><span class="err">Elige una marca.</span>
+                  </div>
+                  <div class="field"><label for="modelo">Modelo</label>
+                    <input class="input" id="modelo" placeholder="Ej. León, Golf, Clio…" required><span class="err">Indica el modelo.</span>
+                  </div>
+                  <div class="field"><label for="anio">Año</label>
+                    <input class="input" id="anio" type="number" min="1980" max="2026" placeholder="2019"><span class="hint">Opcional, nos ayuda a preparar los recambios.</span>
+                  </div>
+                  <div class="field"><label for="matricula">Matrícula</label>
+                    <input class="input" id="matricula" placeholder="1234 ABC" style="text-transform:uppercase" required><span class="err">Introduce la matrícula.</span>
+                  </div>
+                  <div class="field full"><label for="combustible">Combustible</label>
+                    <div class="chip-group" id="fuelChips">
+                      <button type="button" class="chip" data-fuel="Gasolina">Gasolina</button>
+                      <button type="button" class="chip" data-fuel="Diésel">Diésel</button>
+                      <button type="button" class="chip" data-fuel="Híbrido">Híbrido</button>
+                      <button type="button" class="chip" data-fuel="Eléctrico">Eléctrico</button>
+                      <button type="button" class="chip" data-fuel="GLP">GLP</button>
+                    </div>
+                    <input type="hidden" id="combustible">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PASO 3: Fecha y hora -->
+            <div class="res-step" data-step="3">
+              <div class="card card-body">
+                <h2 class="section-title" style="font-size:1.5rem;margin-bottom:6px">Elige día y hora</h2>
+                <p class="text-muted" style="margin-bottom:20px">Abrimos de lunes a sábado. Los huecos se actualizan en tiempo real.</p>
+                <div class="field" style="max-width:260px;margin-bottom:24px">
+                  <label for="fecha">Fecha de la cita</label>
+                  <input class="input" id="fecha" type="date" required><span class="err">Elige una fecha válida.</span>
+                </div>
+                <div id="slotsWrap">
+                  <label style="font-family:var(--display);font-weight:600;font-size:.9rem;display:block;margin-bottom:12px">Horas disponibles</label>
+                  <div class="slot-grid" id="slotGrid"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PASO 4: Datos -->
+            <div class="res-step" data-step="4">
+              <div class="card card-body">
+                <h2 class="section-title" style="font-size:1.5rem;margin-bottom:20px">Tus datos de contacto</h2>
+                <div class="form-grid">
+                  <div class="field"><label for="nombre">Nombre y apellidos</label><input class="input" id="nombre" required><span class="err">Dinos tu nombre.</span></div>
+                  <div class="field"><label for="telefono">Teléfono</label><input class="input" id="telefono" type="tel" placeholder="600 000 000" required><span class="err">Teléfono no válido.</span></div>
+                  <div class="field full"><label for="email">Email</label><input class="input" id="email" type="email" placeholder="tu@email.com" required><span class="err">Email no válido.</span></div>
+                  <div class="field full"><label for="notas">Comentarios (opcional)</label><textarea class="textarea" id="notas" placeholder="Cuéntanos síntomas, ruidos, avisos en el cuadro…"></textarea></div>
+                  <div class="field full">
+                    <label class="filter-opt" style="align-items:flex-start">
+                      <input type="checkbox" id="rgpd" required>
+                      <span style="font-size:.9rem" class="text-muted">He leído y acepto la política de privacidad y el tratamiento de mis datos para gestionar la cita.</span>
+                    </label>
+                    <span class="err" style="margin-top:-4px">Debes aceptar para continuar.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- NAV BOTONES -->
+            <div style="display:flex;justify-content:space-between;gap:12px;margin-top:24px">
+              <button type="button" class="btn btn-ghost" id="prevBtn" style="visibility:hidden">Atrás</button>
+              <button type="button" class="btn btn-primary btn-lg" id="nextBtn">Continuar</button>
+              <button type="submit" class="btn btn-primary btn-lg hidden" id="submitBtn">Confirmar reserva</button>
+            </div>
+          </form>
+
+          <!-- RESUMEN -->
+          <aside class="card card-body summary-box" id="summaryBox">
+            <h3 style="font-size:1.15rem;margin-bottom:16px">Resumen de tu cita</h3>
+            <div id="summaryContent"></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Éxito -->
+    <section class="section hidden" id="successView">
+      <div class="container center" style="max-width:640px">
+        <div class="card card-body" style="padding:48px">
+          <div style="width:88px;height:88px;border-radius:50%;background:var(--ok-soft);color:var(--ok);display:grid;place-items:center;margin:0 auto 24px" id="successIcon"></div>
+          <h2 class="section-title" style="font-size:2rem">¡Cita confirmada! 🎉</h2>
+          <p class="text-muted" style="margin:12px auto 0;max-width:46ch">Te hemos enviado un email de confirmación con todos los detalles. Tu código de reserva es:</p>
+          <div style="font-family:var(--display);font-weight:800;font-size:1.8rem;color:var(--brand);letter-spacing:.1em;margin:16px 0" id="bookingCode"></div>
+          <div class="card" style="background:var(--surface-2);border:0;text-align:left;margin:24px 0"><div class="card-body" id="successSummary"></div></div>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+            <a href="index.html" class="btn btn-ghost">Volver al inicio</a>
+            <a href="tienda.html" class="btn btn-primary">Echar un ojo a la tienda</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/reservas.js"></script>
+</body>
+</html>

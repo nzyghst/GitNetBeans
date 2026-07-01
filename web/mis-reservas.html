@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi cuenta · PitStop Express</title>
+  <meta name="description" content="Consulta tus citas reservadas, tus pedidos y tus productos favoritos en PitStop Express." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#ff4d2e" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>try{var t=localStorage.getItem('ps-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero" style="padding-bottom:16px">
+      <div class="container">
+        <nav class="breadcrumb"><a href="index.html">Inicio</a> / <span>Mi cuenta</span></nav>
+        <span class="eyebrow">Área personal</span>
+        <h1>Hola de nuevo 👋</h1>
+        <p>Aquí tienes tus citas, pedidos y favoritos. Se guardan en este dispositivo.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:16px">
+      <div class="container">
+        <!-- Resumen -->
+        <div class="grid" style="grid-template-columns:repeat(3,1fr);margin-bottom:32px" id="accountStats"></div>
+
+        <!-- Tabs -->
+        <div class="chip-group" id="accountTabs" style="margin-bottom:24px">
+          <button class="chip selected" data-tab="citas">Mis citas</button>
+          <button class="chip" data-tab="pedidos">Mis pedidos</button>
+          <button class="chip" data-tab="favoritos">Favoritos</button>
+        </div>
+
+        <div id="tabCitas"></div>
+        <div id="tabPedidos" class="hidden"></div>
+        <div id="tabFavoritos" class="hidden"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+  (function () {
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+    const ICON = window.ICON, money = window.PS.money;
+    const get = (k) => { try { return JSON.parse(localStorage.getItem(k) || '[]'); } catch (e) { return []; } };
+    const set = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+    const fmt = (iso) => new Date(iso + 'T00:00').toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    const fmtDT = (iso) => new Date(iso).toLocaleString('es-ES', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+
+    function empty(icon, title, text, cta) {
+      return `<div class="card card-body center" style="padding:56px 20px">
+        <div style="color:var(--muted);width:64px;margin:0 auto 16px">${ICON[icon]}</div>
+        <h3 style="font-size:1.3rem">${title}</h3>
+        <p class="text-muted" style="margin:8px 0 20px">${text}</p>${cta}</div>`;
+    }
+
+    function render() {
+      const bookings = get('ps-bookings').reverse();
+      const orders = get('ps-orders').reverse();
+      const favs = get('ps-favs');
+
+      // Stats
+      $('#accountStats').innerHTML = [
+        { n: bookings.length, l: 'Citas reservadas', i: 'calendar', c: 'var(--brand)' },
+        { n: orders.length, l: 'Pedidos realizados', i: 'box', c: 'var(--accent-600)' },
+        { n: favs.length, l: 'Productos favoritos', i: 'heart', c: '#e11d48' },
+      ].map(s => `<div class="card card-body" style="display:flex;align-items:center;gap:16px">
+        <span class="icon-badge" style="background:${s.c}18;color:${s.c}">${ICON[s.i]}</span>
+        <div><div style="font-family:var(--display);font-weight:800;font-size:1.8rem;line-height:1">${s.n}</div>
+        <div class="text-muted" style="font-size:.9rem">${s.l}</div></div></div>`).join('');
+
+      // Citas
+      $('#tabCitas').innerHTML = bookings.length ? `
+        <div class="stack">${bookings.map((b, idx) => `
+          <div class="card card-body">
+            <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start">
+              <div style="display:flex;gap:14px">
+                <span class="icon-badge">${ICON.wrench}</span>
+                <div>
+                  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                    <h3 style="font-size:1.1rem">${(b.services || []).join(', ') || 'Cita'}</h3>
+                    <span class="pill pill-ok">Confirmada</span>
+                  </div>
+                  <p class="text-muted" style="font-size:.92rem;margin-top:4px">
+                    ${ICON.calendar ? '📅' : ''} ${fmt(b.date)} · ${b.time} h<br>
+                    🚗 ${b.vehicle || '—'} ${b.matricula ? '(' + b.matricula.toUpperCase() + ')' : ''}<br>
+                    🔖 Código <strong>${b.code}</strong></p>
+                </div>
+              </div>
+              <div style="text-align:right">
+                <div class="svc-price" style="color:var(--brand)">${money(b.total || 0)}</div>
+                <button class="ci-remove" data-cancel="${idx}" style="margin-top:8px">Cancelar cita</button>
+              </div>
+            </div>
+          </div>`).join('')}</div>` :
+        empty('calendar', 'Aún no tienes citas', 'Reserva tu primera cita y aparecerá aquí.', '<a href="reservas.html" class="btn btn-primary">Reservar cita</a>');
+
+      // Pedidos
+      $('#tabPedidos').innerHTML = orders.length ? `
+        <div class="stack">${orders.map(o => `
+          <div class="card card-body">
+            <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+              <div>
+                <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                  <h3 style="font-size:1.05rem">Pedido ${o.code}</h3>
+                  <span class="pill pill-brand">En preparación</span>
+                </div>
+                <p class="text-muted" style="font-size:.88rem;margin:4px 0 10px">Realizado el ${fmtDT(o.date)} · ${(o.items || []).reduce((s, i) => s + i.qty, 0)} artículos</p>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                  ${(o.items || []).map(i => `<span class="pill" style="gap:6px"><span style="width:16px;height:16px;display:inline-block;color:${i.color}">${ICON[i.icon] || ICON.box}</span>${i.qty}× ${i.name.split('·')[0].trim()}</span>`).join('')}
+                </div>
+              </div>
+              <div style="text-align:right"><div class="svc-price" style="color:var(--brand)">${money(o.total || 0)}</div></div>
+            </div>
+          </div>`).join('')}</div>` :
+        empty('box', 'Sin pedidos todavía', 'Cuando compres en la tienda verás aquí el estado de tus pedidos.', '<a href="tienda.html" class="btn btn-primary">Ir a la tienda</a>');
+
+      // Favoritos
+      const favProducts = favs.map(id => window.PRODUCTS.find(p => p.id === id)).filter(Boolean);
+      $('#tabFavoritos').innerHTML = favProducts.length ? `
+        <div class="product-grid">${favProducts.map(p => `
+          <article class="card card-hover product">
+            <div class="product-media" style="background:linear-gradient(160deg, ${p.color}20, ${p.color}06);color:${p.color}">${ICON[p.icon]}</div>
+            <div class="product-body">
+              <span class="product-cat">${p.cat}</span><h3>${p.name}</h3>
+              <div class="product-foot"><div class="product-price">${money(p.price)}</div>
+                <button class="btn btn-primary btn-sm" data-addfav="${p.id}">Añadir</button></div>
+            </div>
+          </article>`).join('')}</div>` :
+        empty('heart', 'Sin favoritos', 'Marca el corazón en los productos de la tienda para guardarlos aquí.', '<a href="tienda.html" class="btn btn-primary">Explorar tienda</a>');
+
+      // Eventos
+      $$('[data-cancel]').forEach(b => b.addEventListener('click', () => {
+        const all = get('ps-bookings'); // idx en lista invertida
+        const realIdx = all.length - 1 - (+b.dataset.cancel);
+        window.PS.modal(`<div class="card-body">
+          <h3 style="font-size:1.3rem">¿Cancelar la cita?</h3>
+          <p class="text-muted" style="margin:10px 0 20px">Esta acción no se puede deshacer.</p>
+          <div style="display:flex;gap:10px;justify-content:flex-end">
+            <button class="btn btn-ghost" data-close>Volver</button>
+            <button class="btn btn-primary" id="confirmCancel" style="background:var(--danger)">Sí, cancelar</button>
+          </div></div>`, { width: 440 });
+        $('#confirmCancel').addEventListener('click', () => {
+          all.splice(realIdx, 1); set('ps-bookings', all);
+          document.querySelector('.drawer-overlay')?.remove(); document.body.style.overflow = '';
+          window.PS.toast('Cita cancelada'); render();
+        });
+      }));
+      $$('[data-addfav]').forEach(b => b.addEventListener('click', () => window.PS.cart.add(b.dataset.addfav)));
+    }
+
+    // Tabs
+    $$('#accountTabs .chip').forEach(ch => ch.addEventListener('click', () => {
+      $$('#accountTabs .chip').forEach(c => c.classList.remove('selected'));
+      ch.classList.add('selected');
+      ['citas', 'pedidos', 'favoritos'].forEach(t => $('#tab' + t.charAt(0).toUpperCase() + t.slice(1)).classList.toggle('hidden', t !== ch.dataset.tab));
+    }));
+
+    render();
+  })();
+  </script>
+</body>
+</html>

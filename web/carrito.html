@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrito y checkout · PitStop Express</title>
+  <meta name="description" content="Revisa tu pedido, aplica cupones y finaliza tu compra de recambios y accesorios." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://pitstop-express-taller.netlify.app/carrito.html" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#ff4d2e" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PitStop Express" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:title" content="Carrito y checkout · PitStop Express" />
+  <meta property="og:description" content="Revisa tu pedido, aplica cupones y finaliza tu compra de recambios y accesorios." />
+  <meta property="og:url" content="https://pitstop-express-taller.netlify.app/carrito.html" />
+  <meta property="og:image" content="https://pitstop-express-taller.netlify.app/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Carrito y checkout · PitStop Express" />
+  <meta name="twitter:description" content="Revisa tu pedido, aplica cupones y finaliza tu compra de recambios y accesorios." />
+  <meta name="twitter:image" content="https://pitstop-express-taller.netlify.app/assets/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>try{var t=localStorage.getItem('ps-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero" style="padding-bottom:16px">
+      <div class="container">
+        <nav class="breadcrumb"><a href="index.html">Inicio</a> / <a href="tienda.html">Tienda</a> / <span>Carrito</span></nav>
+        <h1>Tu cesta</h1>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:16px">
+      <div class="container">
+        <div id="cartLayout" style="display:grid;grid-template-columns:1fr 380px;gap:32px;align-items:start"></div>
+      </div>
+    </section>
+
+    <!-- Éxito compra -->
+    <section class="section hidden" id="orderSuccess">
+      <div class="container center" style="max-width:620px">
+        <div class="card card-body" style="padding:48px">
+          <div style="width:88px;height:88px;border-radius:50%;background:var(--ok-soft);color:var(--ok);display:grid;place-items:center;margin:0 auto 24px" id="okIcon"></div>
+          <h2 class="section-title" style="font-size:2rem">¡Pedido realizado! 📦</h2>
+          <p class="text-muted" style="margin:12px auto 0;max-width:44ch">Gracias por tu compra. Te enviaremos el seguimiento por email. Número de pedido:</p>
+          <div style="font-family:var(--display);font-weight:800;font-size:1.7rem;color:var(--brand);margin:14px 0" id="orderCode"></div>
+          <a href="tienda.html" class="btn btn-primary btn-lg" style="margin-top:12px">Seguir comprando</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+  (function () {
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+    const ICON = window.ICON, money = window.PS.money, cart = window.PS.cart;
+    const layout = $('#cartLayout');
+    let shipping = 'std', coupon = null;
+    const COUPONS = { PITSTOP15: 0.15, BIENVENIDA: 0.10 };
+
+    function shipCost(sub) {
+      if (shipping === 'pickup') return 0;
+      if (shipping === 'express') return 7.9;
+      return sub >= 60 ? 0 : 4.9;
+    }
+
+    function render() {
+      const items = cart.get();
+      if (!items.length) {
+        layout.style.gridTemplateColumns = '1fr';
+        layout.innerHTML = `<div class="card card-body center" style="padding:64px">
+          <div style="color:var(--muted);width:72px;margin:0 auto 16px">${ICON.cart}</div>
+          <h2 class="section-title" style="font-size:1.5rem">Tu carrito está vacío</h2>
+          <p class="text-muted" style="margin:8px 0 20px">Descubre recambios y accesorios seleccionados por nuestros mecánicos.</p>
+          <a href="tienda.html" class="btn btn-primary btn-lg">Ir a la tienda</a></div>`;
+        return;
+      }
+      layout.style.gridTemplateColumns = window.innerWidth <= 720 ? '1fr' : '1fr 380px';
+      const sub = cart.total();
+      const disc = coupon ? sub * COUPONS[coupon] : 0;
+      const ship = shipCost(sub - disc);
+      const total = sub - disc + ship;
+
+      layout.innerHTML = `
+        <div class="card card-body">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <h3 style="font-size:1.2rem">Artículos (${cart.count()})</h3>
+            <button class="ci-remove" id="clearAll">Vaciar carrito</button>
+          </div>
+          ${items.map(i => `
+            <div class="cart-item" style="grid-template-columns:70px 1fr auto">
+              <div class="cart-item-media" style="width:70px;height:70px;color:${i.color}">${ICON[i.icon] || ICON.wrench}</div>
+              <div>
+                <h4>${i.name}</h4>
+                <div class="ci-price">${money(i.price)} / ud.</div>
+                <div class="qty"><button data-dec="${i.id}">−</button><span>${i.qty}</span><button data-inc="${i.id}">+</button></div>
+              </div>
+              <div style="text-align:right;display:flex;flex-direction:column;gap:10px;align-items:flex-end">
+                <strong style="font-size:1.05rem">${money(i.price * i.qty)}</strong>
+                <button class="ci-remove" data-rm="${i.id}">Quitar</button>
+              </div>
+            </div>`).join('')}
+          <a href="tienda.html" class="btn btn-ghost" style="margin-top:18px">← Seguir comprando</a>
+        </div>
+
+        <aside class="summary-box">
+          <div class="card card-body">
+            <h3 style="font-size:1.15rem;margin-bottom:16px">Resumen</h3>
+
+            <div class="field" style="margin-bottom:18px">
+              <label>Cupón de descuento</label>
+              <div style="display:flex;gap:8px">
+                <input class="input" id="couponInput" placeholder="PITSTOP15" value="${coupon || ''}">
+                <button class="btn btn-dark btn-sm" id="applyCoupon">Aplicar</button>
+              </div>
+              <span class="hint" id="couponMsg">${coupon ? `✅ Cupón ${coupon} aplicado (−${(COUPONS[coupon] * 100)}%)` : 'Prueba con PITSTOP15 o BIENVENIDA'}</span>
+            </div>
+
+            <div style="margin-bottom:18px">
+              <label style="font-family:var(--display);font-weight:600;font-size:.9rem;display:block;margin-bottom:10px">Entrega</label>
+              <div class="stack" style="gap:8px">
+                <label class="option-card" style="padding:12px"><input type="radio" name="ship" value="std" ${shipping === 'std' ? 'checked' : ''}>
+                  <div><h4 style="font-size:.92rem">Envío estándar (24-48h)</h4><p>Gratis a partir de 60 €</p></div>
+                  <span class="oc-price" style="font-size:.95rem">${sub - disc >= 60 ? 'Gratis' : money(4.9)}</span></label>
+                <label class="option-card" style="padding:12px"><input type="radio" name="ship" value="express" ${shipping === 'express' ? 'checked' : ''}>
+                  <div><h4 style="font-size:.92rem">Envío exprés (24h)</h4><p>Entrega al día siguiente</p></div>
+                  <span class="oc-price" style="font-size:.95rem">${money(7.9)}</span></label>
+                <label class="option-card" style="padding:12px"><input type="radio" name="ship" value="pickup" ${shipping === 'pickup' ? 'checked' : ''}>
+                  <div><h4 style="font-size:.92rem">Recogida en taller</h4><p>Av. de los Talleres 24</p></div>
+                  <span class="oc-price" style="font-size:.95rem">Gratis</span></label>
+              </div>
+            </div>
+
+            <div class="summary-row"><span class="k">Subtotal</span><span class="v">${money(sub)}</span></div>
+            ${disc ? `<div class="summary-row"><span class="k">Descuento (${coupon})</span><span class="v" style="color:var(--ok)">−${money(disc)}</span></div>` : ''}
+            <div class="summary-row"><span class="k">Envío</span><span class="v">${ship === 0 ? '<span class="pill pill-ok">Gratis</span>' : money(ship)}</span></div>
+            <div class="summary-total"><span>Total <small class="text-muted" style="font-weight:500;display:block">IVA incluido</small></span><span class="v">${money(total)}</span></div>
+
+            <button class="btn btn-primary btn-block btn-lg" style="margin-top:18px" id="checkoutBtn">Finalizar compra</button>
+            <p class="text-muted center" style="font-size:.78rem;margin-top:12px">🔒 Pago seguro · Visa · Mastercard · Bizum</p>
+          </div>
+        </aside>`;
+
+      // eventos
+      $('#clearAll').addEventListener('click', () => { cart.clear(); });
+      $$('[data-inc]').forEach(b => b.addEventListener('click', () => cart.setQty(b.dataset.inc, (cart.get().find(i => i.id === b.dataset.inc)?.qty || 0) + 1)));
+      $$('[data-dec]').forEach(b => b.addEventListener('click', () => cart.setQty(b.dataset.dec, (cart.get().find(i => i.id === b.dataset.dec)?.qty || 0) - 1)));
+      $$('[data-rm]').forEach(b => b.addEventListener('click', () => cart.remove(b.dataset.rm)));
+      $$('input[name="ship"]').forEach(r => r.addEventListener('change', () => { shipping = r.value; render(); }));
+      $('#applyCoupon').addEventListener('click', () => {
+        const code = $('#couponInput').value.trim().toUpperCase();
+        if (COUPONS[code]) { coupon = code; window.PS.toast(`Cupón ${code} aplicado`); }
+        else { coupon = null; window.PS.toast('Cupón no válido', ICON.close); }
+        render();
+      });
+      $('#checkoutBtn').addEventListener('click', () => {
+        const code = 'PED-' + Date.now().toString(36).toUpperCase().slice(-6);
+        try {
+          const orders = JSON.parse(localStorage.getItem('ps-orders') || '[]');
+          orders.push({ code, items: cart.get(), total, coupon, shipping, date: new Date().toISOString() });
+          localStorage.setItem('ps-orders', JSON.stringify(orders));
+        } catch (e) {}
+        cart.clear();
+        $('#cartLayout').closest('.section').classList.add('hidden');
+        $('#orderSuccess').classList.remove('hidden');
+        $('#okIcon').innerHTML = `<span style="width:40px;height:40px;display:block">${ICON.check}</span>`;
+        $('#orderCode').textContent = code;
+        window.PS.confetti();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    document.addEventListener('cart:change', render);
+    render();
+  })();
+  </script>
+</body>
+</html>
