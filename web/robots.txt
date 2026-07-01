@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /mis-reservas.html
+
+Sitemap: https://pitstop-express-taller.netlify.app/sitemap.xml

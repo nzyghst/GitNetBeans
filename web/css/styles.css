@@ -168,8 +168,8 @@ h1, h2, h3, h4 { font-family: var(--display); line-height: 1.15; letter-spacing:
 .brand small { display: block; font-size: .62rem; font-weight: 600; letter-spacing: .18em; color: var(--muted); text-transform: uppercase; }
 .nav-links { display: flex; align-items: center; gap: 4px; margin-left: auto; }
 .nav-links a {
-  font-family: var(--display); font-weight: 600; font-size: .93rem; color: var(--ink-2);
-  padding: 9px 14px; border-radius: 999px; transition: color .2s, background .2s;
+  font-family: var(--display); font-weight: 600; font-size: .92rem; color: var(--ink-2);
+  padding: 9px 13px; border-radius: 999px; transition: color .2s, background .2s; white-space: nowrap;
 }
 .nav-links a:hover { color: var(--ink); background: var(--surface-2); }
 .nav-links a.active { color: var(--brand-600); background: var(--brand-soft); }
@@ -535,6 +535,31 @@ h1, h2, h3, h4 { font-family: var(--display); line-height: 1.15; letter-spacing:
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
 .reveal.in { opacity: 1; transform: none; }
 
+/* ------------------------------ Skip link -------------------------------- */
+.skip-link {
+  position: absolute; left: 12px; top: -60px; z-index: 200; background: var(--brand); color: #fff;
+  padding: 10px 18px; border-radius: 999px; font-family: var(--display); font-weight: 600; transition: top .2s;
+}
+.skip-link:focus { top: 12px; }
+
+/* ------------------------------ Ofertas ---------------------------------- */
+.offer-hero {
+  background: linear-gradient(135deg, var(--brand), var(--brand-700)); color: #fff;
+  border-radius: var(--radius-lg); padding: clamp(32px, 6vw, 56px); position: relative; overflow: hidden;
+}
+.offer-hero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(600px 300px at 100% 0%, rgba(255,255,255,.2), transparent 60%); }
+.offer-hero h2, .offer-hero h1 { color: #fff; }
+.countdown { display: flex; gap: 12px; margin-top: 22px; }
+.cd-box { background: rgba(255,255,255,.16); border-radius: 12px; padding: 12px 8px; min-width: 74px; text-align: center; backdrop-filter: blur(4px); }
+.cd-box .n { font-family: var(--display); font-weight: 800; font-size: 1.9rem; line-height: 1; }
+.cd-box .l { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; opacity: .85; margin-top: 4px; }
+.coupon-card { border: 2px dashed var(--brand); border-radius: var(--radius); padding: 20px; text-align: center; background: var(--brand-soft); position: relative; }
+.coupon-code { font-family: var(--display); font-weight: 800; font-size: 1.5rem; letter-spacing: .12em; color: var(--brand-700); }
+
+/* ------------------------------ Quick view ------------------------------- */
+.qv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+@media (max-width: 620px) { .qv-grid { grid-template-columns: 1fr; } }
+
 /* ------------------------------ Utilidades ------------------------------- */
 .divider { height: 1px; background: var(--line); border: 0; }
 .text-muted { color: var(--muted); }
@@ -556,10 +581,10 @@ h1, h2, h3, h4 { font-family: var(--display); line-height: 1.15; letter-spacing:
   .shop-filters { position: static; }
   .contact-grid { grid-template-columns: 1fr; }
   .cta-band { grid-template-columns: 1fr; }
-}
-@media (max-width: 720px) {
   .nav-links { display: none; }
   .hamburger { display: grid; }
+}
+@media (max-width: 720px) {
   .stats { grid-template-columns: repeat(2, 1fr); gap: 28px 12px; }
   .feature-grid, .svc-grid, .testi-grid, .product-grid, .blog-grid, .team-grid, .steps { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }

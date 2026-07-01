@@ -1,0 +1,24 @@
+{
+  "name": "PitStop Express — Taller de servicio rápido",
+  "short_name": "PitStop",
+  "description": "Reserva tu cita, compra recambios y gestiona tu coche en minutos.",
+  "start_url": "index.html",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0d1017",
+  "theme_color": "#ff4d2e",
+  "lang": "es",
+  "categories": ["automotive", "shopping", "business"],
+  "icons": [
+    { "src": "assets/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" },
+    { "src": "assets/icon-192.png", "type": "image/png", "sizes": "192x192", "purpose": "any" },
+    { "src": "assets/icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "any" },
+    { "src": "assets/icon-maskable.png", "type": "image/png", "sizes": "512x512", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Reservar cita", "url": "reservas.html" },
+    { "name": "Tienda", "url": "tienda.html" },
+    { "name": "Mis reservas", "url": "mis-reservas.html" }
+  ]
+}

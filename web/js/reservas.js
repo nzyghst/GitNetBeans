@@ -12,30 +12,32 @@
   /* ---------- Paso 1: servicios ---------- */
   const opts = $('#serviceOptions');
   opts.innerHTML = window.SERVICES.map(s => `
-    <label class="option-card" data-svc="${s.id}">
-      <input type="checkbox" value="${s.id}">
+    <div class="option-card" data-svc="${s.id}" role="checkbox" aria-checked="false" tabindex="0">
       <span class="oc-icon icon-badge" style="background:${s.color}18;color:${s.color}">${ICON[s.icon]}</span>
       <div><h4>${s.name}</h4><p>${s.short}</p></div>
       <span class="oc-price">${money(s.price)}<br><small class="text-muted" style="font-weight:500">${s.unit}</small></span>
-    </label>`).join('');
+    </div>`).join('');
+
+  function toggleCard(card) {
+    const id = card.dataset.svc;
+    const on = !card.classList.contains('selected');
+    card.classList.toggle('selected', on);
+    card.setAttribute('aria-checked', on ? 'true' : 'false');
+    if (on) state.services.push(id); else state.services = state.services.filter(x => x !== id);
+    state.services = [...new Set(state.services)];
+    renderSummary();
+  }
 
   $$('.option-card', opts).forEach(card => {
-    card.addEventListener('click', (e) => {
-      if (e.target.tagName !== 'INPUT') { const cb = $('input', card); cb.checked = !cb.checked; }
-      const cb = $('input', card);
-      card.classList.toggle('selected', cb.checked);
-      const id = card.dataset.svc;
-      if (cb.checked) state.services.push(id); else state.services = state.services.filter(x => x !== id);
-      state.services = [...new Set(state.services)];
-      renderSummary();
-    });
+    card.addEventListener('click', () => toggleCard(card));
+    card.addEventListener('keydown', (e) => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggleCard(card); } });
   });
 
   // Preselección por querystring
   const pre = new URLSearchParams(location.search).get('servicio');
   if (pre) {
     const card = $(`.option-card[data-svc="${pre}"]`, opts);
-    if (card) card.click();
+    if (card && !card.classList.contains('selected')) toggleCard(card);
   }
 
   /* ---------- Paso 2: combustible ---------- */

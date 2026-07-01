@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ofertas y promociones · PitStop Express</title>
+  <meta name="description" content="Descuentos del mes en servicios y recambios: cambio de aceite, packs de frenos, revisión pre-verano y más. Cupones exclusivos." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#ff4d2e" />
+  <meta property="og:title" content="Ofertas y promociones · PitStop Express" />
+  <meta property="og:description" content="Descuentos del mes en servicios y recambios. Cupones exclusivos y envío gratis." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>try{var t=localStorage.getItem('ps-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido</a>
+  <div id="site-header"></div>
+
+  <main id="main">
+    <section class="page-hero" style="padding-bottom:16px">
+      <div class="container">
+        <nav class="breadcrumb"><a href="index.html">Inicio</a> / <span>Ofertas</span></nav>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <!-- Banner principal -->
+        <div class="offer-hero reveal">
+          <span class="pill" style="background:rgba(255,255,255,.2);color:#fff">🔥 Oferta del mes</span>
+          <h1 style="font-size:clamp(2rem,5vw,3rem);margin-top:14px">-20% en tu revisión pre-verano</h1>
+          <p style="max-width:48ch;margin-top:10px;opacity:.95">Aire acondicionado, niveles, frenos y neumáticos revisados por menos. Plazas limitadas.</p>
+          <div class="countdown" id="countdown"></div>
+          <a href="reservas.html" class="btn btn-dark btn-lg" style="margin-top:24px;background:#fff;color:var(--brand-700)">Reservar con descuento</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cupones -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-head center"><span class="eyebrow">Cupones</span><h2 class="section-title">Códigos que puedes usar hoy</h2></div>
+        <div class="grid" style="grid-template-columns:repeat(3,1fr)" id="coupons"></div>
+      </div>
+    </section>
+
+    <!-- Packs -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-head center"><span class="eyebrow">Packs ahorro</span><h2 class="section-title">Combina y paga menos</h2></div>
+        <div class="grid" style="grid-template-columns:repeat(3,1fr)" id="packs"></div>
+      </div>
+    </section>
+
+    <!-- Productos en oferta -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-head" style="display:flex;justify-content:space-between;align-items:flex-end;max-width:none;flex-wrap:wrap;gap:16px">
+          <div><span class="eyebrow">Tienda</span><h2 class="section-title">Recambios rebajados</h2></div>
+          <a href="tienda.html?oferta=1" class="btn btn-ghost">Ver toda la tienda</a>
+        </div>
+        <div class="product-grid" id="offerProducts"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+  (function () {
+    const $ = (s) => document.querySelector(s);
+    const $$ = (s) => [...document.querySelectorAll(s)];
+    const ICON = window.ICON, money = window.PS.money;
+
+    // Cuenta atrás: fin de mes
+    const end = new Date(); end.setMonth(end.getMonth() + 1, 1); end.setHours(0, 0, 0, 0);
+    function tick() {
+      const diff = Math.max(0, end - new Date());
+      const d = Math.floor(diff / 86400000), h = Math.floor(diff / 3600000) % 24, m = Math.floor(diff / 60000) % 60, s = Math.floor(diff / 1000) % 60;
+      $('#countdown').innerHTML = [[d, 'Días'], [h, 'Horas'], [m, 'Min'], [s, 'Seg']].map(([n, l]) =>
+        `<div class="cd-box"><div class="n">${String(n).padStart(2, '0')}</div><div class="l">${l}</div></div>`).join('');
+    }
+    tick(); setInterval(tick, 1000);
+
+    // Cupones
+    const coupons = [
+      { code: 'PITSTOP15', d: '15% en tu primera visita', t: 'Válido para nuevos clientes en cualquier servicio.' },
+      { code: 'BIENVENIDA', d: '10% en la tienda online', t: 'Aplicable a todo el catálogo de recambios y accesorios.' },
+      { code: 'ACEITE49', d: 'Cambio de aceite desde 49€', t: 'Aceite sintético + filtro, montaje incluido.' },
+    ];
+    $('#coupons').innerHTML = coupons.map(c => `
+      <div class="coupon-card reveal">
+        <div class="text-muted" style="font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:var(--brand-600)">${c.d}</div>
+        <div class="coupon-code" style="margin:14px 0">${c.code}</div>
+        <p class="text-muted" style="font-size:.86rem;margin-bottom:14px">${c.t}</p>
+        <button class="btn btn-primary btn-sm" data-copy="${c.code}">Copiar código</button>
+      </div>`).join('');
+    $$('[data-copy]').forEach(b => b.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(b.dataset.copy); } catch (e) {}
+      window.PS.toast('Código ' + b.dataset.copy + ' copiado ✂️');
+    }));
+
+    // Packs
+    const packs = [
+      { icon: 'shield', name: 'Pack Seguridad', old: 238, price: 189, items: ['Frenos delanteros', 'Revisión pre-ITV', 'Alineación'] },
+      { icon: 'oil', name: 'Pack Mantenimiento', old: 148, price: 119, items: ['Aceite + filtro', 'Filtro de habitáculo', 'Revisión 20 puntos'] },
+      { icon: 'ac', name: 'Pack Verano', old: 120, price: 89, items: ['Recarga A/C', 'Desinfección ozono', 'Chequeo refrigeración'] },
+    ];
+    $('#packs').innerHTML = packs.map(p => `
+      <div class="card card-hover card-body reveal" style="display:flex;flex-direction:column">
+        <span class="icon-badge">${ICON[p.icon]}</span>
+        <h3 style="font-size:1.2rem;margin:14px 0 10px">${p.name}</h3>
+        <ul style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+          ${p.items.map(i => `<li style="display:flex;gap:8px;align-items:center;font-size:.92rem"><span style="width:18px;height:18px;color:var(--ok);display:inline-block">${ICON.check}</span>${i}</li>`).join('')}
+        </ul>
+        <div style="margin-top:auto;display:flex;align-items:center;justify-content:space-between">
+          <div class="product-price"><span class="old" style="text-decoration:line-through;color:var(--muted);font-size:.9rem;margin-right:6px">${money(p.old)}</span>${money(p.price)}</div>
+          <a href="reservas.html" class="btn btn-dark btn-sm">Reservar</a>
+        </div>
+      </div>`).join('');
+
+    // Productos en oferta
+    const offers = window.PRODUCTS.filter(p => p.old).slice(0, 4);
+    $('#offerProducts').innerHTML = offers.map(p => `
+      <article class="card card-hover product">
+        <span class="product-tag pill tag-off">-${Math.round((1 - p.price / p.old) * 100)}%</span>
+        <div class="product-media" style="background:linear-gradient(160deg, ${p.color}20, ${p.color}06);color:${p.color}">${ICON[p.icon]}</div>
+        <div class="product-body">
+          <span class="product-cat">${p.cat}</span><h3>${p.name}</h3>
+          <div class="product-foot"><div class="product-price"><span class="old" style="text-decoration:line-through;color:var(--muted);font-size:.85rem;margin-right:6px">${money(p.old)}</span>${money(p.price)}</div>
+            <button class="btn btn-primary btn-sm" data-add="${p.id}">Añadir</button></div>
+        </div>
+      </article>`).join('');
+    $$('[data-add]').forEach(b => b.addEventListener('click', () => window.PS.cart.add(b.dataset.add)));
+  })();
+  </script>
+</body>
+</html>

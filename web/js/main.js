@@ -12,8 +12,9 @@
   const PAGES = [
     { href: 'index.html', label: 'Inicio' },
     { href: 'servicios.html', label: 'Servicios' },
-    { href: 'reservas.html', label: 'Reservar cita' },
+    { href: 'reservas.html', label: 'Reservar' },
     { href: 'tienda.html', label: 'Tienda' },
+    { href: 'ofertas.html', label: 'Ofertas' },
     { href: 'nosotros.html', label: 'Nosotros' },
     { href: 'blog.html', label: 'Blog' },
     { href: 'contacto.html', label: 'Contacto' },
@@ -37,6 +38,7 @@
           <nav class="nav-links" aria-label="Principal">${links}</nav>
           <div class="nav-actions">
             <button class="icon-btn" id="themeBtn" aria-label="Cambiar tema" title="Modo claro/oscuro">${window.ICON.moon}</button>
+            <a class="icon-btn desktop-only" href="mis-reservas.html" id="accountBtn" aria-label="Mi cuenta" title="Mis reservas y pedidos">${window.ICON.user}</a>
             <button class="icon-btn" id="cartBtn" aria-label="Abrir carrito" title="Carrito">
               ${window.ICON.cart}<span class="cart-count" id="cartCount">0</span>
             </button>
@@ -56,6 +58,7 @@
         <button class="icon-btn" id="mmClose" aria-label="Cerrar menú">${window.ICON.close}</button>
       </div>
       ${PAGES.map(p => `<a href="${p.href}" class="mm-link ${p.href === current ? 'active' : ''}">${p.label} ${window.ICON.arrow}</a>`).join('')}
+      <a href="mis-reservas.html" class="mm-link ${current === 'mis-reservas.html' ? 'active' : ''}">Mi cuenta ${window.ICON.arrow}</a>
       <a href="reservas.html" class="btn btn-primary btn-lg" style="margin-top:24px">Pedir cita ahora</a>`;
     document.body.appendChild(mm);
 
@@ -113,7 +116,7 @@
               <a href="nosotros.html">Sobre nosotros</a>
               <a href="blog.html">Blog</a>
               <a href="tienda.html">Tienda</a>
-              <a href="reservas.html">Reservar cita</a>
+              <a href="mis-reservas.html">Mi cuenta</a>
               <a href="contacto.html">Contacto</a>
             </div>
             <div>
@@ -215,7 +218,8 @@
     $('#cartDrawer').classList.toggle('open', show);
     $('#drawerOverlay').classList.toggle('open', show);
     document.body.style.overflow = show ? 'hidden' : '';
-    if (show) renderDrawer();
+    if (show) { renderDrawer(); $('#cartClose')?.focus(); }
+    else $('#cartBtn')?.focus();
   }
 
   function renderDrawer() {
@@ -361,6 +365,61 @@
     })();
   };
 
+  /* ------------------------------ Modal genérico ------------------------- */
+  window.PS.modal = function (html, opts = {}) {
+    const wrap = document.createElement('div');
+    wrap.className = 'drawer-overlay open';
+    wrap.style.cssText = 'z-index:100;display:grid;place-items:center;padding:20px';
+    const box = document.createElement('div');
+    box.className = 'card';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-modal', 'true');
+    box.style.cssText = `max-width:${opts.width || 560}px;width:100%;max-height:90dvh;overflow:auto;animation:fadeUp .3s var(--ease)`;
+    box.innerHTML = html;
+    wrap.appendChild(box);
+    document.body.appendChild(wrap);
+    document.body.style.overflow = 'hidden';
+    const close = () => { wrap.remove(); document.body.style.overflow = ''; document.removeEventListener('keydown', onKey); };
+    const onKey = (e) => { if (e.key === 'Escape') close(); };
+    document.addEventListener('keydown', onKey);
+    wrap.addEventListener('click', (e) => { if (e.target === wrap) close(); });
+    box.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', close));
+    setTimeout(() => box.querySelector('[autofocus], button, a, input')?.focus(), 30);
+    return { close, box };
+  };
+
+  /* ------------------------------ Tecla Escape --------------------------- */
+  function initKeyboard() {
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      if ($('#cartDrawer')?.classList.contains('open')) openCart(false);
+      const mm = $('#mobileMenu');
+      if (mm?.classList.contains('open')) mm.classList.remove('open');
+    });
+  }
+
+  /* ------------------------------ PWA ------------------------------------ */
+  function initPWA() {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+    }
+    let deferred;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault(); deferred = e;
+      let dismissed = false; try { dismissed = localStorage.getItem('ps-pwa') === '1'; } catch (err) {}
+      if (dismissed) return;
+      const bar = document.createElement('div');
+      bar.className = 'cookie show';
+      bar.style.bottom = '90px';
+      bar.innerHTML = `<p>📲 Instala PitStop Express en tu dispositivo para acceder más rápido, incluso sin conexión.</p>
+        <div class="cookie-actions"><button class="btn btn-primary btn-sm" id="pwaInstall">Instalar app</button>
+        <button class="btn btn-ghost btn-sm" id="pwaNo">Ahora no</button></div>`;
+      document.body.appendChild(bar);
+      $('#pwaInstall').addEventListener('click', async () => { bar.remove(); deferred.prompt(); await deferred.userChoice; try { localStorage.setItem('ps-pwa', '1'); } catch (err) {} });
+      $('#pwaNo').addEventListener('click', () => { bar.remove(); try { localStorage.setItem('ps-pwa', '1'); } catch (err) {} });
+    });
+  }
+
   /* ------------------------------ Init ----------------------------------- */
   document.addEventListener('DOMContentLoaded', () => {
     renderHeader();
@@ -370,5 +429,7 @@
     initReveal();
     initFabs();
     initCookies();
+    initKeyboard();
+    initPWA();
   });
 })();

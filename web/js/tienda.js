@@ -60,7 +60,7 @@
       <article class="card card-hover product">
         ${tagHtml(p.tag)}
         <button class="product-fav ${favs.includes(p.id) ? 'on' : ''}" data-fav="${p.id}" aria-label="Favorito">${ICON.heart}</button>
-        <div class="product-media" style="background:linear-gradient(160deg, ${p.color}20, ${p.color}06);color:${p.color}">${ICON[p.icon]}</div>
+        <div class="product-media" style="background:linear-gradient(160deg, ${p.color}20, ${p.color}06);color:${p.color};cursor:pointer" data-view="${p.id}" role="button" tabindex="0" aria-label="Vista rápida de ${p.name}">${ICON[p.icon]}</div>
         <div class="product-body">
           <span class="product-cat">${p.cat}</span>
           <h3>${p.name}</h3>
@@ -82,6 +82,46 @@
       try { localStorage.setItem('ps-favs', JSON.stringify(favs)); } catch (e) {}
       b.classList.toggle('on');
     }));
+    $$('[data-view]', grid).forEach(el => {
+      const open = () => quickView(el.dataset.view);
+      el.addEventListener('click', open);
+      el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    });
+  }
+
+  function quickView(id) {
+    const p = P.find(x => x.id === id); if (!p) return;
+    let qty = 1;
+    const disc = p.old ? `-${Math.round((1 - p.price / p.old) * 100)}%` : '';
+    const m = window.PS.modal(`
+      <div class="qv-grid">
+        <div style="background:linear-gradient(160deg, ${p.color}22, ${p.color}08);color:${p.color};display:grid;place-items:center;padding:40px;min-height:260px">
+          <div style="width:120px;height:120px">${ICON[p.icon]}</div>
+        </div>
+        <div class="card-body">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+            <span class="product-cat">${p.cat}</span>
+            <button class="icon-btn" data-close aria-label="Cerrar">${ICON.close}</button>
+          </div>
+          <h3 style="font-size:1.3rem;margin:6px 0 8px">${p.name}</h3>
+          <div class="product-rating" style="margin-bottom:10px"><span class="stars" style="color:#f5a623">${ICON.star}</span> ${p.rating} <span>(${p.reviews} opiniones)</span></div>
+          <p class="text-muted" style="font-size:.92rem;margin-bottom:14px">${p.desc}</p>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+            <div class="product-price" style="font-size:1.6rem">${p.old ? `<span class="old" style="text-decoration:line-through;color:var(--muted);font-size:.9rem;margin-right:6px">${money(p.old)}</span>` : ''}${money(p.price)}</div>
+            ${disc ? `<span class="pill tag-off">${disc}</span>` : ''}
+            ${p.stock ? '<span class="pill pill-ok">En stock</span>' : '<span class="pill" style="color:var(--danger)">Agotado</span>'}
+          </div>
+          <div style="display:flex;gap:12px;align-items:center">
+            <div class="qty"><button id="qvDec" aria-label="Restar">−</button><span id="qvQty">1</span><button id="qvInc" aria-label="Sumar">+</button></div>
+            <button class="btn btn-primary" id="qvAdd" ${p.stock ? '' : 'disabled'} style="flex:1">${p.stock ? 'Añadir al carrito' : 'No disponible'}</button>
+          </div>
+          <p class="text-muted" style="font-size:.8rem;margin-top:14px;display:flex;gap:8px;align-items:center"><span style="width:16px;height:16px;display:inline-block;color:var(--brand)">${ICON.truck}</span> Envío en 24-48h · Devolución en 30 días</p>
+        </div>
+      </div>`, { width: 720 });
+    const box = m.box;
+    box.querySelector('#qvInc').addEventListener('click', () => { qty++; box.querySelector('#qvQty').textContent = qty; });
+    box.querySelector('#qvDec').addEventListener('click', () => { if (qty > 1) { qty--; box.querySelector('#qvQty').textContent = qty; } });
+    box.querySelector('#qvAdd').addEventListener('click', () => { if (p.stock) { window.PS.cart.add(p.id, qty); m.close(); } });
   }
 
   // Eventos filtros
@@ -103,9 +143,11 @@
   $('#clearFilters').addEventListener('click', reset);
   $('#resetEmpty').addEventListener('click', reset);
 
-  // Preselección de categoría por querystring
-  const cat = new URLSearchParams(location.search).get('cat');
+  // Preselección por querystring
+  const qs = new URLSearchParams(location.search);
+  const cat = qs.get('cat');
   if (cat && cats.includes(cat)) { const cb = $(`.catCheck[value="${cat}"]`); if (cb) { cb.checked = true; filters.cats = [cat]; } }
+  if (qs.get('oferta')) { $('#onlyOffers').checked = true; filters.offers = true; }
 
   apply();
 })();
