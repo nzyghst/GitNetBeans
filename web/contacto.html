@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto · PitStop Express</title>
+  <meta name="description" content="Contacta con PitStop Express: dirección, teléfono, horario y formulario. Estamos en Madrid, de lunes a sábado." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>try{var t=localStorage.getItem('ps-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb"><a href="index.html">Inicio</a> / <span>Contacto</span></nav>
+        <span class="eyebrow">Hablemos</span>
+        <h1>Estamos aquí para ayudarte</h1>
+        <p>¿Dudas sobre un servicio, un presupuesto o un pedido? Escríbenos o pásate por el taller.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:16px">
+      <div class="container contact-grid">
+        <!-- INFO -->
+        <div class="stack" style="gap:16px">
+          <div class="card contact-info-card"><span class="icon-badge" id="c1"></span><div><h4>Dirección</h4><p>Av. de los Talleres 24<br>28020 Madrid, España</p></div></div>
+          <div class="card contact-info-card"><span class="icon-badge" id="c2"></span><div><h4>Teléfono</h4><p><a href="tel:+34910000000">+34 910 000 000</a></p></div></div>
+          <div class="card contact-info-card"><span class="icon-badge" id="c3"></span><div><h4>Email</h4><p><a href="mailto:hola@pitstopexpress.es">hola@pitstopexpress.es</a></p></div></div>
+          <div class="card contact-info-card"><span class="icon-badge" id="c4"></span><div><h4>Horario</h4><p>Lun–Vie: 8:00–20:00<br>Sábado: 9:00–14:00 · Domingo: cerrado</p></div></div>
+          <a href="https://wa.me/34910000000" target="_blank" rel="noopener" class="btn btn-accent btn-block">Escríbenos por WhatsApp</a>
+        </div>
+
+        <!-- FORM -->
+        <div class="card card-body">
+          <h2 class="section-title" style="font-size:1.5rem;margin-bottom:6px">Envíanos un mensaje</h2>
+          <p class="text-muted" style="margin-bottom:22px">Te respondemos en menos de 24 horas laborables.</p>
+          <form id="contactForm" novalidate>
+            <div class="form-grid">
+              <div class="field"><label for="cn">Nombre</label><input class="input" id="cn" required><span class="err">Dinos tu nombre.</span></div>
+              <div class="field"><label for="cp">Teléfono</label><input class="input" id="cp" type="tel"><span class="hint">Opcional</span></div>
+              <div class="field full"><label for="ce">Email</label><input class="input" id="ce" type="email" required><span class="err">Email no válido.</span></div>
+              <div class="field full"><label for="casunto">Asunto</label>
+                <select class="select" id="casunto"><option>Consulta general</option><option>Presupuesto</option><option>Estado de un pedido</option><option>Reclamación</option><option>Trabajar con vosotros</option></select>
+              </div>
+              <div class="field full"><label for="cm">Mensaje</label><textarea class="textarea" id="cm" required></textarea><span class="err">Escribe tu mensaje.</span></div>
+              <div class="field full">
+                <label class="filter-opt" style="align-items:flex-start"><input type="checkbox" id="cr" required><span class="text-muted" style="font-size:.9rem">Acepto la política de privacidad.</span></label>
+                <span class="err" style="margin-top:-4px">Debes aceptar para continuar.</span>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-lg btn-block" type="submit" style="margin-top:8px">Enviar mensaje</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAPA -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="map-embed">
+          <iframe title="Mapa de PitStop Express" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-3.66%2C40.43%2C-3.64%2C40.44&layer=mapnik&marker=40.435%2C-3.65"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" style="padding-top:0">
+      <div class="container" style="max-width:840px">
+        <div class="section-head center"><span class="eyebrow">Preguntas frecuentes</span><h2 class="section-title">Resolvemos tus dudas</h2></div>
+        <div class="accordion" id="faq"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+  (function () {
+    const $ = (s) => document.querySelector(s);
+    const $$ = (s) => [...document.querySelectorAll(s)];
+    const ICON = window.ICON;
+    $('#c1').innerHTML = ICON.pin; $('#c2').innerHTML = ICON.phone; $('#c3').innerHTML = ICON.mail; $('#c4').innerHTML = ICON.clock;
+
+    const faqs = [
+      { q: '¿Necesito cita previa?', a: 'Para el cambio de aceite y pequeñas revisiones no hace falta: ven cuando quieras. Para el resto de servicios te recomendamos reservar online para no esperar.' },
+      { q: '¿El presupuesto tiene coste?', a: 'No. La diagnosis y el presupuesto son gratuitos y sin compromiso. Solo empezamos a trabajar cuando das el visto bueno.' },
+      { q: '¿Perderé la garantía oficial de mi coche?', a: 'No. Usamos recambios originales o de calidad equivalente homologada y sellamos tu libro de mantenimiento, conservando tu garantía.' },
+      { q: '¿Qué formas de pago aceptáis?', a: 'Efectivo, tarjeta, Bizum y financiación hasta 12 meses sin intereses para reparaciones grandes.' },
+      { q: '¿Puedo comprar la pieza y que la montéis?', a: 'Sí. Compra en nuestra tienda online y añade el montaje a tu cita, o tráela tú. Te asesoramos sobre la compatibilidad.' },
+      { q: '¿Ofrecéis coche de sustitución?', a: 'Sí, para reparaciones que requieran dejar el coche más de un día disponemos de vehículos de cortesía (según disponibilidad).' },
+    ];
+    $('#faq').innerHTML = faqs.map(f => `
+      <div class="acc-item">
+        <button class="acc-q" type="button">${f.q}<span class="chev">${ICON.chevron}</span></button>
+        <div class="acc-a"><div class="acc-a-inner">${f.a}</div></div>
+      </div>`).join('');
+    $$('.acc-q').forEach(btn => btn.addEventListener('click', () => {
+      const item = btn.closest('.acc-item');
+      const open = item.classList.contains('open');
+      $$('.acc-item').forEach(i => { i.classList.remove('open'); i.querySelector('.acc-a').style.maxHeight = null; });
+      if (!open) { item.classList.add('open'); const a = item.querySelector('.acc-a'); a.style.maxHeight = a.scrollHeight + 'px'; }
+    }));
+
+    // Form
+    $('#contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      let ok = true;
+      const check = (id, cond) => { const f = $('#' + id).closest('.field'); f.classList.toggle('invalid', !cond); if (!cond) ok = false; };
+      check('cn', $('#cn').value.trim());
+      check('ce', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('#ce').value.trim()));
+      check('cm', $('#cm').value.trim());
+      check('cr', $('#cr').checked);
+      if (!ok) { window.PS.toast('Revisa los campos marcados', ICON.close); return; }
+      e.target.reset();
+      window.PS.toast('¡Mensaje enviado! Te responderemos pronto 👍');
+    });
+    $$('#contactForm input, #contactForm textarea').forEach(el => el.addEventListener('input', () => el.closest('.field')?.classList.remove('invalid')));
+  })();
+  </script>
+</body>
+</html>

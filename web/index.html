@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PitStop Express · Taller de servicio rápido en Madrid</title>
+  <meta name="description" content="Taller de coches de servicio rápido: cambio de aceite, neumáticos, frenos y diagnosis en minutos. Reserva online, precios cerrados y mecánicos certificados." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>try{var t=localStorage.getItem('ps-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">★ 4,9/5 · +12.000 clientes</span>
+          <h1>Tu coche listo <span class="hl">en tiempo récord</span>, sin sorpresas.</h1>
+          <p class="hero-lead">Cambio de aceite, neumáticos, frenos y diagnosis con precio cerrado y cita online en 60 segundos. Mecánicos certificados y garantía por escrito.</p>
+          <div class="hero-cta">
+            <a href="reservas.html" class="btn btn-primary btn-lg">Reservar cita ahora</a>
+            <a href="servicios.html" class="btn btn-ghost btn-lg">Ver servicios y precios</a>
+          </div>
+          <div class="hero-trust">
+            <div><span id="i-check1"></span> <span><b>Presupuesto</b> sin compromiso</span></div>
+            <div><span id="i-check2"></span> <span><b>12 meses</b> de garantía</span></div>
+            <div><span id="i-check3"></span> <span><b>Sin cita previa</b> para el aceite</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <svg viewBox="0 0 400 300" width="100%" style="max-width:420px" aria-hidden="true">
+            <defs>
+              <linearGradient id="carg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ff6a4d"/><stop offset="1" stop-color="#ff4d2e"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="200" cy="250" rx="160" ry="18" fill="rgba(0,0,0,.35)"/>
+            <path d="M60 190l24-56a30 30 0 0 1 27-18h118a30 30 0 0 1 27 18l24 56v34h-26v-18H86v18H60z" fill="url(#carg)"/>
+            <path d="M104 128h122l16 40H88z" fill="#0d1017" opacity=".85"/>
+            <path d="M110 134h50v30h-64z" fill="#5bd1e6" opacity=".9"/>
+            <path d="M170 134h50l12 30h-62z" fill="#5bd1e6" opacity=".7"/>
+            <circle cx="112" cy="212" r="26" fill="#0d1017"/><circle cx="112" cy="212" r="12" fill="#3b4453"/>
+            <circle cx="288" cy="212" r="26" fill="#0d1017"/><circle cx="288" cy="212" r="12" fill="#3b4453"/>
+            <rect x="250" y="178" width="30" height="9" rx="4" fill="#ffd84d"/>
+          </svg>
+          <div class="hero-badge-float b1">
+            <span class="icon-badge" style="width:42px;height:42px" id="i-clock"></span>
+            <div><b style="font-family:var(--display)">30 min</b><div class="text-muted" style="font-size:.8rem">cambio de aceite</div></div>
+          </div>
+          <div class="hero-badge-float b2">
+            <span class="icon-badge" style="width:42px;height:42px;background:var(--ok-soft);color:var(--ok)" id="i-shield"></span>
+            <div><b style="font-family:var(--display)">Garantía</b><div class="text-muted" style="font-size:.8rem">12 meses</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARCAS -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track" id="brandsTrack"></div>
+    </div>
+
+    <!-- FEATURES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">Por qué PitStop</span>
+          <h2 class="section-title">La forma inteligente de cuidar tu coche</h2>
+          <p class="section-lead" style="margin-inline:auto">Nada de esperas eternas ni facturas hinchadas. Transparencia y rapidez en cada visita.</p>
+        </div>
+        <div class="grid feature-grid" id="featuresGrid"></div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS DESTACADOS -->
+    <section class="section" style="background:var(--surface)">
+      <div class="container">
+        <div class="section-head" style="display:flex;justify-content:space-between;align-items:flex-end;max-width:none;flex-wrap:wrap;gap:16px">
+          <div>
+            <span class="eyebrow">Servicios</span>
+            <h2 class="section-title">Todo lo que tu coche necesita</h2>
+          </div>
+          <a href="servicios.html" class="btn btn-ghost">Ver todos los servicios</a>
+        </div>
+        <div class="grid svc-grid" id="svcGrid"></div>
+      </div>
+    </section>
+
+    <!-- PASOS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">Cómo funciona</span>
+          <h2 class="section-title">Reservar cita es cuestión de segundos</h2>
+        </div>
+        <div class="grid steps">
+          <div class="card card-hover step reveal"><div class="step-num">1</div><h3>Elige el servicio</h3><p>Selecciona lo que necesita tu coche y conoce el precio al instante.</p></div>
+          <div class="card card-hover step reveal"><div class="step-num">2</div><h3>Escoge día y hora</h3><p>Reserva online en el hueco que mejor te venga, 24/7.</p></div>
+          <div class="card card-hover step reveal"><div class="step-num">3</div><h3>Trae tu coche</h3><p>Te recibimos puntuales. Café gratis y zona de espera con wifi.</p></div>
+          <div class="card card-hover step reveal"><div class="step-num">4</div><h3>Listo para rodar</h3><p>Trabajo garantizado por escrito y factura clara, sin extras.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="section-sm" style="background:var(--ink)">
+      <div class="container">
+        <div class="grid stats">
+          <div class="stat"><div class="num" style="color:#fff"><span data-count="12000" data-suffix="+">0</span></div><div class="lbl" style="color:#9aa4b5">Coches reparados</div></div>
+          <div class="stat"><div class="num"><span data-count="30" data-suffix=" min">0</span></div><div class="lbl" style="color:#9aa4b5">Cambio de aceite medio</div></div>
+          <div class="stat"><div class="num" style="color:#5bd1e6"><span data-count="4.9">0</span></div><div class="lbl" style="color:#9aa4b5">Valoración media</div></div>
+          <div class="stat"><div class="num" style="color:#16a34a"><span data-count="15" data-suffix=" años">0</span></div><div class="lbl" style="color:#9aa4b5">De experiencia</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">Opiniones</span>
+          <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+        </div>
+        <div class="grid testi-grid" id="testiGrid"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-band reveal">
+          <div>
+            <h2>¿Tu coche pide una revisión?</h2>
+            <p>Reserva ahora y aprovecha un <b>15% de descuento</b> en tu primera visita. Precio cerrado antes de empezar.</p>
+          </div>
+          <a href="reservas.html" class="btn btn-dark btn-lg">Pedir cita con descuento</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

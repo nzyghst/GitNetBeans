@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog y consejos de mantenimiento · PitStop Express</title>
+  <meta name="description" content="Trucos y consejos de nuestros mecánicos para cuidar tu coche, ahorrar en mantenimiento y conducir más seguro." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>try{var t=localStorage.getItem('ps-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb"><a href="index.html">Inicio</a> / <span>Blog</span></nav>
+        <span class="eyebrow">Consejos del taller</span>
+        <h1>Cuida tu coche como un profesional</h1>
+        <p>Trucos, guías y checklists de nuestros mecánicos para que ahorres dinero y ruedes seguro.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:16px">
+      <div class="container">
+        <div class="grid blog-grid" id="blogGrid"></div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="card card-body reveal" style="background:linear-gradient(135deg,var(--brand-soft),transparent);display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center;border-color:var(--brand)">
+          <div>
+            <h2 class="section-title" style="font-size:1.6rem">Recibe nuestros consejos</h2>
+            <p class="text-muted" style="margin-top:8px">Un email al mes con trucos de mantenimiento y ofertas exclusivas. Sin spam.</p>
+          </div>
+          <form id="newsForm" style="display:flex;gap:10px">
+            <input class="input" id="newsEmail" type="email" placeholder="tu@email.com" required>
+            <button class="btn btn-primary" type="submit">Suscribirme</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+  (function () {
+    const $ = (s) => document.querySelector(s);
+    const ICON = window.ICON;
+    const posts = [
+      { icon: 'oil', color: '#ff7a45', cat: 'Mantenimiento', date: '12 jun 2026', read: '4 min', t: '¿Cada cuánto cambiar el aceite de verdad?', d: 'Olvídate de mitos: te explicamos los intervalos reales según tu motor y tu forma de conducir.' },
+      { icon: 'tire', color: '#3b4453', cat: 'Neumáticos', date: '2 jun 2026', read: '5 min', t: 'Cómo leer el desgaste de tus neumáticos', d: 'Los dibujos de tus ruedas cuentan una historia. Aprende a interpretarlos y evita sustos.' },
+      { icon: 'battery', color: '#16a34a', cat: 'Invierno', date: '20 may 2026', read: '3 min', t: '5 señales de que tu batería está agotándose', d: 'Arranques lentos, luces débiles… detecta el fallo antes de quedarte tirado.' },
+      { icon: 'brake', color: '#e63c1e', cat: 'Seguridad', date: '8 may 2026', read: '6 min', t: 'Frenos que chirrían: cuándo preocuparse', d: 'No todos los ruidos son graves, pero algunos sí. Te contamos cuáles no debes ignorar.' },
+      { icon: 'ac', color: '#00b4d8', cat: 'Confort', date: '28 abr 2026', read: '4 min', t: 'Prepara el aire acondicionado para el verano', d: 'Recarga, filtro de habitáculo y desinfección: la rutina para un habitáculo fresco y sano.' },
+      { icon: 'shield', color: '#f59e0b', cat: 'ITV', date: '15 abr 2026', read: '7 min', t: 'Checklist para pasar la ITV a la primera', d: 'Los 10 puntos que más suspenden y cómo revisarlos tú mismo antes de ir.' },
+    ];
+    $('#blogGrid').innerHTML = posts.map(p => `
+      <article class="card card-hover blog-card reveal">
+        <div class="blog-media" style="background:linear-gradient(160deg, ${p.color}22, ${p.color}08);color:${p.color}">${ICON[p.icon]}</div>
+        <div class="blog-body">
+          <div class="blog-meta"><span class="pill pill-brand">${p.cat}</span><span>${p.date}</span><span>· ${p.read} lectura</span></div>
+          <h3>${p.t}</h3>
+          <p>${p.d}</p>
+          <a href="#" class="read" onclick="event.preventDefault();window.PS.toast('Artículo de demostración')">Leer más ${ICON.arrow}</a>
+        </div>
+      </article>`).join('');
+
+    $('#newsForm').addEventListener('submit', (e) => { e.preventDefault(); $('#newsEmail').value = ''; window.PS.toast('¡Suscrito! Revisa tu correo 📬'); });
+  })();
+  </script>
+</body>
+</html>
