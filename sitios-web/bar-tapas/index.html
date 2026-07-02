@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bar La Esquina · Tapas y vinos desde 1962 · Santa Cruz de Tenerife</title>
+<meta name="description" content="Bar de tapas de toda la vida en Santa Cruz de Tenerife. Tortilla casera, enyesques, vinos del país y buen trato desde 1962.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --crema:#f7f2e8; --crema2:#efe7d7; --verde:#274430; --verde2:#1b3123;
+    --tinto:#7a2e2e; --tinta:#33302a; --tinta2:#6d675c;
+    --linea:#d9cfba; --blanco:#fffdf8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  /* letra grande y alto contraste, pensado para lectura cómoda */
+  body{font-family:'Lora',Georgia,serif;background:var(--crema);color:var(--tinta);line-height:1.75;font-size:18px}
+  h1,h2,h3{font-weight:700;line-height:1.15;color:var(--verde)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:920px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-flex;align-items:center;gap:10px;background:var(--verde);color:var(--crema);padding:16px 30px;border-radius:6px;font-weight:600;font-size:1.05rem;border:2px solid var(--verde);transition:.2s}
+  .btn:hover{background:var(--verde2)}
+  .btn-tel{background:var(--tinto);border-color:var(--tinto)}
+  .btn-tel:hover{background:#652424}
+
+  /* franja superior con teléfono siempre visible */
+  .franja{background:var(--verde);color:var(--crema);text-align:center;padding:10px 16px;font-size:1rem}
+  .franja a{font-weight:700;text-decoration:underline}
+
+  header{background:var(--blanco);border-bottom:3px double var(--linea)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:84px}
+  .marca{display:flex;align-items:center;gap:14px}
+  .marca .sello{width:52px;height:52px;border:2px solid var(--verde);border-radius:50%;display:grid;place-items:center;font-size:1.5rem;background:var(--crema)}
+  .marca b{font-size:1.5rem;color:var(--verde);display:block;line-height:1.1}
+  .marca small{color:var(--tinta2);font-style:italic}
+  nav .tel-nav{text-align:right}
+  nav .tel-nav small{display:block;color:var(--tinta2);font-size:.85rem}
+  nav .tel-nav a{font-size:1.45rem;font-weight:700;color:var(--tinto)}
+
+  /* PORTADA */
+  .portada{text-align:center;padding:64px 0 56px;background:
+    linear-gradient(rgba(247,242,232,.92),rgba(247,242,232,.96)),
+    repeating-linear-gradient(45deg,var(--crema2) 0 18px,var(--crema) 18px 36px)}
+  .desde{display:inline-block;border:1px solid var(--verde);color:var(--verde);border-radius:30px;padding:6px 20px;font-style:italic;margin-bottom:20px;background:var(--blanco)}
+  .portada h1{font-size:clamp(2.6rem,7vw,4.2rem)}
+  .portada .lema{font-size:1.35rem;font-style:italic;color:var(--tinta2);margin:14px auto 30px;max-width:44ch}
+  .portada .botones{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .adorno{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:36px;color:var(--verde)}
+  .adorno::before,.adorno::after{content:"";height:2px;width:70px;background:var(--linea)}
+
+  section{padding:70px 0}
+  .titulo{text-align:center;margin-bottom:40px}
+  .titulo h2{font-size:clamp(2rem,5vw,2.8rem)}
+  .titulo .sub{font-style:italic;color:var(--tinta2);margin-top:8px;font-size:1.1rem}
+  .titulo .raya{width:70px;height:3px;background:var(--tinto);margin:16px auto 0}
+
+  /* TAPAS */
+  .tapas{background:var(--blanco);border-top:3px double var(--linea);border-bottom:3px double var(--linea)}
+  .pizarra{background:var(--crema);border:1px solid var(--linea);border-radius:8px;padding:40px 44px;max-width:760px;margin:0 auto;box-shadow:0 14px 34px -20px rgba(51,48,42,.35)}
+  .tapa{display:flex;align-items:baseline;gap:12px;padding:13px 0;border-bottom:1px dotted var(--linea);font-size:1.08rem}
+  .tapa:last-child{border:0}
+  .tapa .nombre{font-weight:600}
+  .tapa .detalle{color:var(--tinta2);font-size:.95rem;font-style:italic}
+  .tapa .puntos{flex:1;border-bottom:2px dotted var(--linea);transform:translateY(-5px)}
+  .tapa .precio{font-weight:700;color:var(--tinto);white-space:nowrap;font-size:1.15rem}
+  .aviso-pizarra{text-align:center;margin-top:22px;color:var(--tinta2);font-style:italic}
+
+  /* LA CASA */
+  .casa .wrap{max-width:760px}
+  .casa p{margin-bottom:18px;font-size:1.08rem}
+  .casa .destacado{border-left:4px solid var(--tinto);padding:14px 22px;background:var(--blanco);font-style:italic;font-size:1.15rem;margin:26px 0}
+
+  /* VALORES */
+  .valores{background:var(--verde);color:var(--crema)}
+  .valores .titulo h2{color:var(--crema)}
+  .valores .titulo .sub{color:rgba(247,242,232,.75)}
+  .valores .titulo .raya{background:#c9a15c}
+  .val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:860px;margin:0 auto}
+  .val{text-align:center;padding:26px 20px;border:1px solid rgba(247,242,232,.25);border-radius:8px}
+  .val .ico{font-size:2.2rem;margin-bottom:12px}
+  .val h3{color:var(--crema);font-size:1.25rem;margin-bottom:8px}
+  .val p{color:rgba(247,242,232,.8);font-size:.98rem}
+
+  /* HORARIO Y CONTACTO */
+  .contacto .cols{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:860px;margin:0 auto}
+  .caja{background:var(--blanco);border:1px solid var(--linea);border-radius:8px;padding:32px 34px}
+  .caja h3{font-size:1.5rem;margin-bottom:18px;border-bottom:2px solid var(--linea);padding-bottom:12px}
+  .fila{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dotted var(--linea);font-size:1.05rem}
+  .fila:last-child{border:0}
+  .fila .abierto{color:var(--verde);font-weight:600}
+  .fila .cerrado{color:var(--tinta2);font-style:italic}
+  .caja p{font-size:1.05rem;margin-bottom:14px}
+  .caja p b{color:var(--verde)}
+  .tel-grande{display:block;text-align:center;background:var(--crema);border:2px solid var(--tinto);border-radius:8px;padding:18px;margin-top:10px}
+  .tel-grande small{display:block;color:var(--tinta2);margin-bottom:4px}
+  .tel-grande a{font-size:2rem;font-weight:700;color:var(--tinto)}
+
+  footer{background:var(--verde2);color:rgba(247,242,232,.85);text-align:center;padding:40px 0 28px;font-size:1rem}
+  footer b{color:var(--crema)}
+  footer .mini{margin-top:10px;opacity:.7;font-size:.85rem}
+
+  .wa{position:fixed;right:20px;bottom:20px;z-index:60;width:60px;height:60px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 28px -8px rgba(37,211,102,.6)}
+
+  @media(max-width:820px){
+    .val-grid{grid-template-columns:1fr}
+    .contacto .cols{grid-template-columns:1fr}
+    .pizarra{padding:28px 22px}
+    nav{height:auto;padding:16px 0;flex-direction:column;gap:10px}
+    nav .tel-nav{text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<div class="franja">Para reservar mesa o encargar tortillas, llámenos al <a href="tel:+34634000031">634 00 00 31</a></div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="marca">
+        <span class="sello">🍷</span>
+        <div><b>Bar La Esquina</b><small>Tapas y vinos desde 1962</small></div>
+      </div>
+      <div class="tel-nav">
+        <small>Llámenos sin compromiso</small>
+        <a href="tel:+34634000031">634 00 00 31</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- PORTADA -->
+<section class="portada">
+  <div class="wrap">
+    <span class="desde">Desde 1962 · Tres generaciones</span>
+    <h1>El bar de toda la vida</h1>
+    <p class="lema">Tortilla recién hecha, enyesques de la tierra, vino del país y conversación de barra. Como siempre, como debe ser.</p>
+    <div class="botones">
+      <a href="tel:+34634000031" class="btn btn-tel">📞 Llamar al bar</a>
+      <a href="#tapas" class="btn">Ver nuestras tapas</a>
+    </div>
+    <div class="adorno">❦</div>
+  </div>
+</section>
+
+<!-- TAPAS -->
+<section class="tapas" id="tapas">
+  <div class="wrap">
+    <div class="titulo">
+      <h2>Nuestras tapas</h2>
+      <div class="sub">Cocina casera, hecha en el día</div>
+      <div class="raya"></div>
+    </div>
+    <div class="pizarra">
+      <div class="tapa"><span class="nombre">Tortilla de la casa <span class="detalle">— con cebolla, la de siempre</span></span><span class="puntos"></span><span class="precio">2,50</span></div>
+      <div class="tapa"><span class="nombre">Garbanzas compuestas</span><span class="puntos"></span><span class="precio">4,50</span></div>
+      <div class="tapa"><span class="nombre">Carne fiesta</span><span class="puntos"></span><span class="precio">5,50</span></div>
+      <div class="tapa"><span class="nombre">Albóndigas de la abuela <span class="detalle">— en salsa, con pan para mojar</span></span><span class="puntos"></span><span class="precio">5,00</span></div>
+      <div class="tapa"><span class="nombre">Queso blanco con mojo</span><span class="puntos"></span><span class="precio">4,00</span></div>
+      <div class="tapa"><span class="nombre">Pata asada al horno</span><span class="puntos"></span><span class="precio">5,50</span></div>
+      <div class="tapa"><span class="nombre">Ensaladilla de la casa</span><span class="puntos"></span><span class="precio">3,50</span></div>
+      <div class="tapa"><span class="nombre">Croquetas caseras <span class="detalle">— de puchero, 6 unidades</span></span><span class="puntos"></span><span class="precio">4,50</span></div>
+      <div class="tapa"><span class="nombre">Vaso de vino del país <span class="detalle">— tinto o blanco</span></span><span class="puntos"></span><span class="precio">1,50</span></div>
+      <div class="tapa"><span class="nombre">Caña bien tirada</span><span class="puntos"></span><span class="precio">1,30</span></div>
+    </div>
+    <p class="aviso-pizarra">Pregunte por el plato del día — cada jornada hacemos un guiso distinto.</p>
+  </div>
+</section>
+
+<!-- LA CASA -->
+<section class="casa">
+  <div class="wrap">
+    <div class="titulo">
+      <h2>Una historia de familia</h2>
+      <div class="raya"></div>
+    </div>
+    <p>Don Paco abrió La Esquina en 1962 con cuatro mesas, un barril de vino y una idea muy sencilla: que todo el que entrara se sintiera en su casa. Hoy sus nietos siguen detrás de la misma barra, con la misma tortilla y el mismo cariño.</p>
+    <p>Aquí no encontrará pantallas ni platos con nombres raros. Encontrará el periódico sobre la barra, la tertulia de media mañana, el dominó de después de comer y un vino honesto a precio honesto.</p>
+    <div class="destacado">"Al cliente hay que tratarlo como a un amigo que viene a casa. Lo demás viene solo." — Don Paco, fundador</div>
+    <p>Si viene por primera vez, pida la tortilla y déjese aconsejar. Y si viene de siempre, ya sabe que su mesa está donde siempre.</p>
+  </div>
+</section>
+
+<!-- VALORES -->
+<section class="valores">
+  <div class="wrap">
+    <div class="titulo">
+      <h2>Lo de siempre, bien hecho</h2>
+      <div class="sub">Tres cosas que no han cambiado en sesenta años</div>
+      <div class="raya"></div>
+    </div>
+    <div class="val-grid">
+      <div class="val"><div class="ico">🍳</div><h3>Cocina casera</h3><p>Todo hecho aquí, cada mañana. Sin congelados y sin prisas.</p></div>
+      <div class="val"><div class="ico">🤝</div><h3>Trato de siempre</h3><p>Le atendemos por su nombre. Y si es nuevo, en dos visitas también.</p></div>
+      <div class="val"><div class="ico">💰</div><h3>Precios de barrio</h3><p>Comer bien no tiene por qué ser caro. Nunca lo ha sido aquí.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="titulo">
+      <h2>Dónde estamos y cuándo abrimos</h2>
+      <div class="raya"></div>
+    </div>
+    <div class="cols">
+      <div class="caja">
+        <h3>Horario</h3>
+        <div class="fila"><span>Lunes a viernes</span><span class="abierto">7:00 – 22:00</span></div>
+        <div class="fila"><span>Sábado</span><span class="abierto">8:00 – 22:00</span></div>
+        <div class="fila"><span>Domingo</span><span class="cerrado">Cerrado por descanso</span></div>
+        <div class="fila"><span>Desayunos</span><span class="abierto">7:00 – 12:00</span></div>
+        <div class="fila"><span>Tapas y comidas</span><span class="abierto">12:00 – 22:00</span></div>
+      </div>
+      <div class="caja">
+        <h3>Contacto</h3>
+        <p><b>Dirección:</b><br>Calle del Castillo 88, esquina San José<br>Santa Cruz de Tenerife</p>
+        <p><b>¿Cómo llegar?</b> A dos calles de la plaza de la Candelaria. Parada de tranvía a 100 metros.</p>
+        <div class="tel-grande">
+          <small>Reservas y encargos por teléfono</small>
+          <a href="tel:+34634000031">634 00 00 31</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><b>Bar La Esquina</b> · Calle del Castillo 88 · Santa Cruz de Tenerife · Teléfono: 634 00 00 31</p>
+    <p class="mini">© 2026 Bar La Esquina · Sitio de ejemplo — negocio ficticio</p>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/34634000031?text=Buenas%2C%20quisiera%20reservar%20mesa%20en%20Bar%20La%20Esquina" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2 .2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5-.3.3c-.1.2-.3.3-.1.6.1.3.7 1.1 1.4 1.7.9.8 1.6 1 1.9 1.2.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.9-.1 1.6Z"/></svg>
+</a>
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carpintería El Drago · Carpintería a medida en La Orotava · Desde 1975</title>
+<meta name="description" content="Carpintería tradicional en La Orotava, Tenerife. Puertas, ventanas, armarios, muebles a medida y restauración de balcones canarios. Presupuesto sin compromiso.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --papel:#f6f0e4; --papel2:#ede4d2; --madera:#5c3d24; --madera2:#472e19;
+    --miel:#b07d3f; --tinta:#3a2f22; --tinta2:#75664f;
+    --linea:#dccfb6; --blanco:#fffcf5; --verde:#4c5c3a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  /* letra grande y clara para lectura cómoda */
+  body{font-family:'Bitter',Georgia,serif;background:var(--papel);color:var(--tinta);line-height:1.75;font-size:18px}
+  h1,h2,h3{font-weight:700;line-height:1.15;color:var(--madera)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:960px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-flex;align-items:center;gap:10px;background:var(--madera);color:var(--papel);padding:16px 30px;border-radius:6px;font-weight:600;font-size:1.05rem;border:2px solid var(--madera);transition:.2s}
+  .btn:hover{background:var(--madera2)}
+  .btn-miel{background:var(--miel);border-color:var(--miel)}
+  .btn-miel:hover{background:#96682f}
+
+  .franja{background:var(--madera);color:var(--papel);text-align:center;padding:10px 16px;font-size:1rem}
+  .franja a{font-weight:700;text-decoration:underline}
+
+  header{background:var(--blanco);border-bottom:3px double var(--linea)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:88px}
+  .marca{display:flex;align-items:center;gap:14px}
+  .marca .sello{width:54px;height:54px;border:2px solid var(--madera);border-radius:8px;display:grid;place-items:center;font-size:1.5rem;background:var(--papel)}
+  .marca b{font-size:1.5rem;color:var(--madera);display:block;line-height:1.1}
+  .marca small{color:var(--tinta2);font-style:italic}
+  nav .tel-nav{text-align:right}
+  nav .tel-nav small{display:block;color:var(--tinta2);font-size:.85rem}
+  nav .tel-nav a{font-size:1.45rem;font-weight:700;color:var(--miel)}
+
+  /* PORTADA con veta de madera sutil */
+  .portada{text-align:center;padding:66px 0 58px;position:relative;
+    background:
+      linear-gradient(rgba(246,240,228,.94),rgba(246,240,228,.97)),
+      repeating-linear-gradient(90deg,var(--papel2) 0 3px,var(--papel) 3px 9px,var(--papel2) 9px 11px,var(--papel) 11px 26px)}
+  .desde{display:inline-block;border:1px solid var(--madera);color:var(--madera);border-radius:30px;padding:6px 20px;font-style:italic;margin-bottom:20px;background:var(--blanco)}
+  .portada h1{font-size:clamp(2.4rem,6.5vw,4rem)}
+  .portada .lema{font-size:1.3rem;font-style:italic;color:var(--tinta2);margin:14px auto 30px;max-width:46ch}
+  .portada .botones{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .adorno{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:36px;color:var(--madera)}
+  .adorno::before,.adorno::after{content:"";height:2px;width:70px;background:var(--linea)}
+
+  section{padding:70px 0}
+  .titulo{text-align:center;margin-bottom:42px}
+  .titulo h2{font-size:clamp(2rem,5vw,2.8rem)}
+  .titulo .sub{font-style:italic;color:var(--tinta2);margin-top:8px;font-size:1.1rem}
+  .titulo .raya{width:70px;height:3px;background:var(--miel);margin:16px auto 0}
+
+  /* TRABAJOS */
+  .trabajos{background:var(--blanco);border-top:3px double var(--linea);border-bottom:3px double var(--linea)}
+  .trab-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:860px;margin:0 auto}
+  .trab{background:var(--papel);border:1px solid var(--linea);border-radius:8px;padding:28px 30px;display:flex;gap:18px;align-items:flex-start}
+  .trab .ico{font-size:2rem;flex:none;width:56px;height:56px;border-radius:8px;background:var(--blanco);border:1px solid var(--linea);display:grid;place-items:center}
+  .trab h3{font-size:1.3rem;margin-bottom:6px}
+  .trab p{color:var(--tinta2);font-size:1rem}
+
+  /* OFICIO */
+  .oficio .wrap{max-width:760px}
+  .oficio p{margin-bottom:18px;font-size:1.08rem}
+  .oficio .destacado{border-left:4px solid var(--miel);padding:14px 22px;background:var(--blanco);font-style:italic;font-size:1.15rem;margin:26px 0}
+
+  /* CÓMO TRABAJAMOS */
+  .metodo{background:var(--madera);color:var(--papel)}
+  .metodo .titulo h2{color:var(--papel)}
+  .metodo .titulo .sub{color:rgba(246,240,228,.75)}
+  .metodo .titulo .raya{background:var(--miel)}
+  .pasos{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:940px;margin:0 auto}
+  .paso{text-align:center;padding:26px 18px;border:1px solid rgba(246,240,228,.25);border-radius:8px}
+  .paso .num{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--miel);color:#fff;font-weight:700;font-size:1.2rem;margin-bottom:14px}
+  .paso h3{color:var(--papel);font-size:1.2rem;margin-bottom:8px}
+  .paso p{color:rgba(246,240,228,.8);font-size:.95rem}
+
+  /* GARANTÍAS */
+  .garantias .lista{max-width:700px;margin:0 auto;display:grid;gap:16px}
+  .gar{display:flex;gap:16px;align-items:flex-start;background:var(--blanco);border:1px solid var(--linea);border-radius:8px;padding:20px 26px;font-size:1.05rem}
+  .gar .check{color:var(--verde);font-weight:700;font-size:1.3rem;flex:none}
+
+  /* CONTACTO */
+  .contacto .cols{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:880px;margin:0 auto}
+  .caja{background:var(--blanco);border:1px solid var(--linea);border-radius:8px;padding:32px 34px}
+  .caja h3{font-size:1.5rem;margin-bottom:18px;border-bottom:2px solid var(--linea);padding-bottom:12px}
+  .fila{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dotted var(--linea);font-size:1.05rem}
+  .fila:last-child{border:0}
+  .fila .abierto{color:var(--verde);font-weight:600}
+  .fila .cerrado{color:var(--tinta2);font-style:italic}
+  .caja p{font-size:1.05rem;margin-bottom:14px}
+  .caja p b{color:var(--madera)}
+  .tel-grande{display:block;text-align:center;background:var(--papel);border:2px solid var(--miel);border-radius:8px;padding:18px;margin-top:10px}
+  .tel-grande small{display:block;color:var(--tinta2);margin-bottom:4px}
+  .tel-grande a{font-size:2rem;font-weight:700;color:var(--miel)}
+
+  footer{background:var(--madera2);color:rgba(246,240,228,.85);text-align:center;padding:40px 0 28px;font-size:1rem}
+  footer b{color:var(--papel)}
+  footer .mini{margin-top:10px;opacity:.7;font-size:.85rem}
+
+  .wa{position:fixed;right:20px;bottom:20px;z-index:60;width:60px;height:60px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 28px -8px rgba(37,211,102,.6)}
+
+  @media(max-width:860px){
+    .trab-grid,.contacto .cols{grid-template-columns:1fr}
+    .pasos{grid-template-columns:repeat(2,1fr)}
+    nav{height:auto;padding:16px 0;flex-direction:column;gap:10px}
+    nav .tel-nav{text-align:center}
+  }
+  @media(max-width:520px){
+    .pasos{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="franja">Presupuesto sin compromiso — llámenos al <a href="tel:+34634000019">634 00 00 19</a> o visítenos en el taller</div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="marca">
+        <span class="sello">🪚</span>
+        <div><b>Carpintería El Drago</b><small>Madera a medida desde 1975</small></div>
+      </div>
+      <div class="tel-nav">
+        <small>Atendemos de lunes a viernes</small>
+        <a href="tel:+34634000019">634 00 00 19</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- PORTADA -->
+<section class="portada">
+  <div class="wrap">
+    <span class="desde">Desde 1975 · Padre e hijos</span>
+    <h1>Carpintería de oficio,<br>hecha para durar</h1>
+    <p class="lema">Puertas, ventanas, armarios y muebles a medida. Madera noble, manos expertas y la palabra por delante.</p>
+    <div class="botones">
+      <a href="tel:+34634000019" class="btn btn-miel">📞 Pedir presupuesto</a>
+      <a href="#trabajos" class="btn">Ver qué hacemos</a>
+    </div>
+    <div class="adorno">⚒</div>
+  </div>
+</section>
+
+<!-- TRABAJOS -->
+<section class="trabajos" id="trabajos">
+  <div class="wrap">
+    <div class="titulo">
+      <h2>Qué hacemos</h2>
+      <div class="sub">Todo a medida, fabricado en nuestro taller de La Orotava</div>
+      <div class="raya"></div>
+    </div>
+    <div class="trab-grid">
+      <div class="trab"><span class="ico">🚪</span><div><h3>Puertas y ventanas</h3><p>De interior y exterior, en madera maciza. Reparamos también las de siempre para que sigan otros veinte años.</p></div></div>
+      <div class="trab"><span class="ico">🗄️</span><div><h3>Armarios empotrados</h3><p>Aprovechamos cada rincón de su casa con armarios a medida, por dentro y por fuera.</p></div></div>
+      <div class="trab"><span class="ico">🪑</span><div><h3>Muebles a medida</h3><p>Mesas, estanterías, bancos de cocina... Nos trae una idea o una foto y se lo fabricamos.</p></div></div>
+      <div class="trab"><span class="ico">🏡</span><div><h3>Balcones canarios</h3><p>Restauración y fabricación de balcones y celosías tradicionales, con la madera y el respeto que merecen.</p></div></div>
+      <div class="trab"><span class="ico">🔧</span><div><h3>Reparaciones</h3><p>Bisagras, cajones, persianas de madera, puertas que rozan... Los arreglos pequeños también son trabajo nuestro.</p></div></div>
+      <div class="trab"><span class="ico">🌳</span><div><h3>Pérgolas y exterior</h3><p>Pérgolas, vallados y mobiliario de terraza en maderas tratadas para el clima de la isla.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OFICIO -->
+<section class="oficio">
+  <div class="wrap">
+    <div class="titulo">
+      <h2>Medio siglo de oficio</h2>
+      <div class="raya"></div>
+    </div>
+    <p>Don Antonio montó el taller en 1975 con un banco de carpintero heredado y las herramientas justas. Cincuenta años después, sus hijos siguen trabajando la madera en el mismo taller, con más máquinas pero con las mismas manías buenas: medir dos veces, cortar una y entregar cuando se ha prometido.</p>
+    <p>Aquí no vendemos muebles de catálogo. Cada trabajo se hace para una casa y una familia concretas, con madera escogida y sin prisas que estropeen el resultado.</p>
+    <div class="destacado">"La madera bien trabajada no pasa de moda. Se hereda." — Don Antonio, fundador</div>
+    <p>Si tiene una idea en la cabeza, venga a contárnosla. El café lo ponemos nosotros y el presupuesto no le cuesta nada.</p>
+  </div>
+</section>
+
+<!-- MÉTODO -->
+<section class="metodo">
+  <div class="wrap">
+    <div class="titulo">
+      <h2>Cómo trabajamos</h2>
+      <div class="sub">Sin sorpresas, con la palabra por delante</div>
+      <div class="raya"></div>
+    </div>
+    <div class="pasos">
+      <div class="paso"><span class="num">1</span><h3>Nos llama</h3><p>Nos cuenta qué necesita por teléfono o pasándose por el taller.</p></div>
+      <div class="paso"><span class="num">2</span><h3>Vamos a medir</h3><p>Visitamos su casa, tomamos medidas y le aconsejamos la madera.</p></div>
+      <div class="paso"><span class="num">3</span><h3>Presupuesto cerrado</h3><p>Precio por escrito y fecha de entrega. Lo que se firma, se cumple.</p></div>
+      <div class="paso"><span class="num">4</span><h3>Fabricamos y montamos</h3><p>Todo en nuestro taller, y lo dejamos instalado y limpio.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTÍAS -->
+<section class="garantias">
+  <div class="wrap">
+    <div class="titulo">
+      <h2>Nuestra palabra</h2>
+      <div class="raya"></div>
+    </div>
+    <div class="lista">
+      <div class="gar"><span class="check">✓</span> Presupuesto por escrito y sin compromiso. Si no le convence, no pasa nada.</div>
+      <div class="gar"><span class="check">✓</span> Garantía de dos años en todos los trabajos de fabricación.</div>
+      <div class="gar"><span class="check">✓</span> Madera de proveedores de confianza, con certificado de origen.</div>
+      <div class="gar"><span class="check">✓</span> Cumplimos las fechas. Y si un día no llegamos, se lo decimos antes, no después.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="titulo">
+      <h2>Venga a vernos al taller</h2>
+      <div class="raya"></div>
+    </div>
+    <div class="cols">
+      <div class="caja">
+        <h3>Horario del taller</h3>
+        <div class="fila"><span>Lunes a viernes</span><span class="abierto">8:00 – 18:00</span></div>
+        <div class="fila"><span>Sábado</span><span class="abierto">9:00 – 13:00</span></div>
+        <div class="fila"><span>Domingo</span><span class="cerrado">Cerrado</span></div>
+        <div class="fila"><span>Visitas a domicilio</span><span class="abierto">Con cita previa</span></div>
+      </div>
+      <div class="caja">
+        <h3>Dónde estamos</h3>
+        <p><b>Taller:</b><br>Camino Torreón Bajo 12<br>La Orotava · Tenerife</p>
+        <p><b>¿No puede acercarse?</b> Llámenos y vamos nosotros a su casa a tomar medidas.</p>
+        <div class="tel-grande">
+          <small>Teléfono y WhatsApp</small>
+          <a href="tel:+34634000019">634 00 00 19</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><b>Carpintería El Drago</b> · Camino Torreón Bajo 12 · La Orotava · Teléfono: 634 00 00 19</p>
+    <p class="mini">© 2026 Carpintería El Drago · Sitio de ejemplo — negocio ficticio</p>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/34634000019?text=Buenas%2C%20quisiera%20pedir%20presupuesto%20a%20Carpinter%C3%ADa%20El%20Drago" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2 .2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5-.3.3c-.1.2-.3.3-.1.6.1.3.7 1.1 1.4 1.7.9.8 1.6 1 1.9 1.2.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.9-.1 1.6Z"/></svg>
+</a>
+
+</body>
+</html>
