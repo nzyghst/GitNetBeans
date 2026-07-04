@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quesadillas La Flor Herreña · Obrador artesano desde 1932 · Valverde, El Hierro</title>
+<meta name="description" content="Obrador de quesadillas herreñas en Valverde, El Hierro. Horno de leña, queso herreño y receta de siempre. Encargos y envíos a todas las islas y península.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --crema:#f8f3e9; --crema2:#f0e8d8; --teja:#a3492a; --teja2:#8a3c21;
+    --lava:#3b3a37; --tinta:#38312a; --tinta2:#71685c;
+    --linea:#ddd2bd; --blanco:#fffdf7; --oro:#c29a4b;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  /* letra grande y clara, pensada para todos los públicos */
+  body{font-family:'Lora',Georgia,serif;background:var(--crema);color:var(--tinta);line-height:1.75;font-size:18px}
+  h1,h2,h3{font-weight:700;line-height:1.15;color:var(--teja2)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:940px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-flex;align-items:center;gap:10px;background:var(--teja);color:var(--crema);padding:16px 30px;border-radius:6px;font-weight:600;font-size:1.05rem;border:2px solid var(--teja);transition:.2s}
+  .btn:hover{background:var(--teja2)}
+  .btn-lava{background:var(--lava);border-color:var(--lava)}
+  .btn-lava:hover{background:#2b2a28}
+
+  .franja{background:var(--teja);color:var(--crema);text-align:center;padding:10px 16px;font-size:1rem}
+  .franja a{font-weight:700;text-decoration:underline}
+
+  header{background:var(--blanco);border-bottom:3px double var(--linea)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:86px}
+  .marca{display:flex;align-items:center;gap:14px}
+  .marca .sello{width:54px;height:54px;border:2px solid var(--teja);border-radius:50%;display:grid;place-items:center;font-size:1.5rem;background:var(--crema)}
+  .marca b{font-size:1.45rem;color:var(--teja2);display:block;line-height:1.1}
+  .marca small{color:var(--tinta2);font-style:italic}
+  nav .tel-nav{text-align:right}
+  nav .tel-nav small{display:block;color:var(--tinta2);font-size:.85rem}
+  nav .tel-nav a{font-size:1.45rem;font-weight:700;color:var(--teja)}
+
+  /* PORTADA con motivo de flor (forma de la quesadilla) */
+  .portada{text-align:center;padding:64px 0 56px;position:relative;
+    background:linear-gradient(rgba(248,243,233,.93),rgba(248,243,233,.97)),
+    repeating-radial-gradient(circle at 50% -80px, var(--crema2) 0 3px, var(--crema) 3px 42px)}
+  .desde{display:inline-block;border:1px solid var(--teja);color:var(--teja2);border-radius:30px;padding:6px 20px;font-style:italic;margin-bottom:20px;background:var(--blanco)}
+  .portada h1{font-size:clamp(2.4rem,6.5vw,4rem)}
+  .portada .lema{font-size:1.32rem;font-style:italic;color:var(--tinta2);margin:14px auto 30px;max-width:46ch}
+  .portada .botones{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .flor{font-size:2.2rem;margin-top:34px;letter-spacing:18px;color:var(--oro)}
+
+  section{padding:70px 0}
+  .titulo{text-align:center;margin-bottom:42px}
+  .titulo h2{font-size:clamp(2rem,5vw,2.8rem)}
+  .titulo .sub{font-style:italic;color:var(--tinta2);margin-top:8px;font-size:1.1rem}
+  .titulo .raya{width:70px;height:3px;background:var(--oro);margin:16px auto 0}
+
+  /* DULCES */
+  .dulces{background:var(--blanco);border-top:3px double var(--linea);border-bottom:3px double var(--linea)}
+  .pizarra{background:var(--crema);border:1px solid var(--linea);border-radius:8px;padding:40px 44px;max-width:760px;margin:0 auto;box-shadow:0 14px 34px -20px rgba(56,49,42,.35)}
+  .dulce{display:flex;align-items:baseline;gap:12px;padding:14px 0;border-bottom:1px dotted var(--linea);font-size:1.08rem}
+  .dulce:last-child{border:0}
+  .dulce .nombre{font-weight:600}
+  .dulce .detalle{color:var(--tinta2);font-size:.95rem;font-style:italic}
+  .dulce .puntos{flex:1;border-bottom:2px dotted var(--linea);transform:translateY(-5px)}
+  .dulce .precio{font-weight:700;color:var(--teja);white-space:nowrap;font-size:1.15rem}
+  .aviso-pizarra{text-align:center;margin-top:22px;color:var(--tinta2);font-style:italic}
+
+  /* OBRADOR */
+  .obrador .wrap{max-width:760px}
+  .obrador p{margin-bottom:18px;font-size:1.08rem}
+  .obrador .destacado{border-left:4px solid var(--oro);padding:14px 22px;background:var(--blanco);font-style:italic;font-size:1.15rem;margin:26px 0}
+
+  /* VALORES */
+  .valores{background:var(--lava);color:var(--crema)}
+  .valores .titulo h2{color:var(--crema)}
+  .valores .titulo .sub{color:rgba(248,243,233,.75)}
+  .valores .titulo .raya{background:var(--oro)}
+  .val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:860px;margin:0 auto}
+  .val{text-align:center;padding:28px 20px;border:1px solid rgba(248,243,233,.25);border-radius:8px}
+  .val .ico{font-size:2.2rem;margin-bottom:12px}
+  .val h3{color:var(--crema);font-size:1.25rem;margin-bottom:8px}
+  .val p{color:rgba(248,243,233,.8);font-size:.98rem}
+
+  /* ENVÍOS */
+  .envios{background:var(--blanco);border-top:3px double var(--linea);border-bottom:3px double var(--linea)}
+  .env-pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:860px;margin:0 auto}
+  .paso{text-align:center;padding:28px 22px;background:var(--crema);border:1px solid var(--linea);border-radius:8px}
+  .paso .num{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--teja);color:#fff;font-weight:700;font-size:1.2rem;margin-bottom:14px}
+  .paso h3{font-size:1.2rem;margin-bottom:8px}
+  .paso p{color:var(--tinta2);font-size:.98rem}
+  .env-nota{text-align:center;max-width:56ch;margin:30px auto 0;font-style:italic;color:var(--tinta2)}
+
+  /* CONTACTO */
+  .contacto .cols{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:880px;margin:0 auto}
+  .caja{background:var(--blanco);border:1px solid var(--linea);border-radius:8px;padding:32px 34px}
+  .caja h3{font-size:1.5rem;margin-bottom:18px;border-bottom:2px solid var(--linea);padding-bottom:12px}
+  .fila{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dotted var(--linea);font-size:1.05rem}
+  .fila:last-child{border:0}
+  .fila .abierto{color:#4c6b3c;font-weight:600}
+  .fila .cerrado{color:var(--tinta2);font-style:italic}
+  .caja p{font-size:1.05rem;margin-bottom:14px}
+  .caja p b{color:var(--teja2)}
+  .tel-grande{display:block;text-align:center;background:var(--crema);border:2px solid var(--teja);border-radius:8px;padding:18px;margin-top:10px}
+  .tel-grande small{display:block;color:var(--tinta2);margin-bottom:4px}
+  .tel-grande a{font-size:2rem;font-weight:700;color:var(--teja)}
+
+  footer{background:#2b2a28;color:rgba(248,243,233,.85);text-align:center;padding:40px 0 28px;font-size:1rem}
+  footer b{color:var(--crema)}
+  footer .mini{margin-top:10px;opacity:.7;font-size:.85rem}
+
+  .wa{position:fixed;right:20px;bottom:20px;z-index:60;width:60px;height:60px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 28px -8px rgba(37,211,102,.6)}
+
+  @media(max-width:840px){
+    .val-grid,.env-pasos{grid-template-columns:1fr}
+    .contacto .cols{grid-template-columns:1fr}
+    .pizarra{padding:28px 22px}
+    nav{height:auto;padding:16px 0;flex-direction:column;gap:10px}
+    nav .tel-nav{text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<div class="franja">Encargos y envíos a todas las islas — llámenos al <a href="tel:+34634000024">634 00 00 24</a></div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="marca">
+        <span class="sello">✽</span>
+        <div><b>Quesadillas La Flor Herreña</b><small>Obrador artesano · Valverde, El Hierro</small></div>
+      </div>
+      <div class="tel-nav">
+        <small>Encargos por teléfono o WhatsApp</small>
+        <a href="tel:+34634000024">634 00 00 24</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- PORTADA -->
+<section class="portada">
+  <div class="wrap">
+    <span class="desde">Desde 1932 · Cuatro generaciones</span>
+    <h1>La quesadilla herreña,<br>como se ha hecho siempre</h1>
+    <p class="lema">Queso herreño del día, huevos frescos, matalahúva y nuestro horno de leña. La misma receta que empezó la bisabuela, sin cambiarle una coma.</p>
+    <div class="botones">
+      <a href="tel:+34634000024" class="btn">📞 Hacer un encargo</a>
+      <a href="#dulces" class="btn btn-lava">Ver nuestros dulces</a>
+    </div>
+    <div class="flor">✽ ✽ ✽</div>
+  </div>
+</section>
+
+<!-- DULCES -->
+<section class="dulces" id="dulces">
+  <div class="wrap">
+    <div class="titulo">
+      <h2>Nuestros dulces</h2>
+      <div class="sub">Horneados cada mañana en horno de leña</div>
+      <div class="raya"></div>
+    </div>
+    <div class="pizarra">
+      <div class="dulce"><span class="nombre">Quesadilla herreña <span class="detalle">— la de siempre, con su forma de flor</span></span><span class="puntos"></span><span class="precio">2,80 ud</span></div>
+      <div class="dulce"><span class="nombre">Caja de 6 quesadillas <span class="detalle">— la caja clásica para regalar o llevar</span></span><span class="puntos"></span><span class="precio">15,00</span></div>
+      <div class="dulce"><span class="nombre">Caja de 12 quesadillas</span><span class="puntos"></span><span class="precio">28,00</span></div>
+      <div class="dulce"><span class="nombre">Torta herreña <span class="detalle">— de manteca, para el café</span></span><span class="puntos"></span><span class="precio">6,50</span></div>
+      <div class="dulce"><span class="nombre">Rosquetes de anís <span class="detalle">— bolsa de docena</span></span><span class="puntos"></span><span class="precio">5,00</span></div>
+      <div class="dulce"><span class="nombre">Bizcochos de la casa <span class="detalle">— para mojar en leche o vino dulce</span></span><span class="puntos"></span><span class="precio">4,50</span></div>
+    </div>
+    <p class="aviso-pizarra">Todo se hornea por la mañana temprano. Si quiere cantidad para un bautizo o una fiesta, encárguelo con dos días.</p>
+  </div>
+</section>
+
+<!-- OBRADOR -->
+<section class="obrador">
+  <div class="wrap">
+    <div class="titulo">
+      <h2>Un obrador con historia</h2>
+      <div class="raya"></div>
+    </div>
+    <p>En 1932, la bisabuela Remedios empezó a hornear quesadillas en el mismo horno de piedra que seguimos encendiendo hoy. Primero para la familia, luego para los vecinos, y al final para media isla.</p>
+    <p>El secreto no es ninguno: queso herreño fresco de las queserías de aquí al lado, huevos de la zona, matalahúva, limón y el punto exacto de horno que solo se aprende con años. Ni conservantes, ni prisas, ni máquinas raras.</p>
+    <div class="destacado">"Una quesadilla se conoce por el queso. Si el queso no es de aquí, eso será otra cosa, pero quesadilla herreña no es." — La abuela Remedios</div>
+    <p>Si pasa por Valverde, entre a vernos: el obrador huele a leña desde las seis de la mañana y siempre hay alguna recién salida para probar.</p>
+  </div>
+</section>
+
+<!-- VALORES -->
+<section class="valores">
+  <div class="wrap">
+    <div class="titulo">
+      <h2>Lo que no cambiamos</h2>
+      <div class="sub">Noventa años después, seguimos igual</div>
+      <div class="raya"></div>
+    </div>
+    <div class="val-grid">
+      <div class="val"><div class="ico">🧀</div><h3>Queso herreño</h3><p>Fresco, de las queserías de la isla. Es lo que hace única a la quesadilla.</p></div>
+      <div class="val"><div class="ico">🔥</div><h3>Horno de leña</h3><p>El mismo horno de piedra desde 1932. El sabor que no da un horno eléctrico.</p></div>
+      <div class="val"><div class="ico">🤲</div><h3>Hecho a mano</h3><p>Cada quesadilla se moldea una a una, con su forma de flor de siempre.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ENVÍOS -->
+<section class="envios" id="envios">
+  <div class="wrap">
+    <div class="titulo">
+      <h2>Se las enviamos donde esté</h2>
+      <div class="sub">A todas las islas y a la península</div>
+      <div class="raya"></div>
+    </div>
+    <div class="env-pasos">
+      <div class="paso"><span class="num">1</span><h3>Nos llama</h3><p>Nos dice cuántas cajas quiere y a dónde se las mandamos.</p></div>
+      <div class="paso"><span class="num">2</span><h3>Horneamos</h3><p>Sus quesadillas se hacen ese mismo día y se empaquetan bien protegidas.</p></div>
+      <div class="paso"><span class="num">3</span><h3>Las recibe</h3><p>En 24–48 horas en Canarias, 2–4 días en península. Pago por Bizum o transferencia.</p></div>
+    </div>
+    <p class="env-nota">Muchos herreños que viven fuera nos encargan cajas para matar la morriña — y nietos que se las mandan a los abuelos. De eso vivimos, y con orgullo.</p>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="titulo">
+      <h2>Venga a vernos al obrador</h2>
+      <div class="raya"></div>
+    </div>
+    <div class="cols">
+      <div class="caja">
+        <h3>Horario</h3>
+        <div class="fila"><span>Lunes a viernes</span><span class="abierto">8:00 – 14:30</span></div>
+        <div class="fila"><span>Sábado</span><span class="abierto">8:00 – 13:00</span></div>
+        <div class="fila"><span>Domingo</span><span class="cerrado">Cerrado</span></div>
+        <div class="fila"><span>Encargos grandes</span><span class="abierto">Con 2 días de antelación</span></div>
+      </div>
+      <div class="caja">
+        <h3>Dónde estamos</h3>
+        <p><b>Obrador y despacho:</b><br>Calle La Constitución 18<br>Valverde · El Hierro</p>
+        <p><b>¿No puede venir?</b> También nos encuentra en tiendas y supermercados de toda la isla.</p>
+        <div class="tel-grande">
+          <small>Encargos y envíos — teléfono y WhatsApp</small>
+          <a href="tel:+34634000024">634 00 00 24</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><b>Quesadillas La Flor Herreña</b> · Calle La Constitución 18 · Valverde, El Hierro · Teléfono: 634 00 00 24</p>
+    <p class="mini">© 2026 Quesadillas La Flor Herreña · Sitio de ejemplo — negocio ficticio</p>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/34634000024?text=Buenas%2C%20quisiera%20hacer%20un%20encargo%20de%20quesadillas" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2 .2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5-.3.3c-.1.2-.3.3-.1.6.1.3.7 1.1 1.4 1.7.9.8 1.6 1 1.9 1.2.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.9-.1 1.6Z"/></svg>
+</a>
+
+</body>
+</html>

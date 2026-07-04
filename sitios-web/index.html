@@ -4,11 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Muestras de páginas web · Portfolio por sectores</title>
-<meta name="description" content="Portfolio de páginas web de muestra para negocios locales de Tenerife, organizado por sectores: hostelería, belleza, automoción, salud y oficios.">
+<meta name="description" content="Portfolio de páginas web de muestra para negocios locales de Canarias, organizado por sectores: hostelería, belleza, automoción, salud, oficios y producto local.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="portfolio.css">
+<style>
+  /* toques propios del hub */
+  .meta-line{display:flex;gap:26px;flex-wrap:wrap;margin-top:34px;color:var(--muted);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase}
+  .meta-line span b{color:var(--ink);font-weight:600}
+  @media (prefers-reduced-motion: no-preference){
+    .hero > .wrap > *, .srow{animation:up .7s cubic-bezier(.2,.7,.2,1) both}
+    .srow:nth-child(2){animation-delay:.05s}.srow:nth-child(3){animation-delay:.1s}
+    .srow:nth-child(4){animation-delay:.15s}.srow:nth-child(5){animation-delay:.2s}
+    .srow:nth-child(6){animation-delay:.25s}.srow:nth-child(7){animation-delay:.3s}
+    @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  }
+</style>
 </head>
 <body>
 
@@ -16,7 +28,7 @@
   <div class="wrap">
     <nav>
       <div class="logo"><span class="d"></span> Estudio Web <small>Muestras</small></div>
-      <span class="back">Tenerife · 2026</span>
+      <a class="back" href="#contacto">Contacto ↓</a>
     </nav>
   </div>
 </header>
@@ -25,7 +37,12 @@
   <div class="wrap">
     <span class="eyebrow">Portfolio de muestra</span>
     <h1>Páginas web para<br><span>negocios de barrio</span></h1>
-    <p>Diez ejemplos de lo que hacemos, organizados por sector. Webs sencillas, rápidas y con reserva por WhatsApp — cada una con un carácter distinto, del brunch moderno al bar de toda la vida.</p>
+    <p>Doce ejemplos de lo que hacemos, organizados por sector. Webs sencillas, rápidas y con reserva o encargo por WhatsApp — cada una con un carácter distinto, del brunch moderno al obrador de toda la vida.</p>
+    <div class="meta-line">
+      <span><b>12</b> demos</span>
+      <span><b>6</b> sectores</span>
+      <span>Tenerife · El Hierro</span>
+    </div>
   </div>
 </section>
 
@@ -43,8 +60,18 @@
       <span class="arrow">→</span>
     </a>
 
-    <a class="srow" href="belleza.html">
+    <a class="srow" href="dulcerias.html">
       <span class="num">02</span>
+      <div>
+        <h2>Producto local y <em>dulcerías</em></h2>
+        <span class="desc">Obradores de quesadillas herreñas, dulcerías caseras y artesanos. Encargos, envíos entre islas y venta en mercadillo.</span>
+      </div>
+      <span class="count">2 demos</span>
+      <span class="arrow">→</span>
+    </a>
+
+    <a class="srow" href="belleza.html">
+      <span class="num">03</span>
       <div>
         <h2>Barbería y <em>belleza</em></h2>
         <span class="desc">Barberías, peluquerías y centros de estética. Carta de servicios con precios y cita previa en un clic.</span>
@@ -54,7 +81,7 @@
     </a>
 
     <a class="srow" href="automocion.html">
-      <span class="num">03</span>
+      <span class="num">04</span>
       <div>
         <h2>Automoción y <em>talleres</em></h2>
         <span class="desc">Talleres mecánicos y servicios del motor. Webs que transmiten confianza, con tarifas claras y presupuesto online.</span>
@@ -64,7 +91,7 @@
     </a>
 
     <a class="srow" href="salud.html">
-      <span class="num">04</span>
+      <span class="num">05</span>
       <div>
         <h2>Salud y <em>bienestar</em></h2>
         <span class="desc">Fisioterapia, clínicas y centros de salud. Diseño limpio y cercano, con bonos, tarifas y cita en 24–48 horas.</span>
@@ -74,7 +101,7 @@
     </a>
 
     <a class="srow" href="oficios.html">
-      <span class="num">05</span>
+      <span class="num">06</span>
       <div>
         <h2>Oficios y <em>hogar</em></h2>
         <span class="desc">Carpinterías y oficios de siempre. Estilo clásico y legible, pensado para el cliente tradicional.</span>
@@ -86,14 +113,35 @@
   </div>
 </section>
 
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="rule-top"></div>
+    <span class="eyebrow">Contacto</span>
+    <h2>¿Le hacemos una <em>a tu negocio?</em></h2>
+    <p class="lead">Cualquiera de estas muestras se convierte en tu web real en pocos días: tu nombre, tus fotos, tu teléfono y tu carta. Escríbeme y lo vemos sin compromiso.</p>
+    <div class="c-links">
+      <a class="c-link" href="tel:+34609437633">
+        <span class="lab">Teléfono / WhatsApp</span>
+        <span class="val">+34 609 437 633</span>
+        <span class="arr">→</span>
+      </a>
+      <a class="c-link" href="mailto:adriancj26@gmail.com">
+        <span class="lab">Correo</span>
+        <span class="val">adriancj26@gmail.com</span>
+        <span class="arr">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section class="note">
   <div class="wrap">
-    <p class="note-inner"><b>Nota</b> — estas páginas son ejemplos de muestra. Los nombres de negocio, teléfonos, direcciones y datos son ficticios y no corresponden a ningún establecimiento real.</p>
+    <p class="note-inner"><b>Nota</b> — estas páginas son ejemplos de muestra. Los nombres de negocio, teléfonos, direcciones y datos de las demos son ficticios y no corresponden a ningún establecimiento real.</p>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">© 2026 · Portfolio de páginas web de muestra · Hecho en Tenerife</div>
+  <div class="wrap">© 2026 · Portfolio de páginas web de muestra · Hecho en Canarias</div>
 </footer>
 
 </body>

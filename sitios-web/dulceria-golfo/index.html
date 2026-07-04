@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dulcería El Sabinar · Quesadillas y dulces caseros · Frontera, El Hierro</title>
+<meta name="description" content="Dulcería familiar en el Valle de El Golfo, El Hierro. Quesadillas herreñas, rosquetes, mermeladas de higo y miel de la isla. Encargos por WhatsApp y venta en el mercadillo de Frontera.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Bitter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --papel:#f6efdf; --papel2:#eee4cd; --sabina:#4a5d43; --sabina2:#3a4a35;
+    --miel:#c08a2d; --tinta:#3c332a; --tinta2:#77694f;
+    --linea:#ddd0b2; --blanco:#fffbf0; --higo:#7a4a5e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Bitter',Georgia,serif;color:var(--tinta);line-height:1.75;font-size:17.5px;
+    background:var(--papel);
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(74,93,67,.05), transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(192,138,45,.06), transparent 40%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")}
+  h1,h2,h3{font-weight:700;line-height:1.14;color:var(--sabina2)}
+  .mano{font-family:'Caveat',cursive}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:960px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-flex;align-items:center;gap:10px;background:var(--sabina);color:var(--papel);padding:15px 28px;border-radius:40px;font-weight:600;font-size:1.02rem;border:2px solid var(--sabina);transition:.2s}
+  .btn:hover{background:var(--sabina2)}
+  .btn-miel{background:var(--miel);border-color:var(--miel)}
+  .btn-miel:hover{background:#a6761f}
+
+  header{position:sticky;top:0;z-index:40;background:rgba(246,239,223,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .marca{display:flex;align-items:center;gap:12px;font-size:1.3rem;font-weight:700;color:var(--sabina2)}
+  .marca .sello{width:44px;height:44px;border:2px solid var(--sabina);border-radius:50%;display:grid;place-items:center;font-size:1.3rem;background:var(--blanco)}
+  .marca small{display:block;font-size:.8rem;color:var(--tinta2);font-weight:400;font-style:italic;line-height:1.2}
+  nav .tel-nav a{font-size:1.25rem;font-weight:700;color:var(--miel)}
+  nav .tel-nav small{display:block;color:var(--tinta2);font-size:.8rem;text-align:right}
+
+  /* PORTADA */
+  .portada{text-align:center;padding:66px 0 54px}
+  .kicker{font-family:'Caveat';font-size:1.8rem;color:var(--miel);transform:rotate(-2deg);display:inline-block}
+  .portada h1{font-size:clamp(2.6rem,7vw,4.4rem);margin:8px 0 6px}
+  .portada .sub{font-style:italic;font-size:1.25rem;color:var(--tinta2);max-width:46ch;margin:0 auto}
+  .portada .botones{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+  .ramita{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:34px;color:var(--sabina)}
+  .ramita::before,.ramita::after{content:"";height:1px;width:70px;background:var(--linea)}
+
+  section{padding:66px 0}
+  .titulo{text-align:center;margin-bottom:40px}
+  .titulo .mano{font-size:1.5rem;color:var(--miel)}
+  .titulo h2{font-size:clamp(1.9rem,5vw,2.7rem);margin-top:-4px}
+
+  /* PRODUCTOS en tarjetas */
+  .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .prod{background:var(--blanco);border:1px solid var(--linea);border-radius:12px;overflow:hidden;transition:.22s;display:flex;flex-direction:column}
+  .prod:hover{transform:translateY(-4px);box-shadow:0 18px 38px -22px rgba(60,51,42,.4)}
+  .prod .foto{aspect-ratio:4/3;display:grid;place-items:center;font-size:3.4rem}
+  .f1{background:linear-gradient(150deg,#f2dfb8,#e0bd7c)}
+  .f2{background:linear-gradient(150deg,#e8d3ae,#cba05c)}
+  .f3{background:linear-gradient(150deg,#e5cfd3,#b48a96)}
+  .f4{background:linear-gradient(150deg,#dde4d2,#a9b898)}
+  .f5{background:linear-gradient(150deg,#f0e0c0,#d8b170)}
+  .f6{background:linear-gradient(150deg,#e9dcc4,#c3ab7d)}
+  .prod .cuerpo{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+  .prod h3{font-size:1.2rem;margin-bottom:6px}
+  .prod p{color:var(--tinta2);font-size:.9rem;margin-bottom:14px;flex:1}
+  .prod .precio{font-weight:700;color:var(--miel);font-size:1.15rem}
+  .prod .precio small{color:var(--tinta2);font-weight:400;font-style:italic}
+
+  /* HISTORIA */
+  .historia{background:var(--blanco);border-top:3px double var(--linea);border-bottom:3px double var(--linea)}
+  .historia .wrap{max-width:740px}
+  .historia p{margin-bottom:18px;font-size:1.06rem}
+  .historia .destacado{border-left:4px solid var(--miel);padding:14px 22px;background:var(--papel);font-style:italic;font-size:1.12rem;margin:26px 0}
+
+  /* DÓNDE */
+  .donde-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:0 auto}
+  .donde{background:var(--blanco);border:1px solid var(--linea);border-radius:12px;padding:28px 26px;text-align:center}
+  .donde .ico{font-size:2rem;margin-bottom:12px}
+  .donde h3{font-size:1.15rem;margin-bottom:8px}
+  .donde p{color:var(--tinta2);font-size:.95rem}
+  .donde b{color:var(--sabina2)}
+
+  /* ENCARGOS */
+  .encargos{background:var(--sabina);color:var(--papel);text-align:center}
+  .encargos .titulo h2{color:var(--papel)}
+  .encargos .titulo .mano{color:#e5c98a}
+  .encargos p.txt{max-width:52ch;margin:0 auto 28px;color:rgba(246,239,223,.85);font-size:1.06rem}
+  .encargos .tel{font-size:2rem;font-weight:700;color:#fff;display:block;margin:6px 0 26px}
+
+  footer{background:var(--sabina2);color:rgba(246,239,223,.85);text-align:center;padding:38px 0 26px;font-size:.98rem}
+  footer b{color:var(--papel)}
+  footer .mini{margin-top:10px;opacity:.7;font-size:.84rem}
+
+  .wa{position:fixed;right:20px;bottom:20px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 28px -8px rgba(37,211,102,.6)}
+
+  @media(max-width:860px){
+    .prod-grid{grid-template-columns:repeat(2,1fr)}
+    .donde-grid{grid-template-columns:1fr}
+    nav{height:auto;padding:14px 0;flex-direction:column;gap:8px}
+    nav .tel-nav small{text-align:center}
+  }
+  @media(max-width:560px){
+    .prod-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="marca">
+        <span class="sello">🌿</span>
+        <div>Dulcería El Sabinar<small>Valle de El Golfo · Frontera, El Hierro</small></div>
+      </div>
+      <div class="tel-nav">
+        <small>Encargos por WhatsApp</small>
+        <a href="tel:+34634000066">634 00 00 66</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- PORTADA -->
+<section class="portada">
+  <div class="wrap">
+    <span class="kicker">hecho en casa, como siempre</span>
+    <h1>Dulces del valle,<br>con mucho cariño</h1>
+    <p class="sub">Quesadillas herreñas, rosquetes, mermeladas de nuestros higos y miel de la isla. Hechos en la cocina de casa, en Frontera, como los hacía mamá.</p>
+    <div class="botones">
+      <a href="#dulces" class="btn">Ver los dulces</a>
+      <a href="https://wa.me/34634000066?text=Buenas%2C%20quisiera%20hacer%20un%20encargo%20a%20Dulcer%C3%ADa%20El%20Sabinar" class="btn btn-miel" target="_blank" rel="noopener">Encargar por WhatsApp</a>
+    </div>
+    <div class="ramita">❧</div>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="dulces">
+  <div class="wrap">
+    <div class="titulo">
+      <span class="mano">de nuestra cocina</span>
+      <h2>Los dulces de la casa</h2>
+    </div>
+    <div class="prod-grid">
+      <div class="prod">
+        <div class="foto f1">✽</div>
+        <div class="cuerpo">
+          <h3>Quesadilla herreña</h3>
+          <p>Con queso fresco de las cabras del valle, limón y matalahúva. La reina de la casa.</p>
+          <span class="precio">2,50 € <small>/ unidad · caja de 6: 13 €</small></span>
+        </div>
+      </div>
+      <div class="prod">
+        <div class="foto f2">🥨</div>
+        <div class="cuerpo">
+          <h3>Rosquetes de anís</h3>
+          <p>Crujientes por fuera, tiernos por dentro. Para el café de media tarde.</p>
+          <span class="precio">5,00 € <small>/ docena</small></span>
+        </div>
+      </div>
+      <div class="prod">
+        <div class="foto f3">🫙</div>
+        <div class="cuerpo">
+          <h3>Mermelada de higo</h3>
+          <p>De los higos de nuestras higueras, sin más añadido que azúcar y limón.</p>
+          <span class="precio">4,50 € <small>/ tarro de 250 g</small></span>
+        </div>
+      </div>
+      <div class="prod">
+        <div class="foto f4">🍯</div>
+        <div class="cuerpo">
+          <h3>Miel del valle</h3>
+          <p>De colmenas del Golfo, cruda y sin filtrar. Cosecha limitada de cada temporada.</p>
+          <span class="precio">8,00 € <small>/ tarro de 500 g</small></span>
+        </div>
+      </div>
+      <div class="prod">
+        <div class="foto f5">🍰</div>
+        <div class="cuerpo">
+          <h3>Torta de manteca</h3>
+          <p>La torta de siempre, para desayunar o merendar. Dura toda la semana... si la dejan.</p>
+          <span class="precio">6,00 € <small>/ pieza</small></span>
+        </div>
+      </div>
+      <div class="prod">
+        <div class="foto f6">🎁</div>
+        <div class="cuerpo">
+          <h3>Cesta del Sabinar</h3>
+          <p>Quesadillas, mermelada, miel y rosquetes en cesta para regalar. Ideal para llevarse la isla a casa.</p>
+          <span class="precio">28,00 € <small>/ cesta completa</small></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORIA -->
+<section class="historia">
+  <div class="wrap">
+    <div class="titulo">
+      <span class="mano">quiénes somos</span>
+      <h2>Una cocina, dos hermanas</h2>
+    </div>
+    <p>Somos Carmen y Nieves, dos hermanas de Frontera. Aprendimos a hacer quesadillas viendo a nuestra madre, que aprendió de la suya, y un buen día los encargos de los vecinos se convirtieron en esto: una pequeña dulcería casera en el Valle de El Golfo.</p>
+    <p>No tenemos fábrica ni queremos tenerla. Horneamos en tandas pequeñas, con queso y huevos de aquí, y cuando se acaba, se acabó hasta la siguiente hornada.</p>
+    <div class="destacado">"Los dulces con prisa salen tristes. Los nuestros esperan su horno tranquilos, como debe ser." — Carmen</div>
+  </div>
+</section>
+
+<!-- DÓNDE -->
+<section id="donde">
+  <div class="wrap">
+    <div class="titulo">
+      <span class="mano">búscanos</span>
+      <h2>Dónde encontrarnos</h2>
+    </div>
+    <div class="donde-grid">
+      <div class="donde">
+        <div class="ico">🧺</div>
+        <h3>Mercadillo de Frontera</h3>
+        <p>Todos los <b>sábados de 9:00 a 14:00</b>. Nuestro puesto de siempre, junto a la entrada.</p>
+      </div>
+      <div class="donde">
+        <div class="ico">🏪</div>
+        <h3>Tiendas de la isla</h3>
+        <p>En tiendas y supermercados de <b>Frontera, Valverde y El Pinar</b>. Pregunte por El Sabinar.</p>
+      </div>
+      <div class="donde">
+        <div class="ico">📦</div>
+        <h3>Encargos y envíos</h3>
+        <p>Por WhatsApp, con <b>2 días de antelación</b>. Enviamos a las otras islas por transporte.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENCARGOS -->
+<section class="encargos" id="encargos">
+  <div class="wrap">
+    <div class="titulo">
+      <span class="mano">¿le apetece?</span>
+      <h2>Haga su encargo</h2>
+    </div>
+    <p class="txt">Escríbanos por WhatsApp o llámenos con lo que necesita — para casa, para una fiesta o para mandar a alguien que está fuera y echa de menos la isla.</p>
+    <span class="tel">634 00 00 66</span>
+    <a href="https://wa.me/34634000066?text=Buenas%2C%20quisiera%20hacer%20un%20encargo%20a%20Dulcer%C3%ADa%20El%20Sabinar" class="btn btn-miel" target="_blank" rel="noopener">Encargar por WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><b>Dulcería El Sabinar</b> · Valle de El Golfo, Frontera · El Hierro · 634 00 00 66</p>
+    <p class="mini">© 2026 Dulcería El Sabinar · Sitio de ejemplo — negocio ficticio</p>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/34634000066?text=Buenas%2C%20quisiera%20hacer%20un%20encargo%20a%20Dulcer%C3%ADa%20El%20Sabinar" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2 .2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5-.3.3c-.1.2-.3.3-.1.6.1.3.7 1.1 1.4 1.7.9.8 1.6 1 1.9 1.2.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.9-.1 1.6Z"/></svg>
+</a>
+
+</body>
+</html>
