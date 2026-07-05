@@ -63,6 +63,8 @@ nav{display:flex;align-items:center;justify-content:space-between;height:64px}
 .t-carpinteria{background:radial-gradient(500px 300px at 60% 15%,rgba(222,184,135,.3),transparent),linear-gradient(160deg,#5c3d24,#33200f)}
 .t-quesadilleria{background:radial-gradient(500px 300px at 55% 15%,rgba(194,154,75,.35),transparent),linear-gradient(160deg,#a3492a,#5e2413)}
 .t-dulceria{background:radial-gradient(500px 300px at 45% 15%,rgba(229,201,138,.3),transparent),linear-gradient(160deg,#4a5d43,#2b3826)}
+.t-casarural{background:radial-gradient(500px 300px at 60% 12%,rgba(201,143,61,.3),transparent),linear-gradient(160deg,#3d5340,#22301f)}
+.t-pizzeria{background:radial-gradient(500px 320px at 50% 115%,rgba(255,90,46,.5),transparent),linear-gradient(160deg,#252220,#151311)}
 .info{padding:24px 26px 26px;display:flex;flex-direction:column;flex:1}
 .info .cat{color:var(--accent-ink);font-size:.7rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px}
 .info h3{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:8px}

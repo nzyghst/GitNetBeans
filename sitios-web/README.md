@@ -1,6 +1,6 @@
 # Muestras de páginas web — Negocios locales de Tenerife
 
-Colección de **doce páginas web de demostración** para negocios locales, pensadas
+Colección de **catorce páginas web de demostración** para negocios locales, pensadas
 como muestra comercial y organizadas por sector. Todos los nombres, teléfonos,
 direcciones y datos son **ficticios** y no corresponden a ningún establecimiento real.
 
@@ -20,12 +20,18 @@ direcciones y datos son **ficticios** y no corresponden a ningún establecimient
 | **Bar La Esquina** ★ clásica | [`/bar-tapas`](./bar-tapas/) | Bar de toda la vida: sobrio, letra grande, teléfono a la vista |
 | **Marea Café & Brunch** | [`/cafe-brunch`](./cafe-brunch/) | Cálido, luminoso, carta y galería |
 | **Kaiyo Sushi Bar** | [`/sushi-bar`](./sushi-bar/) | Japonés minimalista, pedidos por WhatsApp |
+| **Pizzería Vulcano** | [`/pizzeria`](./pizzeria/) | Tema volcánico desenfadado, para llevar por WhatsApp |
 
 ### ✽ Producto local y dulcerías (`dulcerias.html`) — El Hierro
 | Demo | Carpeta | Estilo |
 |------|---------|--------|
 | **Quesadillas La Flor Herreña** ★ clásica | [`/quesadilleria`](./quesadilleria/) | Obrador centenario: horno de leña, precios, envíos entre islas |
 | **Dulcería El Sabinar** ★ rústica | [`/dulceria-golfo`](./dulceria-golfo/) | Dulcería casera: tarjetas de producto, mercadillo, encargos WhatsApp |
+
+### 🌲 Alojamiento rural (`alojamiento.html`)
+| Demo | Carpeta | Estilo |
+|------|---------|--------|
+| **Casa Rural La Sabina** (El Pinar, El Hierro) | [`/casa-rural`](./casa-rural/) | Reserva directa sin comisiones, tarifas por temporada, el entorno |
 
 ### 💈 Barbería y belleza (`belleza.html`)
 | Demo | Carpeta | Estilo |

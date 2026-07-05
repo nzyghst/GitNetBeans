@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pizzería Vulcano · Pizza al horno de leña · El Pinar, El Hierro</title>
+<meta name="description" content="Pizzería artesana en El Pinar, El Hierro. Masa de fermentación lenta, horno de leña y producto de la isla. Para llevar o recoger — pide por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --carbon:#1c1a18; --carbon2:#252220; --card:#2b2825;
+    --lava:#ff5a2e; --lava2:#e0481f; --brasa:#ffb35c;
+    --crema:#f6efe4; --muted:#a89e91; --linea:rgba(246,239,228,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--carbon);color:var(--crema);line-height:1.65}
+  h1,h2,h3{font-family:'Lilita One',cursive;font-weight:400;line-height:1.05;letter-spacing:.01em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  .btn{display:inline-flex;align-items:center;gap:10px;background:var(--lava);color:#fff;padding:15px 30px;border-radius:12px;font-weight:700;font-size:1rem;border:2px solid var(--lava);transition:.22s}
+  .btn:hover{background:var(--lava2);border-color:var(--lava2)}
+  .btn-ghost{background:transparent;color:var(--crema);border-color:var(--linea)}
+  .btn-ghost:hover{border-color:var(--lava);color:var(--brasa)}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--brasa);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700}
+
+  header{position:sticky;top:0;z-index:40;background:rgba(28,26,24,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .marca{display:flex;align-items:center;gap:12px;font-family:'Lilita One';font-size:1.5rem}
+  .marca .sello{width:44px;height:44px;border-radius:50%;background:var(--lava);display:grid;place-items:center;font-size:1.3rem}
+  .nav-links{display:flex;gap:28px;font-size:.9rem;color:var(--muted);font-weight:500}
+  .nav-links a:hover{color:var(--brasa)}
+
+  /* HERO */
+  .hero{padding:90px 0 80px;position:relative;overflow:hidden;text-align:center;
+    background:radial-gradient(700px 380px at 50% 115%, rgba(255,90,46,.28), transparent 65%)}
+  .hero .humo{position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(circle,rgba(255,179,92,.09),transparent 65%)}
+  .hero h1{font-size:clamp(3.2rem,9vw,6rem);position:relative}
+  .hero h1 span{color:var(--lava)}
+  .hero .sub{color:var(--muted);font-size:1.15rem;max-width:48ch;margin:20px auto 32px;position:relative}
+  .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+  .hero .datos{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:44px;position:relative}
+  .dato{font-size:.85rem;color:var(--muted)}
+  .dato b{display:block;font-family:'Lilita One';font-size:1.5rem;color:var(--brasa)}
+
+  section{padding:84px 0}
+  .sec-head{text-align:center;max-width:620px;margin:0 auto 50px}
+  .sec-head h2{font-size:clamp(2.2rem,5.5vw,3.4rem);margin-top:14px}
+  .sec-head p{color:var(--muted);margin-top:12px}
+
+  /* CARTA */
+  .carta{background:var(--carbon2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .pizzas{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:900px;margin:0 auto}
+  .pizza{background:var(--card);border:1px solid var(--linea);border-radius:14px;padding:22px 26px;display:flex;justify-content:space-between;gap:16px;align-items:baseline;transition:.2s}
+  .pizza:hover{border-color:rgba(255,90,46,.5);transform:translateY(-2px)}
+  .pizza .nm{font-family:'Lilita One';font-size:1.2rem;color:var(--crema)}
+  .pizza .nm .tag{font-family:'Inter';font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,90,46,.18);color:var(--brasa);padding:2px 8px;border-radius:20px;margin-left:8px;vertical-align:middle;font-weight:700}
+  .pizza .d{font-family:'Inter';color:var(--muted);font-size:.86rem;display:block;margin-top:4px;max-width:34ch}
+  .pizza .pr{font-family:'Lilita One';font-size:1.4rem;color:var(--brasa);white-space:nowrap}
+  .carta-nota{text-align:center;margin-top:28px;color:var(--muted);font-style:italic;font-size:.92rem}
+
+  /* HORNO */
+  .horno-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .h-card{background:var(--carbon2);border:1px solid var(--linea);border-radius:14px;padding:30px 26px;text-align:center;transition:.2s}
+  .h-card:hover{border-color:rgba(255,179,92,.4)}
+  .h-card .ic{font-size:2.4rem;margin-bottom:14px}
+  .h-card h3{font-size:1.3rem;margin-bottom:8px;color:var(--brasa)}
+  .h-card p{color:var(--muted);font-size:.9rem}
+
+  /* PEDIR */
+  .pedir{background:linear-gradient(160deg,#3a1c10,var(--carbon));border-top:1px solid var(--linea);text-align:center}
+  .pedir .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:840px;margin:40px auto 0}
+  .paso{background:rgba(255,255,255,.05);border:1px solid var(--linea);border-radius:14px;padding:26px 20px}
+  .paso .n{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--lava);color:#fff;font-family:'Lilita One';font-size:1.2rem;margin-bottom:12px}
+  .paso b{display:block;margin-bottom:6px;color:var(--crema)}
+  .paso p{color:var(--muted);font-size:.88rem}
+  .pedir .btn{margin-top:34px}
+  .pedir .tel{display:block;margin-top:16px;color:var(--muted);font-size:.95rem}
+  .pedir .tel b{color:var(--brasa);font-size:1.2rem}
+
+  /* HORARIO */
+  .horario-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:820px;margin:0 auto}
+  .hcard{background:var(--carbon2);border:1px solid var(--linea);border-radius:14px;padding:30px 32px}
+  .hcard h3{font-size:1.3rem;margin-bottom:16px;color:var(--brasa)}
+  .hrow{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dotted var(--linea);font-size:.95rem}
+  .hrow:last-child{border:0}
+  .hrow .op{color:var(--brasa);font-weight:700}
+  .hrow .cl{color:var(--muted)}
+  .hcard p{color:var(--muted);font-size:.95rem;margin-bottom:10px}
+  .hcard p b{color:var(--crema)}
+
+  footer{border-top:1px solid var(--linea);text-align:center;padding:38px 0 26px;color:var(--muted);font-size:.9rem}
+  footer b{color:var(--crema)}
+  footer .mini{margin-top:8px;opacity:.7;font-size:.8rem}
+
+  .wa{position:fixed;right:20px;bottom:20px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 28px -8px rgba(37,211,102,.6)}
+
+  @media(max-width:840px){
+    .pizzas{grid-template-columns:1fr}
+    .horno-grid,.pedir .pasos,.horario-grid{grid-template-columns:1fr}
+    .nav-links{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="#" class="marca"><span class="sello">🌋</span> Vulcano</a>
+      <div class="nav-links">
+        <a href="#carta">La carta</a>
+        <a href="#horno">El horno</a>
+        <a href="#pedir">Pedir</a>
+        <a href="#horario">Horario</a>
+      </div>
+      <a href="https://wa.me/34634000042?text=Hola%20Vulcano%2C%20quiero%20pedir%20pizza" class="btn" target="_blank" rel="noopener">Pedir ahora</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="humo"></div>
+  <div class="wrap">
+    <span class="eyebrow">🌋 Pizza al horno de leña · El Pinar, El Hierro</span>
+    <h1>Pizza con<br>fuego <span>de volcán</span></h1>
+    <p class="sub">Masa de 48 horas de fermentación, horno de leña a 400 grados y producto de la isla: queso herreño, piña tropical del Golfo y hasta chorizo de perro... es broma, de Teror. 😄</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/34634000042?text=Hola%20Vulcano%2C%20quiero%20pedir%20pizza" class="btn" target="_blank" rel="noopener">🍕 Pedir por WhatsApp</a>
+      <a href="#carta" class="btn btn-ghost">Ver la carta</a>
+    </div>
+    <div class="datos">
+      <div class="dato"><b>48h</b>de fermentación</div>
+      <div class="dato"><b>400°</b>horno de leña</div>
+      <div class="dato"><b>15 min</b>y lista para recoger</div>
+    </div>
+  </div>
+</section>
+
+<!-- CARTA -->
+<section class="carta" id="carta">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">La carta</span>
+      <h2>Nuestras pizzas</h2>
+      <p>Todas con nuestra salsa de tomate casera y mozzarella. Masa fina o de borde alto, tú eliges.</p>
+    </div>
+    <div class="pizzas">
+      <div class="pizza"><div><span class="nm">Vulcano <span class="tag">la de la casa</span></span><span class="d">Chorizo picante, cebolla morada, miel de la isla y mozzarella ahumada.</span></div><span class="pr">12,50</span></div>
+      <div class="pizza"><div><span class="nm">Herreña</span><span class="d">Queso herreño, gofio espolvoreado, mojo rojo suave y millo tostado.</span></div><span class="pr">12,90</span></div>
+      <div class="pizza"><div><span class="nm">Margarita de verdad</span><span class="d">Tomate, mozzarella fior di latte, albahaca fresca y aceite bueno.</span></div><span class="pr">9,50</span></div>
+      <div class="pizza"><div><span class="nm">Cuatro quesos canarios</span><span class="d">Herreño, palmero ahumado, majorero y flor de Guía. Sin complejos.</span></div><span class="pr">13,50</span></div>
+      <div class="pizza"><div><span class="nm">Del huerto <span class="tag">veggie</span></span><span class="d">Calabacín, pimientos asados, champiñón, rúcula y aceitunas.</span></div><span class="pr">11,50</span></div>
+      <div class="pizza"><div><span class="nm">Atún de la costa</span><span class="d">Atún, cebolla confitada, alcaparras y un toque de lima.</span></div><span class="pr">12,00</span></div>
+      <div class="pizza"><div><span class="nm">Carbonara al horno</span><span class="d">Nata, bacon crujiente, parmesano y pimienta negra recién molida.</span></div><span class="pr">11,90</span></div>
+      <div class="pizza"><div><span class="nm">Peque Vulcano <span class="tag">niños</span></span><span class="d">Tomate, mozzarella y jamón york. Tamaño ideal para los peques.</span></div><span class="pr">7,00</span></div>
+    </div>
+    <p class="carta-nota">¿Sin gluten? Tenemos masa sin gluten por 1,50 € más — avísanos al pedir. Bebidas y postre casero del día en el local.</p>
+  </div>
+</section>
+
+<!-- HORNO -->
+<section id="horno">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">El secreto</span>
+      <h2>Por qué sabe distinta</h2>
+    </div>
+    <div class="horno-grid">
+      <div class="h-card"><div class="ic">⏳</div><h3>Masa lenta</h3><p>48 horas de fermentación en frío. Ligera, digestiva y con ese borde lleno de burbujas.</p></div>
+      <div class="h-card"><div class="ic">🔥</div><h3>Leña de la isla</h3><p>Horno de piedra a 400 grados. Noventa segundos y fuera: crujiente por fuera, tierna por dentro.</p></div>
+      <div class="h-card"><div class="ic">🧀</div><h3>Producto canario</h3><p>Quesos de las islas, verduras de los huertos de El Pinar y miel herreña. Kilómetro cero de verdad.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PEDIR -->
+<section class="pedir" id="pedir">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Para llevar</span>
+      <h2>Pide y recoge en 15 minutos</h2>
+    </div>
+    <div class="pasos">
+      <div class="paso"><span class="n">1</span><b>Escríbenos</b><p>Por WhatsApp con tus pizzas y la hora a la que pasas.</p></div>
+      <div class="paso"><span class="n">2</span><b>Te confirmamos</b><p>Al momento. Si hay cola de horno, te decimos la hora real, sin engaños.</p></div>
+      <div class="paso"><span class="n">3</span><b>Recoges caliente</b><p>Pago en efectivo, tarjeta o Bizum. Recién salida del horno.</p></div>
+    </div>
+    <a href="https://wa.me/34634000042?text=Hola%20Vulcano%2C%20quiero%20pedir%20pizza" class="btn" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2 .2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5-.3.3c-.1.2-.3.3-.1.6.1.3.7 1.1 1.4 1.7.9.8 1.6 1 1.9 1.2.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.9-.1 1.6Z"/></svg>
+      Hacer pedido
+    </a>
+    <span class="tel">o llámanos al <b>634 00 00 42</b></span>
+  </div>
+</section>
+
+<!-- HORARIO -->
+<section id="horario">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Cuándo y dónde</span>
+      <h2>Horario del horno</h2>
+    </div>
+    <div class="horario-grid">
+      <div class="hcard">
+        <h3>🕒 Horario</h3>
+        <div class="hrow"><span>Lunes y martes</span><span class="cl">Descansamos</span></div>
+        <div class="hrow"><span>Miércoles – Viernes</span><span class="op">18:30 – 22:30</span></div>
+        <div class="hrow"><span>Sábado</span><span class="op">13:00 – 15:30 · 18:30 – 23:00</span></div>
+        <div class="hrow"><span>Domingo</span><span class="op">13:00 – 15:30 · 18:30 – 22:00</span></div>
+      </div>
+      <div class="hcard">
+        <h3>📍 Dónde estamos</h3>
+        <p><b>Carretera General 42, El Pinar</b><br>El Hierro</p>
+        <p>Junto a la plaza. Unas mesitas fuera si quieres comerla aquí, y el resto para llevar — muchos se la bajan a La Restinga para la puesta de sol. 🌅</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><b>Pizzería Vulcano</b> · Carretera General 42, El Pinar · El Hierro · 634 00 00 42</p>
+    <p class="mini">© 2026 Pizzería Vulcano · Sitio de ejemplo — negocio ficticio</p>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/34634000042?text=Hola%20Vulcano%2C%20quiero%20pedir%20pizza" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2 .2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5-.3.3c-.1.2-.3.3-.1.6.1.3.7 1.1 1.4 1.7.9.8 1.6 1 1.9 1.2.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.9-.1 1.6Z"/></svg>
+</a>
+
+</body>
+</html>
