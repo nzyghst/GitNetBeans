@@ -2,6 +2,20 @@
 [build]
   publish = "sitios-web"
 
+# La página de precios se retiró: el presupuesto se habla con cada negocio.
+# force = true por si algún deploy incremental arrastra el archivo antiguo.
+[[redirects]]
+  from = "/precios"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/precios.html"
+  to = "/"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
