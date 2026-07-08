@@ -1,14 +1,19 @@
 # Muestras de páginas web — Negocios locales de Tenerife
 
-Colección de **catorce páginas web de demostración** para negocios locales, pensadas
+Colección de **quince páginas web de demostración** para negocios locales, pensadas
 como muestra comercial y organizadas por sector. Todos los nombres, teléfonos,
 direcciones y datos son **ficticios** y no corresponden a ningún establecimiento real.
 
 ## Estructura del portfolio
 
 - `index.html` — **hub principal**: tarjetas de sector, sin demos mezcladas.
-- `hosteleria.html`, `belleza.html`, `automocion.html`, `salud.html`, `oficios.html` —
+- `hosteleria.html`, `dulcerias.html`, `belleza.html`, `automocion.html`, `salud.html`,
+  `alojamiento.html`, `actividades.html`, `oficios.html` —
   páginas de sector, cada una con sus demos. Comparten `portfolio.css`.
+- `precios.html` — **página de precios**: tres packs orientativos, mantenimiento
+  opcional y preguntas frecuentes, con CTA al WhatsApp real.
+- `tarjeta.html` — **tarjeta imprimible** con dos códigos QR (portfolio y WhatsApp),
+  para puerta fría y para dejar en mostradores.
 
 ## Demos incluidas
 
@@ -32,6 +37,11 @@ direcciones y datos son **ficticios** y no corresponden a ningún establecimient
 | Demo | Carpeta | Estilo |
 |------|---------|--------|
 | **Casa Rural La Sabina** (El Pinar, El Hierro) | [`/casa-rural`](./casa-rural/) | Reserva directa sin comisiones, tarifas por temporada, el entorno |
+
+### 🤿 Turismo activo (`actividades.html`)
+| Demo | Carpeta | Estilo |
+|------|---------|--------|
+| **Abisal Buceo** (La Restinga, El Hierro) | [`/buceo`](./buceo/) | Fondo marino oscuro, inmersiones, tarifas todo incluido, reserva por WhatsApp |
 
 ### 💈 Barbería y belleza (`belleza.html`)
 | Demo | Carpeta | Estilo |

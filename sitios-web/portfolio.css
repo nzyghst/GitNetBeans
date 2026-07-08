@@ -65,6 +65,7 @@ nav{display:flex;align-items:center;justify-content:space-between;height:64px}
 .t-dulceria{background:radial-gradient(500px 300px at 45% 15%,rgba(229,201,138,.3),transparent),linear-gradient(160deg,#4a5d43,#2b3826)}
 .t-casarural{background:radial-gradient(500px 300px at 60% 12%,rgba(201,143,61,.3),transparent),linear-gradient(160deg,#3d5340,#22301f)}
 .t-pizzeria{background:radial-gradient(500px 320px at 50% 115%,rgba(255,90,46,.5),transparent),linear-gradient(160deg,#252220,#151311)}
+.t-buceo{background:radial-gradient(500px 300px at 70% -10%,rgba(37,199,217,.35),transparent),linear-gradient(170deg,#0a3350,#03121f)}
 .info{padding:24px 26px 26px;display:flex;flex-direction:column;flex:1}
 .info .cat{color:var(--accent-ink);font-size:.7rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px}
 .info h3{font-family:'Instrument Serif',serif;font-size:1.5rem;margin-bottom:8px}
