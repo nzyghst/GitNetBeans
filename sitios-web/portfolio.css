@@ -1,8 +1,9 @@
 /* Portfolio de demos — estilos compartidos (hub + páginas de sector)
-   Estética: editorial, clara, minimalista. Casi monocromo con un acento bronce. */
+   Estética: editorial, clara, minimalista. Paleta atlántica: tinta azul profunda
+   con un acento teal, sobre blanco frío. */
 :root{
-  --bg:#faf9f6; --card:#ffffff; --ink:#1a1917; --muted:#8a857c;
-  --line:#e7e3da; --accent:#9a7b4f; --accent-ink:#7c6138;
+  --bg:#f6f8f9; --card:#ffffff; --ink:#0f1c24; --muted:#5f7382;
+  --line:#dfe6ea; --accent:#0e7a8a; --accent-ink:#0a5a66;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -13,7 +14,7 @@ a{color:inherit;text-decoration:none}
 .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
 
 /* NAV */
-header{position:sticky;top:0;z-index:40;background:rgba(250,249,246,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header{position:sticky;top:0;z-index:40;background:rgba(246,248,249,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 nav{display:flex;align-items:center;justify-content:space-between;height:64px}
 .logo{font-family:'Instrument Serif',serif;font-size:1.3rem;display:flex;align-items:baseline;gap:10px;letter-spacing:.01em}
 .logo .d{width:7px;height:7px;border-radius:50%;background:var(--accent);align-self:center}
@@ -45,7 +46,7 @@ nav{display:flex;align-items:center;justify-content:space-between;height:64px}
 /* CUADRÍCULA DE DEMOS (páginas de sector) */
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;padding:34px 0 30px}
 .demo{background:var(--card);border:1px solid var(--line);border-radius:4px;overflow:hidden;transition:.3s;display:flex;flex-direction:column}
-.demo:hover{border-color:#cfc8ba;box-shadow:0 24px 50px -32px rgba(26,25,23,.28);transform:translateY(-3px)}
+.demo:hover{border-color:#b9cbd4;box-shadow:0 24px 50px -32px rgba(15,28,36,.28);transform:translateY(-3px)}
 .thumb{aspect-ratio:16/9;position:relative;overflow:hidden;display:grid;place-items:center}
 .thumb .label{position:absolute;top:14px;left:14px;background:rgba(0,0,0,.35);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.18);padding:5px 12px;border-radius:20px;font-size:.7rem;font-weight:500;letter-spacing:.06em;color:#fff}
 .thumb .multi{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.92);color:var(--ink);padding:5px 12px;border-radius:20px;font-size:.7rem;font-weight:600;letter-spacing:.04em}

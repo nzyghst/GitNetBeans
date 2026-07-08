@@ -10,10 +10,9 @@ direcciones y datos son **ficticios** y no corresponden a ningún establecimient
 - `hosteleria.html`, `dulcerias.html`, `belleza.html`, `automocion.html`, `salud.html`,
   `alojamiento.html`, `actividades.html`, `oficios.html` —
   páginas de sector, cada una con sus demos. Comparten `portfolio.css`.
-- `precios.html` — **página de precios**: tres packs orientativos, mantenimiento
-  opcional y preguntas frecuentes, con CTA al WhatsApp real.
 - `tarjeta.html` — **tarjeta imprimible** con dos códigos QR (portfolio y WhatsApp),
-  para puerta fría y para dejar en mostradores.
+  para puerta fría y para dejar en mostradores. Sin precios publicados: el
+  presupuesto se habla con cada negocio según lo que necesite.
 
 ## Demos incluidas
 
