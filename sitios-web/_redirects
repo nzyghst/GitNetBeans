@@ -1,0 +1,4 @@
+# La página de precios se retiró: presupuesto hablado con cada negocio.
+# "!" fuerza la regla aunque un deploy incremental arrastre el archivo viejo.
+/precios      /   301!
+/precios.html /   301!
