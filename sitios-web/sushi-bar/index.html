@@ -37,7 +37,12 @@
 
   /* HERO */
   .hero{position:relative;overflow:hidden;padding:100px 0 90px;
-    background:radial-gradient(900px 420px at 85% 0%, rgba(224,82,82,.14), transparent 60%),linear-gradient(180deg,#101317,#141821)}
+    background:radial-gradient(900px 420px at 85% 0%, rgba(224,82,82,.14), transparent 60%),
+    linear-gradient(180deg,rgba(16,19,23,.92),rgba(20,24,33,.95)),
+    url("img/hero.webp") center/cover}
+  .fotos-sushi{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:34px}
+  .fotos-sushi img{width:100%;height:260px;object-fit:cover;border-radius:12px;border:1px solid var(--line);display:block}
+  @media(max-width:700px){.fotos-sushi{grid-template-columns:1fr}}
   .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
   .hero h1{font-size:clamp(3rem,7.5vw,5.4rem);margin:20px 0}
   .hero p.lead{color:var(--muted);font-size:1.12rem;max-width:38ch;margin-bottom:32px}
@@ -198,6 +203,10 @@
       <div class="fcard"><div class="ic">🐟</div><h3>Pescado de la isla</h3><p>Atún y pescado blanco de la lonja. Lo que no está fresco, no entra en la barra.</p></div>
       <div class="fcard"><div class="ic">🔪</div><h3>Hecho al momento</h3><p>Nada de vitrinas ni sushi de ayer. Cortamos y montamos cuando tú pides.</p></div>
       <div class="fcard"><div class="ic">🛵</div><h3>Recogida y domicilio</h3><p>Pide por WhatsApp y te avisamos cuando esté listo. Reparto por Adeje y Costa Adeje.</p></div>
+    </div>
+    <div class="fotos-sushi">
+      <img src="img/plato.webp" alt="Barco de sushi variado" loading="lazy">
+      <img src="img/nigiri.webp" alt="Selección de rolls y nigiri" loading="lazy">
     </div>
   </div>
 </section>

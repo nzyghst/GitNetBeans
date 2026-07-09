@@ -45,7 +45,9 @@
   .nav-links a:hover{color:var(--navy)}
 
   /* HERO */
-  .hero{position:relative;background:linear-gradient(115deg,var(--navy) 0 55%,var(--steel));color:#fff;overflow:hidden}
+  .hero{position:relative;background:
+    linear-gradient(115deg,rgba(15,36,56,.94) 0 45%,rgba(29,58,86,.86)),
+    url("img/hero.webp") center/cover;color:#fff;overflow:hidden}
   .hero::after{content:"";position:absolute;inset:0;background:
     repeating-linear-gradient(135deg,rgba(255,255,255,.02) 0 2px,transparent 2px 26px);pointer-events:none}
   .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:80px 24px 88px}
@@ -252,6 +254,8 @@
       <div class="step"><div class="num">03</div><h3>Reparamos</h3><p>Con tu OK, manos a la obra. Recambios de calidad y trabajo garantizado.</p></div>
       <div class="step"><div class="num">04</div><h3>A rodar</h3><p>Te avisamos cuando esté listo. Factura clara y 12 meses de garantía.</p></div>
     </div>
+    <img src="img/mecanico.webp" alt="Trabajando en el taller" loading="lazy"
+      style="width:100%;max-height:340px;object-fit:cover;object-position:center 40%;border-radius:14px;margin-top:34px;display:block">
   </div>
 </section>
 

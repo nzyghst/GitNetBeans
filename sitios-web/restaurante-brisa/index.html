@@ -11,7 +11,8 @@
 <link rel="stylesheet" href="styles.css">
 <style>
   /* estilos solo de la portada */
-  .hero{background:linear-gradient(160deg,var(--navy) 20%,#255182 75%,#2e6ca4);color:#fff;position:relative;overflow:hidden;text-align:center;padding:110px 0 120px}
+  .hero{background:linear-gradient(160deg,rgba(15,44,72,.88) 20%,rgba(37,81,130,.82) 75%,rgba(46,108,164,.78)),
+    url("img/hero.webp") center/cover;color:#fff;position:relative;overflow:hidden;text-align:center;padding:110px 0 120px}
   .hero::before{content:"〰";position:absolute;font-size:20rem;opacity:.05;top:-40px;left:-40px}
   .hero::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:44px;
     background:radial-gradient(70px 26px at 35px 100%, var(--bg) 98%, transparent) repeat-x;background-size:70px 44px}
@@ -99,8 +100,7 @@
 <!-- ABOUT -->
 <section>
   <div class="wrap about-grid">
-    <div class="about-visual">
-      <span class="fish">🐟</span>
+    <div class="about-visual" style="background:linear-gradient(180deg,transparent 55%,rgba(15,44,72,.65)),url('img/terraza.webp') center/cover">
       <span class="since">— Desde 1998 —</span>
     </div>
     <div class="about">
@@ -123,7 +123,7 @@
     </div>
     <div class="dest-grid">
       <div class="dish-card">
-        <div class="ph ph1">🥘</div>
+        <div class="ph ph1" style="background:url('img/plato.webp') center/cover"></div>
         <div class="body">
           <h3>Arroz meloso de marisco</h3>
           <p>Con gamba, mejillón y alioli suave. Mínimo 2 personas, por encargo.</p>

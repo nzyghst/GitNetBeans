@@ -46,14 +46,9 @@
 
   /* hero visual: ventana a los pinos */
   .ventana{position:relative;aspect-ratio:4/5;max-width:400px;margin-left:auto;border-radius:200px 200px 12px 12px;overflow:hidden;
-    background:
-      radial-gradient(340px 200px at 50% 108%, #6f8a5f 0 42%, transparent 43%),
-      radial-gradient(420px 260px at 15% 112%, #55704b 0 46%, transparent 47%),
-      radial-gradient(420px 260px at 88% 115%, #486142 0 48%, transparent 49%),
-      linear-gradient(180deg,#cfe0e8 0%,#e8ead8 55%,#9db284 100%);
+    background:url("img/hero.webp") center/cover;
     box-shadow:0 40px 70px -30px rgba(43,41,38,.45)}
   .ventana::before{content:"";position:absolute;inset:12px;border:2px solid rgba(255,255,255,.55);border-radius:188px 188px 6px 6px}
-  .ventana .luna{position:absolute;top:14%;left:24%;width:52px;height:52px;border-radius:50%;background:#fffdf2;box-shadow:0 0 34px rgba(255,253,242,.9)}
   .ventana .cartel{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);background:rgba(43,41,38,.82);color:var(--bruma);padding:10px 22px;border-radius:30px;font-size:.85rem;white-space:nowrap;font-weight:700}
 
   section{padding:80px 0}
@@ -162,7 +157,6 @@
     </div>
     <div>
       <div class="ventana">
-        <span class="luna"></span>
         <span class="cartel">🌲 El Pinar · a 900 m de altitud</span>
       </div>
     </div>
@@ -185,6 +179,8 @@
       <div class="feat"><span class="ic">📶</span><div><b>Wifi y buena cobertura</b><span>Por si necesitas teletrabajar un día... aunque no lo recomendamos.</span></div></div>
       <div class="feat"><span class="ic">🚗</span><div><b>Aparcamiento</b><span>Sitio para el coche junto a la casa, en camino tranquilo sin tráfico.</span></div></div>
     </div>
+    <img src="img/interior.webp" alt="El salón de la casa, luminoso y acogedor" loading="lazy"
+      style="width:100%;max-height:340px;object-fit:cover;border-radius:14px;display:block;margin-top:30px">
   </div>
 </section>
 
@@ -197,7 +193,7 @@
     </div>
     <div class="entorno-grid">
       <div class="ent">
-        <div class="ph e1">🥾</div>
+        <div class="ph e1" style="background:url('img/paisaje.webp') center/cover"></div>
         <div class="cuerpo"><h3>Senderos del pinar</h3><p>La Llanía, el Camino de la Virgen y decenas de rutas entre pinos y sabinas retorcidas, empezando a pie desde la casa.</p></div>
       </div>
       <div class="ent">
